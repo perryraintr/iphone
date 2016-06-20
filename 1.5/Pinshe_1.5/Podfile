@@ -1,0 +1,8 @@
+platform :ios, ‘8.0’
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+pod 'SDWebImage', '~> 3.7.3'
+pod 'Masonry', '~> 0.6.2'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'ObjcAssociatedObjectHelpers', '~> 2.0.1'
