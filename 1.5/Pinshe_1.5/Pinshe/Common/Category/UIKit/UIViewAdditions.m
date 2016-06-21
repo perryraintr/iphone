@@ -198,7 +198,7 @@
 - (void) testAmbiguity
 {
     if (self.hasAmbiguousLayout) {
-        NSLog(@"<%@:%p>: %@", self.class.description, self, @"Ambiguous");
+        PLog(@"<%@:%p>: %@", self.class.description, self, @"Ambiguous");
     }
     for (UIView *view in self.subviews) {
         [view testAmbiguity];
