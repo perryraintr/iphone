@@ -135,7 +135,7 @@
 - (IBAction)protocolAction:(id)sender { // 用户协议
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
     [paramDic setObject:@"用户协议" forKey:@"title"];
-    NSString *protocolUrl = [NSString stringWithFormat:@"%@protocol.html", getRequestUrl()];
+    NSString *protocolUrl = [NSString stringWithFormat:@"%@protocol.html", REQUEST_HTML_URL];
     [paramDic setObject:protocolUrl forKey:@"loadUrl"];
     [[ForwardContainer shareInstance] pushContainer:FORWARD_WEBVIEW_VC navigationController:self.navigationController params:paramDic animated:NO];
 }

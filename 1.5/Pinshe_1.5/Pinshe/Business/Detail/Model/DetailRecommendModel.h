@@ -50,4 +50,6 @@
 
 @property (nonatomic, strong) NSArray<NSString *> *post_images;
 
+@property (nonatomic, assign) int product_guid;
+
 @end

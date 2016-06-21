@@ -25,10 +25,11 @@
     self.titleLabel = Building_UILabelWithSuperView(self.contentView, FontNotSou(fFont14), HEXCOLOR(pinColorDarkOrange), NSTextAlignmentLeft, 0);
     
     self.describeLabel = Building_UILabelWithSuperView(self.contentView, FontNotSou(fFont14), HEXCOLOR(pinColorBlack), NSTextAlignmentLeft, 0);
+    self.showProductImageview = Building_UIImageViewWithSuperView(self.contentView, IMG_Name(@"detailShowProduct.jpg"));
     self.timeLabel = Building_UILabelWithSuperView(self.contentView, Font(fFont13), HEXCOLOR(pinColorGray), NSTextAlignmentLeft, 0);
 }
 
-- (void)layoutUI:(NSString *)brand description:(NSString *)description {
+- (void)layoutUI:(NSString *)brand description:(NSString *)description productId:(int)productId {
     float leftOffset = FITWITH(26);
     
     [self.titleImageview mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -58,11 +59,28 @@
         make.right.equalTo(self.contentView).offset(-leftOffset);
     }];
     
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.describeLabel.mas_bottom).offset(FITHEIGHT(10));
-        make.right.equalTo(self.contentView).offset(-FITWITH(11));
-        make.height.equalTo(@(FITHEIGHT(15)));
-    }];
+    if (productId > 0) {
+        [self.showProductImageview mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.describeLabel.mas_bottom).offset(FITHEIGHT(10));
+            make.right.equalTo(self.contentView).offset(-leftOffset);
+            make.height.equalTo(@(FITHEIGHT(30)));
+            make.width.equalTo(@(FITWITH(89)));
+        }];
+        
+        [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.showProductImageview.mas_bottom).offset(FITHEIGHT(10));
+            make.right.equalTo(self.contentView).offset(-leftOffset);
+            make.height.equalTo(@(FITHEIGHT(15)));
+        }];
+        
+    } else {
+        [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.describeLabel.mas_bottom).offset(FITHEIGHT(10));
+            make.right.equalTo(self.contentView).offset(-FITWITH(11));
+            make.height.equalTo(@(FITHEIGHT(15)));
+        }];
+    }
+    
 }
 
 - (void)resetRecommendCell:(DetailRecommendModel *)model {
@@ -73,7 +91,7 @@
     self.titleLabel.attributedText = resetLineHeightMultiple(1.0, 0, model.post_name);
     self.describeLabel.attributedText = resetLineHeightMultiple(1.0, 5, model.post_description);
     self.timeLabel.text = model.post_modify_time;
-    [self layoutUI:model.post_name description:model.post_description];
+    [self layoutUI:model.post_name description:model.post_description productId:model.product_guid];
 }
 
 @end

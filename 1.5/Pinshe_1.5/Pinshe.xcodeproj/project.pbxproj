@@ -280,6 +280,7 @@
 		3BEBA1141CCE00250017FB39 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBA1131CCE00250017FB39 /* CommentModel.m */; };
 		3BEBA1171CCE01590017FB39 /* DetailReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBA1161CCE01590017FB39 /* DetailReplyCell.m */; };
 		3BEBA11B1CCE28BA0017FB39 /* MyPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBA11A1CCE28B90017FB39 /* MyPublishModel.m */; };
+		3BF723BA1D191E99001C3EE7 /* detailShowProduct@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF723B91D191E99001C3EE7 /* detailShowProduct@3x.jpg */; };
 		3BF999481CD5D73A0032BC4D /* MyWishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF999471CD5D73A0032BC4D /* MyWishModel.m */; };
 		3BF9994B1CD5DB380032BC4D /* MyWishCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF9994A1CD5DB380032BC4D /* MyWishCellView.m */; };
 		3BF9994E1CD5DD630032BC4D /* MyWishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF9994D1CD5DD630032BC4D /* MyWishCell.m */; };
@@ -718,6 +719,7 @@
 		3BEBA1161CCE01590017FB39 /* DetailReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailReplyCell.m; sourceTree = "<group>"; };
 		3BEBA1191CCE28B90017FB39 /* MyPublishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublishModel.h; sourceTree = "<group>"; };
 		3BEBA11A1CCE28B90017FB39 /* MyPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublishModel.m; sourceTree = "<group>"; };
+		3BF723B91D191E99001C3EE7 /* detailShowProduct@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "detailShowProduct@3x.jpg"; sourceTree = "<group>"; };
 		3BF999461CD5D73A0032BC4D /* MyWishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWishModel.h; sourceTree = "<group>"; };
 		3BF999471CD5D73A0032BC4D /* MyWishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWishModel.m; sourceTree = "<group>"; };
 		3BF999491CD5DB380032BC4D /* MyWishCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWishCellView.h; sourceTree = "<group>"; };
@@ -1575,6 +1577,7 @@
 		3BD3A94E1CE5A9B2009693F3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				3BF723B91D191E99001C3EE7 /* detailShowProduct@3x.jpg */,
 				3BBD76651D00305400B05ED8 /* detailComparePushIcon@3x.png */,
 				3BD3A9611CE5BC7A009693F3 /* detailTitleIcon@3x.png */,
 				3BD3A95D1CE5B57E009693F3 /* detailBlackBoard@3x.png */,
@@ -2025,6 +2028,7 @@
 				3B15EF9E1CD86E5200D731A5 /* topGoods8@3x.png in Resources */,
 				3BE28CC71CF42C3300AA63A5 /* PINShareExperience@3x.png in Resources */,
 				3BB3DB1E1CDC9731006024CA /* loading1@3x.png in Resources */,
+				3BF723BA1D191E99001C3EE7 /* detailShowProduct@3x.jpg in Resources */,
 				3B8756EB1CF70C65007943D6 /* UMSnsAccountViewController.xib in Resources */,
 				3BB3DB1F1CDC9731006024CA /* loading2@3x.png in Resources */,
 				3B94E46E1CBF6D0D00F5288E /* shareItem@3x.png in Resources */,

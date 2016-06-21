@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) UILabel *describeLabel;
 
+@property (nonatomic, strong) UIImageView *showProductImageview;
+
 @property (nonatomic, strong) UILabel *timeLabel;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

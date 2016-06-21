@@ -277,8 +277,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if (indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2) {
+    if (indexPath.section == 0 || indexPath.section == 2) {
         return;
+    } else if (indexPath.section == 1) {
+        if (self.detailRecommendModel.product_guid > 0) {
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+            [paramDic setObject:[NSNumber numberWithInt:self.detailRecommendModel.product_guid] forKey:@"id"];
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_PINPRODUCTDETAIL_VC navigationController:self.navigationController params:paramDic animated:NO];
+        }
     } else {
         CommentModel *commentModel = [self.replyArray objectAtIndex:indexPath.row];
         self.ubid = commentModel.user_guid;
@@ -300,6 +306,11 @@
     CGFloat descriptionHeight = [NSString getTextHeight:(SCREEN_WITH - FITWITH(26) * 2) text:self.detailRecommendModel.post_description withLineHiehtMultipe:1.0 withLineSpacing:5 fontSize:fFont14 isSuo:NO];
     allHeight += descriptionHeight;
     allHeight += FITHEIGHT(35); // 发布时间
+    
+    if (self.detailRecommendModel.product_guid > 0) {
+        allHeight += FITHEIGHT(40);
+    }
+    
     return allHeight;
 }
 
