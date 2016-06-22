@@ -2371,7 +2371,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Raintr.Pinshe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5e3e144-f341-47cb-b4a5-50051285a7eb";
+				PROVISIONING_PROFILE = "f1b66444-1224-4e02-a7d9-1839a619ed94";
 			};
 			name = Debug;
 		};
@@ -2399,7 +2399,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Raintr.Pinshe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5e3e144-f341-47cb-b4a5-50051285a7eb";
+				PROVISIONING_PROFILE = "94b5f95c-9e3f-4bb3-a643-1f879ee5e2c7";
 			};
 			name = Release;
 		};
