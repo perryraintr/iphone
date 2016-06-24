@@ -297,7 +297,6 @@
         [self.httpService zanRequestWithMethodName:@"addfavorite.a" zanId:paramString finished:^(NSDictionary *result, NSString *message) {
             
             [self.detailFooterview resetCompareDetailWith:self.detailVote];
-            [PINBaseRefreshSingleton instance].refreshRecommend = 1;
             [PINBaseRefreshSingleton instance].refreshTopGoodsList = 1;
             [PINBaseRefreshSingleton instance].refreshMyCentralCollection = 1;
 
@@ -313,7 +312,6 @@
         [self.httpService zanRequestWithMethodName:@"addfavorite.a" zanId:paramString finished:^(NSDictionary *result, NSString *message) {
             
             [self.detailFooterview resetCompareDetailWith:self.detailVote];
-            [PINBaseRefreshSingleton instance].refreshRecommend = 1;
             [PINBaseRefreshSingleton instance].refreshTopGoodsList = 1;
             [PINBaseRefreshSingleton instance].refreshMyCentralCollection = 1;
             

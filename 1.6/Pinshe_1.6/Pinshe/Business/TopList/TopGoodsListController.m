@@ -24,13 +24,17 @@
 
 @property (nonatomic, assign) int currentPage;
 
+@property (nonatomic, assign) int tag_t2; // 传参的t2（请求参数）
+
+@property (nonatomic, strong) NSString *tag_name; // 传参的类别名称
+
 @property (nonatomic, strong) NSMutableArray *productArray;
 
 @property (nonatomic, strong) NSMutableArray *postArray;
 
 @property (nonatomic, strong) UIImage *paramImage;
 
-@property (nonatomic, assign) PinTopSceneType pinTopSceneType;
+//@property (nonatomic, assign) PinTopSceneType pinTopSceneType;
 
 @property (nonatomic, strong) NSMutableArray *imageArray;
 
@@ -49,7 +53,7 @@
     
     [self initParams];
     [self initUI];
-    self.title = getTopSenceTitle(self.pinTopSceneType);
+    self.title = self.tag_name;
     [self loopScrollAdRequestWith:PinIndicatorStyle_DefaultIndicator];
     [self topProductRequestWith:PinIndicatorStyle_NoIndicator];
     [self topListRequestWithDragup:NO withIndicatorStyle:PinIndicatorStyle_NoIndicator];
@@ -73,7 +77,8 @@
 }
 
 - (void)initBaseParams {
-    self.pinTopSceneType = [[self.postParams objectForKey:@"pinTopSceneType"] integerValue];
+    self.tag_name = [self.postParams objectForKey:@"tag_name"];
+    self.tag_t2 = [[self.postParams objectForKey:@"tag_t2"] intValue];
 }
 
 - (void)initParams {
@@ -118,7 +123,7 @@
 
 - (void)loopScrollAdRequestWith:(PinIndicatorStyle)indicatorStyle {
     
-    [self.httpService topProductAndLoopScrollAdWithMethodName:@"ad.a" indicatorStyle:indicatorStyle pinTopSceneType:self.pinTopSceneType finished:^(NSDictionary *result, NSString *message) {
+    [self.httpService topProductAndLoopScrollAdWithMethodName:@"ad.a" indicatorStyle:indicatorStyle tag_t2:self.tag_t2 finished:^(NSDictionary *result, NSString *message) {
         
         self.collectionView.backgroundColor = HEXCOLOR(pinColorMainBackground);
         [self.imageArray removeAllObjects];
@@ -136,7 +141,7 @@
 }
 
 - (void)topProductRequestWith:(PinIndicatorStyle)indicatorStyle {
-    [self.httpService topProductAndLoopScrollAdWithMethodName:@"product.a" indicatorStyle:indicatorStyle pinTopSceneType:self.pinTopSceneType finished:^(NSDictionary *result, NSString *message) {
+    [self.httpService topProductAndLoopScrollAdWithMethodName:@"product.a" indicatorStyle:indicatorStyle tag_t2:self.tag_t2 finished:^(NSDictionary *result, NSString *message) {
         
         [self.productArray removeAllObjects];
         for (NSDictionary *dic in [result objectForKey:@"array"]) {
@@ -153,7 +158,7 @@
 - (void)topListRequestWithDragup:(BOOL)isDragup withIndicatorStyle:(PinIndicatorStyle)indicatorStyle {
     
     self.currentPage = isDragup ? (self.currentPage + 1) : 1;
-    [self.httpService topListWithCurrentPage:self.currentPage pinTopSceneType:self.pinTopSceneType finished:^(NSDictionary *result, NSString *message) {
+    [self.httpService topListWithCurrentPage:self.currentPage tag_t2:self.tag_t2 finished:^(NSDictionary *result, NSString *message) {
         if (self.currentPage == 1) {
             [self.postArray removeAllObjects];
         }
@@ -245,7 +250,7 @@
         
     } else if (indexPath.section == 1) {
         SectionTitleCell *sectionTitleTop10Cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"sectionTitleTop10CellId" forIndexPath:indexPath];
-        NSString *titleName = [NSString stringWithFormat:@"%@ TOP10 商品", getTopSenceTitle(self.pinTopSceneType)];
+        NSString *titleName = [NSString stringWithFormat:@"%@ TOP10 商品", self.tag_name];
         [sectionTitleTop10Cell resetSectionTitleCell:titleName];
         return sectionTitleTop10Cell;
         
@@ -390,7 +395,7 @@
     
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
     [paramDic setObject:[NSNumber numberWithInt:topProductModel.product_guid] forKey:@"id"];
-    [paramDic setObject:[NSNumber numberWithInteger:self.pinTopSceneType] forKey:@"pinTopSceneType"];
+    [paramDic setObject:[NSNumber numberWithInt:self.tag_t2] forKey:@"pinTopSceneType"];
     [[ForwardContainer shareInstance] pushContainer:FORWARD_PINPRODUCTDETAIL_VC navigationController:self.navigationController params:paramDic animated:NO];
     
     [NSObject event:@"TOP002" label:@"点击TOP10商品"];
@@ -399,7 +404,7 @@
 #pragma mark -
 #pragma mark Priveta Method
 - (void)rightButtonAction:(UIButton *)button {
-    [NSObject event:[NSString stringWithFormat:@"TOP00%zd", 2 + self.pinTopSceneType] label:[NSString stringWithFormat:@"%@发布", getTopSenceTitle(self.pinTopSceneType)]];
+    [NSObject event:@"TOP0012" label:@"Top10页面发布"];
     
     BOOL isLogin = [UserDefaultManagement instance].isLogined;
     if (isLogin) {
@@ -427,7 +432,7 @@
     PinNavigationController *navigationController = [[PinNavigationController alloc] init];
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     [paramsDic setObject:self.paramImage forKey:@"paramImage"];
-    [paramsDic setObject:[NSNumber numberWithInteger:self.pinTopSceneType] forKey:@"pinTopSceneType"];
+    [paramsDic setObject:[NSNumber numberWithInteger:self.tag_t2] forKey:@"pinTopSceneType"];
     [[ForwardContainer shareInstance] pushContainer: FORWARD_PUBLISHRECOMMEND_VC navigationController:navigationController params:paramsDic animated:NO];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
@@ -464,7 +469,7 @@
         [self presentViewController:imagePickerController animated:YES completion:nil];
     }
     if (buttonIndex == 2) {
-        [NSObject event:[NSString stringWithFormat:@"TOP00%zd", 6 + self.pinTopSceneType] label:[NSString stringWithFormat:@"取消%@发布推荐", getTopSenceTitle(self.pinTopSceneType)]];
+        [NSObject event:@"TOP0011" label:@"取消发布推荐"];
     }
 }
 

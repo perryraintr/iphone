@@ -141,23 +141,4 @@ NSString *getPlaceholder(NSInteger pinLoginType) {
     return @"";
 }
 
-NSString *getTopSenceTitle(NSInteger pinSenceType) {
-    switch (pinSenceType) {
-        case PinTopSceneType_WhiteCollar:
-            return @"白领居家";
-            break;
-        case PinTopSceneType_Office:
-            return @"办公室小确幸";
-            break;
-        case PinTopSceneType_Jouney:
-            return @"人在旅途";
-            break;
-        case PinTopSceneType_Exercise:
-            return @"生命在于运动";
-            break;
-        default:
-            break;
-    }
-    return @"";
-}
 @end

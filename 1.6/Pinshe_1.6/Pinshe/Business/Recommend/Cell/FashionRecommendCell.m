@@ -105,14 +105,10 @@
     imageview.layer.borderWidth = 0.5;
 }
 
-- (void)layoutNewsUI:(BOOL)lastIndexRow {
+- (void)layoutNewsUI {
     [self.bgview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.contentView);
-        if (lastIndexRow) {
-            make.bottom.equalTo(self.contentView);
-        } else {
-            make.bottom.equalTo(self.contentView).offset(-FITHEIGHT(3));
-        }
+        make.bottom.equalTo(self.contentView).offset(-FITHEIGHT(3));
     }];
     
     [self.newsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,30 +128,22 @@
 - (void)resetFashionRecommendCell:(NSIndexPath *)indexPath withRecommendSceneModel:(RecommendSceneModel *)sceneModel {
     NSArray *bgColorArray = @[HEXCOLOR(0xe1d8c3), HEXCOLOR(0xe8e8e8), HEXCOLOR(0x396873), HEXCOLOR(0x645e56)];
     NSArray *textColorArray = @[HEXCOLOR(pinColorBlack), HEXCOLOR(pinColorBlack), HEXCOLOR(pinColorWhite), HEXCOLOR(pinColorWhite)];
-    NSArray *titleArray = @[@"白领居家", @"办公室小确幸", @"人在旅途", @"生命在于运动"];
-    NSArray *descrptionArray = @[@"从早上起床到晚上睡觉，让家里的生活更美好", @"工作再辛苦，我们也要有专属的小确幸", @"不论出差或是旅行，身体和心灵总有一个在路上", @"夏天来了，要美丽，要健康，要运动"];
-    self.bgview.backgroundColor = [bgColorArray objectAtIndex:indexPath.row];
-    self.titleLabel.textColor = [textColorArray objectAtIndex:indexPath.row];
-    self.descriptionLabel.textColor = [textColorArray objectAtIndex:indexPath.row];
-    self.titleLabel.text = [titleArray objectAtIndex:indexPath.row];
-    self.descriptionLabel.text = [descrptionArray objectAtIndex:indexPath.row];
+
+    int index = indexPath.row % 4;
     
-    NSArray *newsArray = @[@(sceneModel.tag1_count), @(sceneModel.tag2_count), @(sceneModel.tag3_count), @(sceneModel.tag4_count)];
-    self.newsLabel.text = [NSString stringWithFormat:@"+%zd New", [[newsArray objectAtIndex:indexPath.row] intValue]];
+    self.bgview.backgroundColor = [bgColorArray objectAtIndex:index];
+    self.titleLabel.textColor = [textColorArray objectAtIndex:index];
+    self.descriptionLabel.textColor = [textColorArray objectAtIndex:index];
     
-    NSArray *top1ImageArray = @[sceneModel.tag1_product1_image?:@"", sceneModel.tag2_product1_image?:@"", sceneModel.tag3_product1_image?:@"", sceneModel.tag4_product1_image?:@""];
-    NSString *top1ImageString = [top1ImageArray objectAtIndex:indexPath.row];
-    [self.top1Imageview sd_setImageWithURL:[NSURL URLWithString:top1ImageString] placeholderImage:nil];
+    self.titleLabel.text = sceneModel.tag_name;
+    self.descriptionLabel.text = sceneModel.tag_description;
+    self.newsLabel.text = [NSString stringWithFormat:@"+%zd New", sceneModel.count];
     
-    NSArray *top2ImageArray = @[sceneModel.tag1_product2_image?:@"", sceneModel.tag2_product2_image?:@"", sceneModel.tag3_product2_image?:@"", sceneModel.tag4_product2_image?:@""];
-    NSString *top2ImageString = [top2ImageArray objectAtIndex:indexPath.row];
-    [self.top2Imageview sd_setImageWithURL:[NSURL URLWithString:top2ImageString] placeholderImage:nil];
+    [self.top1Imageview sd_setImageWithURL:[NSURL URLWithString:sceneModel.tag_product1_image] placeholderImage:nil];
+    [self.top2Imageview sd_setImageWithURL:[NSURL URLWithString:sceneModel.tag_product2_image] placeholderImage:nil];
+    [self.top3Imageview sd_setImageWithURL:[NSURL URLWithString:sceneModel.tag_product3_image] placeholderImage:nil];
     
-    NSArray *top3ImageArray = @[sceneModel.tag1_product3_image?:@"", sceneModel.tag2_product3_image?:@"", sceneModel.tag3_product3_image?:@"", sceneModel.tag4_product3_image?:@""];
-    NSString *top3ImageString = [top3ImageArray objectAtIndex:indexPath.row];
-    [self.top3Imageview sd_setImageWithURL:[NSURL URLWithString:top3ImageString] placeholderImage:nil];
-    
-    [self layoutNewsUI:(indexPath.row == 3 ? YES : NO)];
+    [self layoutNewsUI];
 }
 
 @end

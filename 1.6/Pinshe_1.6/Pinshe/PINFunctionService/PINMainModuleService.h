@@ -30,7 +30,7 @@
 - (void)modifyVoteRequest:(int)voteId isLeft:(BOOL)isLeft finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
 // 推荐页
-- (void)recommendSceneRequestWithIndicatorStyle:(PinIndicatorStyle)indicatorStyle finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+- (void)recommendSceneRequestWithCurrentPage:(int)currentPage indicatorStyle:(PinIndicatorStyle)indicatorStyle finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
 // 推荐吐槽列表
 - (void)listRequestWithCurrentPage:(int)currentPage isPost:(BOOL)isPost finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
@@ -60,11 +60,11 @@
 // 详情
 - (void)detailRequestWithMethodName:(NSString *)methodName currentId:(NSString *)currentId finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
-// top10页面
-- (void)topProductAndLoopScrollAdWithMethodName:(NSString *)methodName indicatorStyle:(PinIndicatorStyle)indicatorStyle pinTopSceneType:(PinTopSceneType)pinTopSceneType finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+// top10页面商品和轮播图
+- (void)topProductAndLoopScrollAdWithMethodName:(NSString *)methodName indicatorStyle:(PinIndicatorStyle)indicatorStyle tag_t2:(int)tag_t2 finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
 // top10，推荐列表
-- (void)topListWithCurrentPage:(int)currentPage pinTopSceneType:(PinTopSceneType)pinTopSceneType finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+- (void)topListWithCurrentPage:(int)currentPage tag_t2:(int)tag_t2 finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
 // 品选发布
 - (void)votePublishRequestWithImageArray:(NSArray *)imageArray name:(NSString *)name finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;

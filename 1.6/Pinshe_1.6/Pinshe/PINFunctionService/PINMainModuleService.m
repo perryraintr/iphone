@@ -131,10 +131,12 @@ static NSString *const kCommentPath    = @"comment.a";
 }
 
 // 推荐页
-- (void)recommendSceneRequestWithIndicatorStyle:(PinIndicatorStyle)indicatorStyle finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+- (void)recommendSceneRequestWithCurrentPage:(int)currentPage indicatorStyle:(PinIndicatorStyle)indicatorStyle finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     [PINNetActivityIndicator startActivityIndicator:indicatorStyle];
 
-    [_manger GET:kTagPath params:@"t1=1" finished:^(NSDictionary *result, NSString *message) {
+    NSString *paramStr = [NSString stringWithFormat:@"t1=1&page=%zd", currentPage];
+    
+    [_manger GET:kTagPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
         [PINNetActivityIndicator stopActivityIndicator:indicatorStyle];
     } failure:^(NSDictionary *result, NSString *message) {
@@ -287,10 +289,10 @@ static NSString *const kCommentPath    = @"comment.a";
     }];
 }
 
-// top10页面
-- (void)topProductAndLoopScrollAdWithMethodName:(NSString *)methodName indicatorStyle:(PinIndicatorStyle)indicatorStyle pinTopSceneType:(PinTopSceneType)pinTopSceneType finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+// top10页面商品和轮播图
+- (void)topProductAndLoopScrollAdWithMethodName:(NSString *)methodName indicatorStyle:(PinIndicatorStyle)indicatorStyle tag_t2:(int)tag_t2 finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     [PINNetActivityIndicator startActivityIndicator:indicatorStyle];
-    NSString *paramStr = [NSString stringWithFormat:@"t1=1&t2=%zd", pinTopSceneType];
+    NSString *paramStr = [NSString stringWithFormat:@"t1=1&t2=%zd", tag_t2];
     
     [_manger GET:methodName params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
@@ -302,8 +304,8 @@ static NSString *const kCommentPath    = @"comment.a";
 }
 
 // top10，推荐列表
-- (void)topListWithCurrentPage:(int)currentPage pinTopSceneType:(PinTopSceneType)pinTopSceneType finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
-    NSString *paramStr = [NSString stringWithFormat:@"uid=%zd&t1=1&t2=%zd&page=%zd", [UserDefaultManagement instance].userId, pinTopSceneType, currentPage];
+- (void)topListWithCurrentPage:(int)currentPage tag_t2:(int)tag_t2 finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    NSString *paramStr = [NSString stringWithFormat:@"uid=%zd&t1=1&t2=%zd&page=%zd", [UserDefaultManagement instance].userId, tag_t2, currentPage];
     [_manger GET:kPostPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
     } failure:^(NSDictionary *result, NSString *message) {

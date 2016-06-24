@@ -68,7 +68,6 @@
     
     self.publishSceneView = [[PublishSceneView alloc] initWithPinTopSceneType:self.pinTopSceneType withTag2Array:[self.postParams objectForKey:@"myPublishTag2Array"]];
     [self.publishSceneView publishBlock:^(NSMutableArray *array) {
-        [PINBaseRefreshSingleton instance].refreshRecommend = 1;
         [PINBaseRefreshSingleton instance].refreshMyCentralPublish = 1;
         [self chatShowHint:@"您的发布将在1分钟内生效"];
         [self postPublishData:array];
