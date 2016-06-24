@@ -84,15 +84,15 @@
 
 - (IBAction)weixinLogin:(id)sender {
 ///   测试数据
-#warning by shi login Test
-    self.wechatImageUrl = @"";
-    self.wecahtId = @"oYpSmv56sVCxBuTAWCNhuB_h8BSU"; // 我的chatId
-    self.wechat = @"";
-    [self adduserRequest];
-//
+//#warning by shi login Test
+//    self.wechatImageUrl = @"";
+//    self.wecahtId = @"oYpSmv56sVCxBuTAWCNhuB_h8BSU"; // 我的chatId
+//    self.wechat = @"";
+//    [self adduserRequest];
+
 //    self.wecahtId =@"pinsher"; // 品社君
     
-//    [self wxlg];
+    [self wxlg];
     [NSObject event:@"LOGIN001" label:@"微信登录"];
 }
 
