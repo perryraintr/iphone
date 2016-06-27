@@ -137,7 +137,7 @@
     
     self.titleLabel.text = sceneModel.tag_name;
     self.descriptionLabel.text = sceneModel.tag_description;
-    self.newsLabel.text = [NSString stringWithFormat:@"+%zd New", sceneModel.count];
+    self.newsLabel.text = [NSString stringWithFormat:@"+%zd New", sceneModel.tag_count];
     
     [self.top1Imageview sd_setImageWithURL:[NSURL URLWithString:sceneModel.tag_product1_image] placeholderImage:nil];
     [self.top2Imageview sd_setImageWithURL:[NSURL URLWithString:sceneModel.tag_product2_image] placeholderImage:nil];
