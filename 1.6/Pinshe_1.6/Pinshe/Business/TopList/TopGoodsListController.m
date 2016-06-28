@@ -34,8 +34,6 @@
 
 @property (nonatomic, strong) UIImage *paramImage;
 
-//@property (nonatomic, assign) PinTopSceneType pinTopSceneType;
-
 @property (nonatomic, strong) NSMutableArray *imageArray;
 
 @property (nonatomic, strong) NSMutableArray *loopAdArray;

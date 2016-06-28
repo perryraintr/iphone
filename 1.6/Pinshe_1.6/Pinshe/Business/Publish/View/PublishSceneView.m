@@ -83,7 +83,7 @@
             }
         }
         
-        if (pinTopSceneType > 0 || tag2Array.count > 0) {
+        if ((pinTopSceneType > 0 && pinTopSceneType < 5) || tag2Array.count > 0) {
             self.publishButton.backgroundColor = HEXCOLOR(pinColorLightPink);
             self.publishButton.enabled = YES;
         }

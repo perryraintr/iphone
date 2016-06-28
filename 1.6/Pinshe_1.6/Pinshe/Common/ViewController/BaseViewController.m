@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "PINNetActivityIndicator.h"
 
 @interface BaseViewController ()
 
@@ -29,6 +30,7 @@
 }
 
 - (void)dealloc {
+    [PINNetActivityIndicator stopActivityIndicator:PinIndicatorStyle_DefaultIndicator];
     PLog(@"%s -- %@",__func__,self);
 }
 

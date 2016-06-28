@@ -248,7 +248,7 @@ static NSString *const kCommentPath    = @"comment.a";
         [paramDic setObject:address forKey:@"address"];
     }
 
-    [_manger POST:kModifyUserPath params:paramDic finished:^(NSDictionary *result, NSString *message) {
+    [_manger UploadImagesWithMethodName:kModifyUserPath params:paramDic imageNames:[paramDic objectForKey:@"fileNameArray"] images:[paramDic objectForKey:@"imageArray"] finished:^(NSDictionary *result, NSString *message) {
         [UserDefaultManagement instance].pinUser = [PinUser modelWithDictionary:result];
         finished(result, message);
         [PINNetActivityIndicator stopActivityIndicator:PinIndicatorStyle_DefaultIndicator];
@@ -256,7 +256,6 @@ static NSString *const kCommentPath    = @"comment.a";
         failure(result, message);
         [PINNetActivityIndicator stopActivityIndicator:PinIndicatorStyle_DefaultIndicator];
     }];
-    
 }
 
 /// 个人中心
@@ -350,7 +349,7 @@ static NSString *const kCommentPath    = @"comment.a";
 // 获取发布帖子信息
 - (void)postInfoRequestWithGuid:(int)guid finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     [PINNetActivityIndicator startActivityIndicator:PinIndicatorStyle_DefaultIndicator];
-    [_manger GET:@"post.a" params:[NSString stringWithFormat:@"pid=%zd", guid] finished:^(NSDictionary *result, NSString *message) {
+    [_manger GET:kPostPath params:[NSString stringWithFormat:@"pid=%zd", guid] finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
         [PINNetActivityIndicator stopActivityIndicator:PinIndicatorStyle_DefaultIndicator];
     } failure:^(NSDictionary *result, NSString *message) {

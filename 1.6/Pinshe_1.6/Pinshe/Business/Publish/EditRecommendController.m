@@ -65,7 +65,7 @@
     self.publishHeightLayoutConstraint.constant = FITHEIGHT(56);
     
     // 编辑发布有默认场景
-    self.publishSceneView = [[PublishSceneView alloc] initWithPinTopSceneType:-1 withTag2Array:self.tag2Array];
+    self.publishSceneView = [[PublishSceneView alloc] initWithPinTopSceneType:0 withTag2Array:self.tag2Array];
     [self.publishSceneView publishBlock:^(NSMutableArray *array) {
         [self chatShowHint:@"您的修改将在1分钟内生效"];
         [self postPublishData:array];

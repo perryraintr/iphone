@@ -38,26 +38,26 @@
         make.width.height.equalTo(@(FITWITH(35)));
     }];
     
-    [self.picImageview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(topOffset);
+    [self.picImageview mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-FITWITH(15));
-        make.width.height.equalTo(@(FITHEIGHT(65)));
+        make.width.height.equalTo(@(FITHEIGHT(56)));
+        make.centerY.equalTo(self.contentView);
     }];
     
-    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.nameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headImageview.mas_right).offset(FITWITH(15));
         make.top.equalTo(self.headImageview);
         make.height.equalTo(@(FITHEIGHT(16)));
         make.width.equalTo(@(SCREEN_WITH - FITWITH(155)));
     }];
     
-    [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.infoLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nameLabel.mas_left);
         make.top.equalTo(self.nameLabel.mas_bottom).offset(FITHEIGHT(8));
         make.width.equalTo(@(SCREEN_WITH - FITWITH(155)));
     }];
     
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nameLabel.mas_left);
         make.bottom.equalTo(self.contentView).offset(-topOffset);
         make.width.equalTo(@(FITWITH(150)));
