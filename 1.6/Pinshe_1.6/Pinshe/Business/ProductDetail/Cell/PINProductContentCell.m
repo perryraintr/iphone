@@ -54,22 +54,24 @@
         }
     }];
     
-//    CGFloat descriptionHeight = [NSString getTextHeight:(SCREEN_WITH - FITWITH(27) * 2) text:description withLineHiehtMultipe:1.0 fontSize:fFont14 isSuo:NO];
+    CGFloat descriptionHeight = [NSString getTextHeight:(SCREEN_WITH - FITWITH(26) * 2) text:description withLineHiehtMultipe:1.0 withLineSpacing:5 fontSize:fFont14 isSuo:NO];
+    
     [self.describeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(FITHEIGHT(7));
         make.left.equalTo(self.contentView).offset(leftOffset);
         make.right.equalTo(self.contentView).offset(-leftOffset);
+        make.height.equalTo(@(descriptionHeight));
     }];
     
     [self.firstPriceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(leftOffset);
         make.top.equalTo(self.describeLabel.mas_bottom).offset(FITHEIGHT(20));
-        make.width.height.equalTo(@(FITWITH(20)));
+        make.width.height.equalTo(@(FITWITH(26)));
     }];
     
     [self.allPriceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.firstPriceLabel.mas_right).offset(FITWITH(2));
-        make.top.bottom.equalTo(self.firstPriceLabel);
+        make.centerY.equalTo(self.firstPriceLabel).offset(-FITHEIGHT(2));
     }];
     
     [self.buyImageview mas_remakeConstraints:^(MASConstraintMaker *make) {

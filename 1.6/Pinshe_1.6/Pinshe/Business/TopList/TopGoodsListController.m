@@ -53,7 +53,7 @@
     [self initUI];
     self.title = self.tag_name;
     [self loopScrollAdRequestWith:PinIndicatorStyle_DefaultIndicator];
-    [self topProductRequestWith:PinIndicatorStyle_NoIndicator];
+    [self topProductRequestWith:PinIndicatorStyle_DefaultIndicator];
     [self topListRequestWithDragup:NO withIndicatorStyle:PinIndicatorStyle_NoIndicator];
 }
 
@@ -133,8 +133,10 @@
             [self.imageArray addObject:loopAdModel.image];
         }
         [self.collectionView reloadData];
+        [self.collectionView endRefreshing];
 
     } failure:^(NSDictionary *result, NSString *message) {
+        [self.collectionView endRefreshing];
     }];
 }
 
@@ -150,6 +152,7 @@
         [self.collectionView endRefreshing];
         
     } failure:^(NSDictionary *result, NSString *message) {
+        [self.collectionView endRefreshing];
     }];
 }
 

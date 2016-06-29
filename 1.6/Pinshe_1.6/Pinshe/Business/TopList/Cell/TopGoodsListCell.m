@@ -92,13 +92,12 @@
     [self.firstPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel.mas_left);
         make.bottom.equalTo(self.contentView).offset(-FITHEIGHT(16));
-        make.width.height.equalTo(@(FITWITH(20)));
+        make.width.height.equalTo(@(FITWITH(22)));
     }];
     
     [self.allPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.firstPriceLabel.mas_right);
-        make.top.equalTo(self.firstPriceLabel.mas_top).offset(-FITHEIGHT(5));
-        make.height.equalTo(@(FITHEIGHT(27)));
+        make.centerY.equalTo(self.firstPriceLabel).offset(-FITHEIGHT(2));
     }];
     
     [self.detailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
