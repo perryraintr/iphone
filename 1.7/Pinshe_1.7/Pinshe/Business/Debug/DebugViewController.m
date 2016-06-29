@@ -7,10 +7,14 @@
 //
 
 #import "DebugViewController.h"
+#import "PinTabBarController.h"
 
 @interface DebugViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *debugIpTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *debugLoginSegmentedControl;
+
+@property (strong, nonatomic) NSString *currentWcid;
 
 @end
 
@@ -27,19 +31,21 @@
     
     [super rightBarButton:@"保存" color:HEXCOLOR(pinColorWhite) selector:@selector(modifyAction) delegate:self];
     
-    if (![UserDefaultManagement instance].isLogined) {
-        UIButton *debugButton = Building_UIButtonWithFrameAndSuperView(self.view, CGRectMake(10, 200, 100, 20), self, @selector(debugLogin), nil);
-        [debugButton setTitle:@"debug登录" forState:UIControlStateNormal];
-        [debugButton setTitleColor:HEXCOLOR(pinColorBlack) forState:UIControlStateNormal];
-    }
+    self.currentWcid = @"oYpSmv56sVCxBuTAWCNhuB_h8BSU";
+    
 }
 
-- (void)debugLogin {
-    
-    [self.httpService loginRequestWithWechat:@"" wcid:@"oYpSmv56sVCxBuTAWCNhuB_h8BSU" avatar:@"" finished:^(NSDictionary *result, NSString *message) {
-    } failure:^(NSDictionary *result, NSString *message) {
-    }];
-    
+- (IBAction)debugLoginAction:(id)sender {
+    if (![UserDefaultManagement instance].isLogined) {
+        [self.httpService loginRequestWithWechat:@"" wcid:self.currentWcid avatar:@"" finished:^(NSDictionary *result, NSString *message) {
+            
+            [super backAction];
+            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+            pinTabBarController().selectedIndex = 2;
+            
+        } failure:^(NSDictionary *result, NSString *message) {
+        }];
+    }
 }
 
 - (void)modifyAction {
@@ -63,6 +69,27 @@
             break;
     }
     
+}
+- (IBAction)debugLoginChanged:(UISegmentedControl *)sender {
+    
+    switch (sender.selectedSegmentIndex) {
+        case 0: // vivian
+            self.currentWcid = @"oYpSmv56sVCxBuTAWCNhuB_h8BSU";
+            break;
+        case 1: // vivian's
+            self.currentWcid = @"oYpSmv1DQjrkAdA6id1aGzfcDgZQ";
+        case 2: // perry
+            self.currentWcid = @"";
+            break;
+        case 3: // villence
+            self.currentWcid = @"oYpSmv-Nw03fNclpPvrrkxIh5TgM";
+            break;
+        case 4: // park
+            self.currentWcid = @"oYpSmv3j9IEGJ1Csb3SNMqHCe0uE";
+            break;
+        default:
+            break;
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController">
             <connections>
                 <outlet property="bottomLayoutConstraint" destination="B2Y-Xc-3uM" id="rcA-tz-e9r"/>
+                <outlet property="debugButton" destination="wyW-ox-At5" id="y29-tH-fO0"/>
                 <outlet property="heightLayoutConstraint" destination="myt-hF-c0z" id="q2O-LD-x3B"/>
                 <outlet property="loginHeightLayoutConstraint" destination="t0x-cq-3wL" id="H5K-vh-jor"/>
                 <outlet property="loginWidthLayoutConstraint" destination="BS9-aY-2p4" id="sPE-Nq-zlT"/>
@@ -75,6 +76,20 @@
                         <constraint firstAttribute="height" constant="42" id="t0x-cq-3wL"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyW-ox-At5">
+                    <rect key="frame" x="138" y="505" width="44" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="f90-xc-VnJ"/>
+                        <constraint firstAttribute="width" constant="44" id="mUq-Ei-EHj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                    <state key="normal" title="debug">
+                        <color key="titleColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="debugButtonAction:" destination="-1" eventType="touchUpInside" id="VSg-4i-R81"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -82,8 +97,10 @@
                 <constraint firstItem="aZY-kZ-NQI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3Yg-Ug-JjC"/>
                 <constraint firstAttribute="bottom" secondItem="aZY-kZ-NQI" secondAttribute="bottom" constant="142" id="B2Y-Xc-3uM"/>
                 <constraint firstItem="EY0-wG-jTg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Lah-PX-Zjh"/>
+                <constraint firstAttribute="bottom" secondItem="wyW-ox-At5" secondAttribute="bottom" constant="33" id="OMO-4W-EEa"/>
                 <constraint firstItem="aZY-kZ-NQI" firstAttribute="top" secondItem="lje-nJ-MAc" secondAttribute="bottom" constant="10" id="YGC-a5-WH8"/>
                 <constraint firstItem="lje-nJ-MAc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cht-7s-BxT"/>
+                <constraint firstItem="wyW-ox-At5" firstAttribute="centerX" secondItem="aZY-kZ-NQI" secondAttribute="centerX" id="fSe-Xx-Z0N"/>
             </constraints>
             <point key="canvasLocation" x="112" y="233"/>
         </view>

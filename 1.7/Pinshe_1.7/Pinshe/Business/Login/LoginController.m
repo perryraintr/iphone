@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginHeightLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 
+@property (weak, nonatomic) IBOutlet UIButton *debugButton;
+
 @property (nonatomic, assign) PinLoginType pinLoginType;
 @property (nonatomic, weak) id delegate;
 
@@ -61,6 +63,13 @@
     self.loginWidthLayoutConstraint.constant = FITWITH(133);
     self.loginHeightLayoutConstraint.constant = FITHEIGHT(36);
     self.bottomLayoutConstraint.constant = FITHEIGHT(140);
+    
+#ifdef DEBUG
+    self.debugButton.hidden = NO;
+#else
+    self.debugButton.hidden = YES;
+#endif
+    
 }
 
 - (void)leftBarButtonAction {
@@ -162,6 +171,13 @@
         }
         
     });
+}
+
+#pragma mark - debugFix
+- (IBAction)debugButtonAction:(id)sender {
+#ifdef DEBUG
+    [[ForwardContainer shareInstance] pushContainer:FORWARD_DEBUG_VC navigationController:self.navigationController params:nil animated:NO];
+#endif
 }
 
 @end
