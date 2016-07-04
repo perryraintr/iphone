@@ -81,4 +81,7 @@
 // 发布编辑推荐，吐槽帖子
 - (void)postEditPublishRequestWithGuid:(int)guid imageArray:(NSMutableArray *)imageArray fileNameArray:(NSMutableArray *)fileNameArray t1:(NSString *)t1 name:(NSString *)name description:(NSString *)description mechandiseArray:(NSMutableArray *)mechandiseArray finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
+// 发布品类
+- (void)tagDetailRequestWithCurrentPage:(int)currentPage finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+
 @end

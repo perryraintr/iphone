@@ -9,8 +9,9 @@
 #import "PublishShitController.h"
 #import "UINavigationBar+SetColor.h"
 #import "PINTextView.h"
-#import "PublishSceneView.h"
 #import "PublishImageViewCell.h"
+#import "PINRecommendPopView.h"
+#import "PSModel.h"
 
 @interface PublishShitController () <UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *publishHeightLayoutConstraint;
@@ -19,7 +20,8 @@
 
 @property (strong, nonatomic) PINTextView *recommendTextView; // 商品描述
 
-@property (strong, nonatomic) PublishSceneView *publishSceneView; // 发布选择场景
+@property (strong, nonatomic) PINRecommendPopView *popUpView; // 发布选择场景
+
 @property (strong, nonatomic) UICollectionView *collectionView;
 
 @property (strong, nonatomic) UIImage *paramImage;
@@ -39,6 +41,7 @@
     self.view.backgroundColor = HEXCOLOR(pinColorMainBackground);
     [self initParams];
     [self initUI];
+    [self requestTagDetail];
 }
 
 - (void)initBaseParams {
@@ -60,19 +63,27 @@
     self.title = @"吐槽";
     
     self.publishHeightLayoutConstraint.constant = FITHEIGHT(56);
-    
-    self.publishSceneView = [[PublishSceneView alloc] initWithPinTopSceneType:0 withTag2Array:[self.postParams objectForKey:@"myPublishTag2Array"]];
-    [self.publishSceneView publishBlock:^(NSMutableArray *array) {
-        [PINBaseRefreshSingleton instance].refreshShit = 1;
-        [PINBaseRefreshSingleton instance].refreshMyCentralPublish = 1;
-        [self chatShowHint:@"您的发布将在1分钟内生效"];
-        [self postPublishData:array];
-        [self dismissVC];
-        [NSObject event:@"PUBLISH007" label:@"确定发布吐槽"];
-    }];
-    
     [self createPublishView];
-    
+}
+
+- (void)requestTagDetail {
+    NSMutableArray *array = [NSMutableArray array];
+    [self.httpService tagDetailRequestWithCurrentPage:1 finished:^(NSDictionary *result, NSString *message) {
+        for (NSDictionary *dic in [result objectForKey:@"array"]) {
+            PSModel *psModel = [PSModel modelWithDictionary:dic];
+            [array addObject:psModel];
+        }
+        self.popUpView = [[PINRecommendPopView alloc] initWithDataArray:array];
+        [self.popUpView publishBlock:^(NSMutableArray *array) {
+            [PINBaseRefreshSingleton instance].refreshMyCentralPublish = 1;
+            [self chatShowHint:@"您的发布将在1分钟内生效"];
+            [self postPublishData:array];
+            [self dismissVC];
+            [NSObject event:@"PUBLISH007" label:@"确定发布吐槽"];
+        }];
+        
+    } failure:^(NSDictionary *result, NSString *message) {
+    }];
 }
 
 - (void)publishRequest {
@@ -86,7 +97,7 @@
         return;
     }
     
-    [self.publishSceneView showFrame];
+    [self.popUpView show];
     [NSObject event:@"PUBLISH006" label:@"发布吐槽"];
 }
 

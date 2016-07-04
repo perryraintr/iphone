@@ -11,6 +11,12 @@
 
 @implementation NSString (Category)
 
+//返回字符串所占用的尺寸.
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize {
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
 NSString *getTrimString(NSString *str) {
     if (str) {
         str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];

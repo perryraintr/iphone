@@ -24,6 +24,7 @@ static NSString *const kPostPath       = @"post.a";
 static NSString *const kTagPath        = @"tag.a";
 static NSString *const kMessagePath    = @"message.a";
 static NSString *const kCommentPath    = @"comment.a";
+static NSString *const kTagDetailPath  = @"tag_detail.a";
 
 @interface PINMainModuleService ()
 
@@ -422,6 +423,16 @@ static NSString *const kCommentPath    = @"comment.a";
     [paramDic setObject:[NSNumber numberWithInt:guid] forKey:@"id"];
 
     [_manger UploadImagesWithMethodName:kModifyPostPath params:paramDic imageNames:fileNameArray images:imageArray finished:^(NSDictionary *result, NSString *message) {
+        finished(result, message);
+    } failure:^(NSDictionary *result, NSString *message) {
+        failure(result, message);
+    }];
+}
+
+// 发布品类
+- (void)tagDetailRequestWithCurrentPage:(int)currentPage finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    NSString *paramStr = [NSString stringWithFormat:@"page=%zd", currentPage];
+    [_manger GET:kTagDetailPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
     } failure:^(NSDictionary *result, NSString *message) {
         failure(result, message);

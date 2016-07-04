@@ -9,8 +9,9 @@
 #import "PublishRecommendController.h"
 #import "UINavigationBar+SetColor.h"
 #import "PINTextView.h"
-#import "PublishSceneView.h"
 #import "PublishImageViewCell.h"
+#import "PINRecommendPopView.h"
+#import "PSModel.h"
 
 @interface PublishRecommendController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *publishHeightLayoutConstraint;
@@ -21,7 +22,7 @@
 
 @property (strong, nonatomic) PINTextView *recommendTextView; // 商品描述
 
-@property (strong, nonatomic) PublishSceneView *publishSceneView; // 发布选择场景
+@property (strong, nonatomic) PINRecommendPopView *popUpView; // 发布选择场景
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
@@ -33,6 +34,8 @@
 
 @property (assign, nonatomic) NSInteger indexRow;
 
+@property (strong, nonatomic) NSMutableArray *tag2Array;
+
 @end
 
 @implementation PublishRecommendController
@@ -42,6 +45,7 @@
     self.view.backgroundColor = HEXCOLOR(pinColorMainBackground);
     [self initParams];
     [self initUI];
+    [self requestTagDetail];
 }
 
 - (void)initBaseParams {
@@ -58,6 +62,8 @@
     self.fileNameArray = [NSMutableArray array];
     NSString *fileName = [NSString stringWithFormat:@"%zd%@tag1.png", [UserDefaultManagement instance].userId, [CommonFunction stringFromDateyyyy_MM_dd_HH_mm_ss:[NSDate date]]];
     [self.fileNameArray addObject:fileName];
+    
+    self.tag2Array = [NSMutableArray array];
 }
 
 - (void)initUI {
@@ -66,16 +72,32 @@
     
     self.publishHeightLayoutConstraint.constant = FITHEIGHT(56);
     
-    self.publishSceneView = [[PublishSceneView alloc] initWithPinTopSceneType:self.pinTopSceneType withTag2Array:[self.postParams objectForKey:@"myPublishTag2Array"]];
-    [self.publishSceneView publishBlock:^(NSMutableArray *array) {
-        [PINBaseRefreshSingleton instance].refreshMyCentralPublish = 1;
-        [self chatShowHint:@"您的发布将在1分钟内生效"];
-        [self postPublishData:array];
-        [self dismissVC];
-        [NSObject event:@"PUBLISH004" label:@"确定发布推荐"];
-    }];
-    
     [self createPublishView];
+}
+
+- (void)requestTagDetail {
+    NSMutableArray *array = [NSMutableArray array];
+    [self.httpService tagDetailRequestWithCurrentPage:1 finished:^(NSDictionary *result, NSString *message) {
+        for (NSDictionary *dic in [result objectForKey:@"array"]) {
+            PSModel *psModel = [PSModel modelWithDictionary:dic];
+            [array addObject:psModel];
+            
+            if (self.pinTopSceneType == psModel.guid) {
+                [self.tag2Array addObject:psModel];
+            }
+        }
+        self.popUpView = [[PINRecommendPopView alloc] initWithDataArray:array];
+        self.popUpView.selectedArray = self.tag2Array;
+        [self.popUpView publishBlock:^(NSMutableArray *array) {
+            [PINBaseRefreshSingleton instance].refreshMyCentralPublish = 1;
+            [self chatShowHint:@"您的发布将在1分钟内生效"];
+            [self postPublishData:array];
+            [self dismissVC];
+            [NSObject event:@"PUBLISH004" label:@"确定发布推荐"];
+        }];
+
+    } failure:^(NSDictionary *result, NSString *message) {
+    }];
 }
 
 - (void)publishRequest {
@@ -88,12 +110,12 @@
         [self chatShowHint:@"请填写商品名称"];
         return;
     }
-    [self.publishSceneView showFrame];
+    
+    [self.popUpView show];
     [NSObject event:@"PUBLISH003" label:@"发布推荐"];
 }
 
 - (void)postPublishData:(NSMutableArray *)mechandiseArray {
-    
     [self.httpService postPublishRequestWithImageArray:self.imageArray fileNameArray:self.fileNameArray t1:@"1" name:self.recommendTextFiled.text description:self.recommendTextView.text mechandiseArray:mechandiseArray finished:^(NSDictionary *result, NSString *message) {
     } failure:^(NSDictionary *result, NSString *message) {
     }];

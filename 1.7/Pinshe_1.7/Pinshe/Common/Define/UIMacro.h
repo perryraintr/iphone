@@ -21,6 +21,7 @@
 #define pinColorGray                0xaaaaaa // 灰色
 #define pinColorShell               0x101010 // 选择视图蒙板背景灰色
 #define pinColorRed                 0xeb1c45 // 红色
+#define pinColorLightYellow         0xfff389 // 发布页话题背景色
 #define pinColorDarkYellow          0xe1b01b // segment颜色
 #define pinColorYellow              0xffc000 // 选择视图详情字体颜色
 #define pinColorPink                0xff4b6b // 比例尺粉色
