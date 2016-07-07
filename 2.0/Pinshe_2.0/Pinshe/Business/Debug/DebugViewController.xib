@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DebugViewController">
+            <connections>
+                <outlet property="debugIpTextField" destination="N1t-vp-rqf" id="z3O-nz-cfR"/>
+                <outlet property="debugLoginSegmentedControl" destination="LGl-AE-FTd" id="1ap-LL-YN0"/>
+                <outlet property="segmentedControl" destination="54m-O9-8P2" id="gKu-EG-WG0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP地址：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKd-Um-QmN">
+                    <rect key="frame" x="15" y="74" width="66" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="3m5-2R-8UM"/>
+                        <constraint firstAttribute="width" constant="66" id="su8-Sq-PaV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1t-vp-rqf">
+                    <rect key="frame" x="10" y="109" width="300" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="54m-O9-8P2">
+                    <rect key="frame" x="10" y="154" width="134" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="134" id="ef8-7I-mie"/>
+                    </constraints>
+                    <segments>
+                        <segment title="线上"/>
+                        <segment title="线下"/>
+                    </segments>
+                    <connections>
+                        <action selector="requestChanged:" destination="-1" eventType="valueChanged" id="iQk-ma-p5b"/>
+                    </connections>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LGl-AE-FTd">
+                    <rect key="frame" x="10" y="243" width="300" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="VB3-4G-eqb"/>
+                    </constraints>
+                    <segments>
+                        <segment title="vivian"/>
+                        <segment title="vivian's"/>
+                        <segment title="perry"/>
+                        <segment title="villence"/>
+                        <segment title="park"/>
+                    </segments>
+                    <connections>
+                        <action selector="debugLoginChanged:" destination="-1" eventType="valueChanged" id="qwY-Iz-RTy"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="debug登陆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnD-j4-Qpw">
+                    <rect key="frame" x="10" y="202" width="92" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="QRV-Ee-ZoJ"/>
+                        <constraint firstAttribute="width" constant="92" id="jtx-FF-t8C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zes-nb-iS5">
+                    <rect key="frame" x="110" y="202" width="100" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="lgi-Lh-pFb"/>
+                        <constraint firstAttribute="height" constant="27" id="qPS-zr-nlF"/>
+                    </constraints>
+                    <state key="normal" image="weixinLoginIcon.png"/>
+                    <connections>
+                        <action selector="debugLoginAction:" destination="-1" eventType="touchUpInside" id="o4b-Ko-1N3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="zes-nb-iS5" firstAttribute="top" secondItem="54m-O9-8P2" secondAttribute="bottom" constant="20" id="1II-iw-4Kg"/>
+                <constraint firstItem="gnD-j4-Qpw" firstAttribute="top" secondItem="54m-O9-8P2" secondAttribute="bottom" constant="20" id="78U-ce-gmI"/>
+                <constraint firstItem="bKd-Um-QmN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="F37-26-NOH"/>
+                <constraint firstItem="N1t-vp-rqf" firstAttribute="top" secondItem="bKd-Um-QmN" secondAttribute="bottom" constant="8" id="Mka-mH-wai"/>
+                <constraint firstItem="bKd-Um-QmN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Piw-Vu-x3w"/>
+                <constraint firstItem="54m-O9-8P2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Ycf-1Y-HkJ"/>
+                <constraint firstItem="N1t-vp-rqf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="cA3-QH-x9X"/>
+                <constraint firstItem="LGl-AE-FTd" firstAttribute="top" secondItem="gnD-j4-Qpw" secondAttribute="bottom" constant="14" id="e1j-1G-RLA"/>
+                <constraint firstItem="LGl-AE-FTd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="jAp-UX-Lz5"/>
+                <constraint firstItem="gnD-j4-Qpw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="s0B-Dk-ZSJ"/>
+                <constraint firstAttribute="trailing" secondItem="LGl-AE-FTd" secondAttribute="trailing" constant="10" id="utQ-EK-Dnn"/>
+                <constraint firstItem="zes-nb-iS5" firstAttribute="leading" secondItem="gnD-j4-Qpw" secondAttribute="trailing" constant="8" id="wdt-ko-Orz"/>
+                <constraint firstItem="54m-O9-8P2" firstAttribute="top" secondItem="N1t-vp-rqf" secondAttribute="bottom" constant="15" id="wwK-xX-duV"/>
+                <constraint firstAttribute="trailing" secondItem="N1t-vp-rqf" secondAttribute="trailing" constant="10" id="zwj-Mo-21f"/>
+            </constraints>
+            <point key="canvasLocation" x="276" y="292"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="weixinLoginIcon.png" width="205" height="48"/>
+    </resources>
+</document>
