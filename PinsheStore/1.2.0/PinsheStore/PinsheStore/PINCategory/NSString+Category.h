@@ -67,12 +67,4 @@ NSMutableAttributedString *getAttributedString(NSString *markStr, NSUInteger mar
  */
 - (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 
-#pragma mark 以下的方法仅作调试使用
-//-(NSString *)stringDevicetoken:(NSData *)deviceToken;
-//
-//-(NSString *)idfa;
-//
-//-(NSString *)openUDID;
-
-
 @end

@@ -39,8 +39,6 @@
 // 版本号
 #define SystemVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-#define isIOS10 [[[UIDevice currentDevice] systemVersion] intValue] >= 10
-
 // 销毁view
 #ifndef PIN_VIEW_SAFE_RELEASE
 #define PIN_VIEW_SAFE_RELEASE(__REF) \

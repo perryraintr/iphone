@@ -45,8 +45,6 @@
 		3B0B541F1D86B002001B9191 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B540B1D86B002001B9191 /* UIView+MJExtension.m */; };
 		3B0B54281D86B462001B9191 /* UIScrollView+PINRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B54271D86B462001B9191 /* UIScrollView+PINRefreshControl.m */; };
 		3B0B542C1D86BA8F001B9191 /* PINForgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B542A1D86BA8F001B9191 /* PINForgetCell.m */; };
-		3B4A941F1DB5C94300F3798E /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4A941D1DB5C94300F3798E /* libUMessage_Sdk_1.4.0.a */; };
-		3B4A94211DB5C9AB00F3798E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4A94201DB5C9AB00F3798E /* libz.tbd */; };
 		3B9E46291D9B5D770088E33E /* PINMyCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46271D9B5D770088E33E /* PINMyCenterController.m */; };
 		3B9E462A1D9B5D770088E33E /* PINMyCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46281D9B5D770088E33E /* PINMyCenterController.xib */; };
 		3B9E46351D9B629E0088E33E /* tabBarSelection.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46331D9B629E0088E33E /* tabBarSelection.png */; };
@@ -82,7 +80,6 @@
 		3B9E46881D9BD1860088E33E /* PINStoreMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46861D9BD1860088E33E /* PINStoreMemberController.m */; };
 		3B9E46891D9BD1860088E33E /* PINStoreMemberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46871D9BD1860088E33E /* PINStoreMemberController.xib */; };
 		3B9E468B1D9BD6CD0088E33E /* choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E468A1D9BD6CD0088E33E /* choose@2x.png */; };
-		3BC841321DB5CA0F00814AF9 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC841311DB5CA0F00814AF9 /* UserNotifications.framework */; };
 		3BCC50351D82B18D00B36840 /* PINTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50341D82B18D00B36840 /* PINTabBar.m */; };
 		3BCC503C1D82B1A800B36840 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50371D82B1A800B36840 /* BaseViewController.m */; };
 		3BCC503D1D82B1A800B36840 /* PINNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50391D82B1A800B36840 /* PINNavigationController.m */; };
@@ -201,9 +198,6 @@
 		3B0B54271D86B462001B9191 /* UIScrollView+PINRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PINRefreshControl.m"; sourceTree = "<group>"; };
 		3B0B54291D86BA8F001B9191 /* PINForgetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINForgetCell.h; sourceTree = "<group>"; };
 		3B0B542A1D86BA8F001B9191 /* PINForgetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINForgetCell.m; sourceTree = "<group>"; };
-		3B4A941D1DB5C94300F3798E /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
-		3B4A941E1DB5C94300F3798E /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
-		3B4A94201DB5C9AB00F3798E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3B9E46261D9B5D770088E33E /* PINMyCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINMyCenterController.h; sourceTree = "<group>"; };
 		3B9E46271D9B5D770088E33E /* PINMyCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINMyCenterController.m; sourceTree = "<group>"; };
 		3B9E46281D9B5D770088E33E /* PINMyCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINMyCenterController.xib; sourceTree = "<group>"; };
@@ -259,7 +253,6 @@
 		3B9E46861D9BD1860088E33E /* PINStoreMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreMemberController.m; sourceTree = "<group>"; };
 		3B9E46871D9BD1860088E33E /* PINStoreMemberController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreMemberController.xib; sourceTree = "<group>"; };
 		3B9E468A1D9BD6CD0088E33E /* choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose@2x.png"; sourceTree = "<group>"; };
-		3BC841311DB5CA0F00814AF9 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3BCC50331D82B18D00B36840 /* PINTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINTabBar.h; sourceTree = "<group>"; };
 		3BCC50341D82B18D00B36840 /* PINTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINTabBar.m; sourceTree = "<group>"; };
 		3BCC50361D82B1A800B36840 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -355,9 +348,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC841321DB5CA0F00814AF9 /* UserNotifications.framework in Frameworks */,
-				3B4A94211DB5C9AB00F3798E /* libz.tbd in Frameworks */,
-				3B4A941F1DB5C94300F3798E /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				52063BCB869B5E28A9A9A517 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,8 +358,6 @@
 		2E6273126BD19B752B72CC24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BC841311DB5CA0F00814AF9 /* UserNotifications.framework */,
-				3B4A94201DB5C9AB00F3798E /* libz.tbd */,
 				1917D09E924E593D826F486F /* libPods.a */,
 			);
 			name = Frameworks;
@@ -502,15 +490,6 @@
 				3B0B53FF1D86B002001B9191 /* MJRefreshStateHeader.m */,
 			);
 			path = Header;
-			sourceTree = "<group>";
-		};
-		3B4A941C1DB5C94300F3798E /* UMessage_Sdk_1.4.0 */ = {
-			isa = PBXGroup;
-			children = (
-				3B4A941D1DB5C94300F3798E /* libUMessage_Sdk_1.4.0.a */,
-				3B4A941E1DB5C94300F3798E /* UMessage.h */,
-			);
-			path = UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
 		3B9E464B1D9B6E240088E33E /* Login */ = {
@@ -719,7 +698,6 @@
 		3BDFD69E1D82957700F3D2C0 /* PINVendor */ = {
 			isa = PBXGroup;
 			children = (
-				3B4A941C1DB5C94300F3798E /* UMessage_Sdk_1.4.0 */,
 				3B9E46531D9BBFC90088E33E /* SDWebImage */,
 				3BF062851D87CC1E000E66C5 /* KeyboardCategory */,
 				3B0B53DD1D86B002001B9191 /* MJRefresh */,
@@ -875,7 +853,7 @@
 		3BE698501D8278FB00A66F7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = shiyaorong;
 				TargetAttributes = {
 					3BE698571D8278FB00A66F7A = {
@@ -1100,10 +1078,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1146,10 +1122,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1183,10 +1157,6 @@
 				INFOPLIST_FILE = PinsheStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PinsheStore/PINVendor/UMessage_Sdk_1.4.0",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Raintr.PinsheStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "57dff9b9-dff2-4878-bf76-918697b5fe4d";
@@ -1204,10 +1174,6 @@
 				INFOPLIST_FILE = PinsheStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PinsheStore/PINVendor/UMessage_Sdk_1.4.0",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Raintr.PinsheStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "72db9217-e20c-4ee1-892d-1bb4e03e683b";

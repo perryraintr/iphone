@@ -147,41 +147,4 @@ NSMutableAttributedString *getAttributedString(NSString *markStr, NSUInteger mar
     [replyString addAttribute:NSFontAttributeName value:(isSou ? Font(defalutFont) : FontNotSou(defalutFont)) range:NSMakeRange(markStr.length, defalutStr.length)];
     return replyString;
 }
-
-#pragma mark 以下的方法仅作调试使用
-//-(NSString *)stringDevicetoken:(NSData *)deviceToken
-//{
-//    NSString *token = [deviceToken description];
-//    NSString *pushToken = [[[token stringByReplacingOccurrencesOfString:@"<"withString:@""]                   stringByReplacingOccurrencesOfString:@">"withString:@""] stringByReplacingOccurrencesOfString:@" "withString:@""];
-//    return pushToken;
-//}
-//
-//-(NSString *)idfa
-//{
-//    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];;
-//}
-//
-//-(NSString *)openUDID
-//{
-//    NSString* openUdid = nil;
-//    if (openUdid==nil) {
-//        CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
-//        CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);
-//        const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));
-//        unsigned char result[16];
-//        CC_MD5( cStr,(CC_LONG)strlen(cStr), result );
-//        CFRelease(uuid);
-//        CFRelease(cfstring);
-//        openUdid = [NSString stringWithFormat:
-//                    @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%08lx",
-//                    result[0], result[1], result[2], result[3],
-//                    result[4], result[5], result[6], result[7],
-//                    result[8], result[9], result[10], result[11],
-//                    result[12], result[13], result[14], result[15],
-//                    (unsigned long)(arc4random() % NSUIntegerMax)];
-//    }
-//    return openUdid;
-//}
-
-
 @end
