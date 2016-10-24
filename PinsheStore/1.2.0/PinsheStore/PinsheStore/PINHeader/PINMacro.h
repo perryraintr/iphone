@@ -16,8 +16,13 @@
 #define FORWARD_STOREMEMBER_VC @"PINStoreMemberController"
 
 #define FORWARD_ROOT_VC @"PINRootController"
+
+#define FORWARD_ALLORDER_VC @"PINAllOrderController"
+#define FORWARD_DATEORDER_VC @"PINDateOrderController"
+
 #define FORWARD_GETCASH_VC @"PINGetcashController"
 
+#define fFont12 12
 #define fFont13 13
 #define fFont14 14
 #define fFont15 15
@@ -33,7 +38,7 @@
 #define pinColorWhite               0xffffff // 白色
 #define pinColorOrange              0xffc21e // 橙色
 #define pinColorGreen               0x06bf04 // 登陆按钮绿色
-
+#define pinColorRed                 0xeb1c45 // 红色
 #define pinColorDarkBlack           0x404040 // 最黑色
 
 #define pinColorTextDarkGray        0x606060

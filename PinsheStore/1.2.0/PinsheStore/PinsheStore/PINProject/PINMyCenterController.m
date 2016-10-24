@@ -12,6 +12,8 @@
 @interface PINMyCenterController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 
+@property (strong, nonatomic) NSArray *orderArray;
+
 @property (strong, nonatomic) NSMutableArray *titleArray;
 
 @property (strong, nonatomic) NSMutableArray *otherArray;
@@ -27,6 +29,7 @@
 }
 
 - (void)initParams {
+    self.orderArray = [NSArray arrayWithObjects:@"查看其它日期", @"查看全部账单", nil];
     self.titleArray = [NSMutableArray array];
     self.otherArray = [NSMutableArray arrayWithObjects:@"联系客服", @"App评论", nil];
 }
@@ -37,16 +40,19 @@
     } else {
         [self.titleArray removeAllObjects];
     }
+    [self.tableview reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return self.titleArray.count > 0 ? self.titleArray.count : 0;
     } else if (section == 1) {
+        return self.orderArray.count;
+    } else if (section == 2) {
         return self.otherArray.count;
     } else {
         return 1;
@@ -79,12 +85,32 @@
         NSString *titleStr = [self.titleArray objectAtIndex:indexPath.row];
         titleCell.textLabel.text = titleStr;
         titleCell.textLabel.font = Font(fFont16);
+        if (indexPath.row == 0) {
+            titleCell.textLabel.textColor = HEXCOLOR(pinColorRed);
+        } else {
+            titleCell.textLabel.textColor = [UIColor blackColor];
+        }
         titleCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:indexPath.row == 0];
         titleCell.selectedBackgroundView = [PlainCellBgView cellBgWithSelected:YES needFirstCellTopLine:indexPath.row == 0];
-
+        
         return titleCell;
-
+        
     } else if (indexPath.section == 1) {
+        static NSString *orderCellId = @"orderCellId";
+        UITableViewCell *orderCell = [tableView dequeueReusableCellWithIdentifier:orderCellId];
+        if (orderCell == nil) {
+            orderCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderCellId];
+            orderCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        NSString *titleStr = [self.orderArray objectAtIndex:indexPath.row];
+        orderCell.textLabel.text = titleStr;
+        orderCell.textLabel.font = Font(fFont16);
+        orderCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:indexPath.row == 0];
+        orderCell.selectedBackgroundView = [PlainCellBgView cellBgWithSelected:YES needFirstCellTopLine:indexPath.row == 0];
+        
+        return orderCell;
+        
+    } else if (indexPath.section == 2) {
         static NSString *otherCellId = @"otherCellId";
         UITableViewCell *otherCell = [tableView dequeueReusableCellWithIdentifier:otherCellId];
         if (otherCell == nil) {
@@ -127,6 +153,14 @@
             [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREMEMBER_VC navigationController:self.navigationController params:nil animated:YES];
         }
     } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_DATEORDER_VC navigationController:self.navigationController params:nil animated:YES];
+            
+        } else if (indexPath.row == 1) {
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_ALLORDER_VC navigationController:self.navigationController params:nil animated:YES];
+        }
+        
+    } else if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:
             {

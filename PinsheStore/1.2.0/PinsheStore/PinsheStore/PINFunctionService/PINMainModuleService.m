@@ -10,7 +10,7 @@
 #import "PINNetworking.h"
 #import "PINNetActivityIndicator.h"
 
-static NSString *const kLoginPath = @"login.a";
+static NSString *const kLoginPath = @"merchant_login.a";
 static NSString *const kMemberPath = @"merchant.a";
 static NSString *const kMemberAddPath = @"merchant_add.a";
 static NSString *const kMemberModifyPath = @"merchant_modify.a";
@@ -43,6 +43,10 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
 - (void)loginRequestWithTelphone:(NSString *)telphone password:(NSString *)password finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     
     NSString *paramStr = [NSString stringWithFormat:@"phone=%@&password=%@", telphone, password];
+    
+    if ([PINUserDefaultManagement instance].getTuiCid.length > 0) {
+        paramStr = [NSString stringWithFormat:@"%@&getui=%@", paramStr, [PINUserDefaultManagement instance].getTuiCid];
+    }
     
     [_manger GET:kLoginPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
@@ -79,6 +83,18 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
 - (void)memberModifyRequestWithGuid:(int)guid valid:(NSString *)valid password:(NSString *)password finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     
     NSString *paramStr = [NSString stringWithFormat:@"id=%zd&code=%@&password=%@", guid, valid, password];
+    
+    [_manger GET:kMemberModifyPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
+        finished(result, message);
+    } failure:^(NSDictionary *result, NSString *message) {
+        failure(result, message);
+    }];
+}
+
+/// 修改个推
+- (void)memberGeTuiModifyRequestWithGuid:(int)guid geTuiCid:(NSString *)getTuiCid finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    
+    NSString *paramStr = [NSString stringWithFormat:@"id=%zd&getui=%@", guid, getTuiCid];
     
     [_manger GET:kMemberModifyPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
@@ -168,9 +184,12 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
 }
 
 /// 获取账单明细信息
-- (void)cashRequestWithSid:(int)sid page:(int)page finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+- (void)cashRequestWithSid:(int)sid page:(int)page date:(NSString *)date finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     
     NSString *paramStr = [NSString stringWithFormat:@"sid=%zd&page=%zd", sid, page];
+    if (date.length > 0) {
+        paramStr = [NSString stringWithFormat:@"%@&date=%@", paramStr, date];
+    }
     
     [_manger GET:kCashPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
