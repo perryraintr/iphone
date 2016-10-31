@@ -31,19 +31,25 @@
 
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (assign, nonatomic) BOOL isStore;
+
 @end
 
 @implementation PINRegisterController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"商家注册";
+    self.title = self.isStore ? @"店长注册" : @"店员注册";
     [self initParams];
     [self initUI];
     if (PINAppDelegate().networkType == PINNetworkType_None) {
         [self chatShowHint:@"网络不给力"];
         return;
     }
+}
+
+- (void)initBaseParams {
+    self.isStore = [[self.postParams objectForKey:@"isStore"] boolValue];
 }
 
 - (void)initParams {
@@ -84,7 +90,7 @@
     [self.httpService registerRequestWithTelphone:self.telphone code:self.telMsgCode password:self.password finished:^(NSDictionary *result, NSString *message) {
         
         [PINUserDefaultManagement instance].phone = self.telphone;
-        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"有商家注册了，请审核该商品对应的咖啡馆，进行关联，手机号为：%@，\n 用户id为：%zd", self.telphone, [[result objectForKey:@"guid"] intValue]]];
+        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"&m=%@ － iOS \n 手机号为：%@，\n 用户id为：%zd", self.title, self.telphone, [[result objectForKey:@"guid"] intValue]]];
         [super backAction];
         
     } failure:^(NSDictionary *result, NSString *message) {

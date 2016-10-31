@@ -52,7 +52,7 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.f];
         self.showLoadingUrl = requestUrl;
         [self.webview loadRequest:request];
-        PLog(@"showLoadingUrl === %@", self.showLoadingUrl);
+        PLog(@"showLoadingUrl");
     }
 }
 

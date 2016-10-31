@@ -10,6 +10,6 @@
 
 @interface PINRootController : BaseViewController
 
-- (void)requestCashListWithDragup:(BOOL)isDragup;
+- (void)checkStore:(BOOL)isDragUp;
 
 @end

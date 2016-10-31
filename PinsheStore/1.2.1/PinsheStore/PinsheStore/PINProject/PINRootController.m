@@ -144,19 +144,15 @@
                 PINStoreModel *storeModel = [PINStoreModel modelWithDictionary:dic];
                 if ([PINUserDefaultManagement instance].sid == storeModel.guid && [PINUserDefaultManagement instance].sid > 0) {
                     currentSidIsTure = YES;
+                    [PINUserDefaultManagement instance].sid = storeModel.guid;
+                    [PINUserDefaultManagement instance].storeName = storeModel.name
+                    ;
+                    [PINUserDefaultManagement instance].storeCurrent = storeModel.current;
                 }
                 [self.storeArray addObject:storeModel];
             }
             
             if ([PINUserDefaultManagement instance].sid == 0 || !currentSidIsTure) {
-                [PINUserDefaultManagement instance].sid = ((PINStoreModel *)self.storeArray[0]).guid;
-                [PINUserDefaultManagement instance].storeName = ((PINStoreModel *)self.storeArray[0]).name
-                ;
-                [PINUserDefaultManagement instance].storeCurrent = ((PINStoreModel *)self.storeArray[0]).current;
-            }
-            
-            // 没有选择咖啡馆退出了，再打开时默认第一家咖啡馆
-            if ([PINUserDefaultManagement instance].sid == 0) {
                 if (self.storeArray.count > 0) {
                     [PINUserDefaultManagement instance].sid = ((PINStoreModel *)self.storeArray[0]).guid;
                     [PINUserDefaultManagement instance].storeName = ((PINStoreModel *)self.storeArray[0]).name
@@ -164,6 +160,7 @@
                     [PINUserDefaultManagement instance].storeCurrent = ((PINStoreModel *)self.storeArray[0]).current;
                 }
             }
+            
             [self requestCashListWithDragup:isDragUp];
             
         } failure:^(NSDictionary *result, NSString *message) {

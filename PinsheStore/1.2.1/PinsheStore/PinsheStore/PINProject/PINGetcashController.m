@@ -29,6 +29,7 @@
 
 - (void)requestCashAdd:(NSString *)price {
     [[super findFirstResponder] resignFirstResponder];
+    
     if ([price floatValue] == 0) {
         [self chatShowHint:@"提现不能为0元"];
         return;
@@ -40,10 +41,8 @@
     }
     
     [self.httpService cashAddRequestWithSid:[PINUserDefaultManagement instance].sid mid:[PINUserDefaultManagement instance].pinUser.guid amount:price  finished:^(NSDictionary *result, NSString *message) {
-        
         [self chatShowHint:@"提现审核中"];
-        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"有商家进行提现了，<a href='http://www.pinshe.org/admin/v1/store_cash_detail.html?id=%zd'>提现详情</a>", [[result objectForKey:@"guid"] intValue]]];
-
+        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"&amount=%@&way=iOS&name=%@&title=%@&time=%@", price, [PINUserDefaultManagement instance].pinUser.phone, [PINUserDefaultManagement instance].storeName, [result objectForKey:@"create_time"]]];
         [super backAction];
     } failure:^(NSDictionary *result, NSString *message) {
         

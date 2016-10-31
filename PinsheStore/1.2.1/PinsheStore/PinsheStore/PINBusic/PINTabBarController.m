@@ -175,7 +175,7 @@
 
 - (void)freshMessageLeftBar {
     if ([[tabBarItems objectAtIndex:[self findIndexRecommend]] objectForKey:@"viewController"]) {
-        [(PINRootController *)[[tabBarItems objectAtIndex:[self findIndexRecommend]]objectForKey:@"viewController"] requestCashListWithDragup:NO];
+        [(PINRootController *)[[tabBarItems objectAtIndex:[self findIndexRecommend]]objectForKey:@"viewController"] checkStore:NO];
     }
 }
 

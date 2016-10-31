@@ -227,16 +227,10 @@
     PLog(@">>[GTSdk RegisterClient]:%@", clientId);
     
     if ([PINUserDefaultManagement instance].isLogined) { // 已登录
-        if (![[PINUserDefaultManagement instance].getTuiCid isEqualToString:clientId]) {
-            [PINUserDefaultManagement instance].getTuiCid = clientId;
-
-            PINMainModuleService *httpService = [[PINMainModuleService alloc] init];
-            [httpService memberGeTuiModifyRequestWithGuid:[PINUserDefaultManagement instance].pinUser.guid geTuiCid:clientId finished:^(NSDictionary *result, NSString *message) {
-                
-            } failure:^(NSDictionary *result, NSString *message) {
-                
-            }];
-        }
+        PINMainModuleService *httpService = [[PINMainModuleService alloc] init];
+        [httpService memberGeTuiModifyRequestWithGuid:[PINUserDefaultManagement instance].pinUser.guid geTuiCid:clientId finished:^(NSDictionary *result, NSString *message) {
+        } failure:^(NSDictionary *result, NSString *message) {
+        }];
     } else {
         [PINUserDefaultManagement instance].getTuiCid = clientId;
     }

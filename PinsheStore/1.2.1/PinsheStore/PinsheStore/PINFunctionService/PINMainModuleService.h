@@ -33,6 +33,9 @@
 /// 获取某个咖啡馆的信息
 - (void)storeInfoRequestWithSid:(int)sid finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
+/// 修改某个咖啡馆的信息
+- (void)storeModifyInfoRequestWithSid:(int)sid slogan:(NSString *)slogan dateStr:(NSString *)dateStr phone:(NSString *)phone finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+
 /// 获取用户是否有对应的咖啡店
 - (void)storeRequestWithMid:(int)mid finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 

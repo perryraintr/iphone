@@ -88,7 +88,11 @@
         return;
     }
     
-    
+    [self.httpService storeModifyInfoRequestWithSid:self.pinStoreModel.guid slogan:self.storeSlogan dateStr:self.storeDate phone:self.storePhone finished:^(NSDictionary *result, NSString *message) {
+        [self chatShowHint:@"保存成功"];
+    } failure:^(NSDictionary *result, NSString *message) {
+        [self chatShowHint:@"保存失败"];
+    }];
 }
 
 - (BOOL)verifyStore {

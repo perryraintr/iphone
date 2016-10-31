@@ -15,6 +15,7 @@ static NSString *const kMemberPath = @"merchant.a";
 static NSString *const kMemberAddPath = @"merchant_add.a";
 static NSString *const kMemberModifyPath = @"merchant_modify.a";
 static NSString *const kStorePath = @"store.a";
+static NSString *const kStoreModifyPath = @"store_modify.a";
 static NSString *const kStoreMemberPath = @"store_member.a";
 static NSString *const kStoreMemberAddPath = @"store_member_add.a";
 static NSString *const kStoreMemberRemovePath = @"store_member_remove.a";
@@ -125,6 +126,17 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
     }];
 }
 
+/// 修改某个咖啡馆的信息
+- (void)storeModifyInfoRequestWithSid:(int)sid slogan:(NSString *)slogan dateStr:(NSString *)dateStr phone:(NSString *)phone finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    NSString *paramStr = [NSString stringWithFormat:@"id=%zd&slogan=%@&date=%@&phone=%@", sid, slogan, dateStr, phone];
+    
+    [_manger GET:kStoreModifyPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
+        finished(result, message);
+    } failure:^(NSDictionary *result, NSString *message) {
+        failure(result, message);
+    }];
+}
+
 /// 获取用户是否有对应的咖啡店
 - (void)storeRequestWithMid:(int)mid finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     NSString *paramStr = [NSString stringWithFormat:@"mid=%zd", mid];
@@ -226,8 +238,9 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
 - (void)wechatSendWithMessage:(NSString *)m {
     
     NSArray *wcidArr = @[@"o1D_JwGTL0ZN81hpxJSxflvtXQj8", @"o1D_JwFbCrjU1rPJdO6-ljRQC5qE", @"o1D_JwHikK5LBt_Y__Ukr9p4tKsY", @"o1D_JwGKMNWZmBYLxghYYw0GIlUg"];
-    for (int i = 0; i < 4; i++) {
-        NSString *paramStr = [NSString stringWithFormat:@"wcid=%@&m=%@", wcidArr[i], m];
+
+    for (int i = 0; i < wcidArr.count; i++) {
+        NSString *paramStr = [NSString stringWithFormat:@"wcid=%@%@", wcidArr[i], m];
         
         [_manger GET:kWechatSendPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
         } failure:^(NSDictionary *result, NSString *message) {

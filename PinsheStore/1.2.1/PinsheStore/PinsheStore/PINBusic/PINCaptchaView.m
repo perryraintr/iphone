@@ -91,7 +91,7 @@
     for (int i = 0; i < text.length; i++)
     {
         pX = arc4random() % width + rect.size.width / text.length * i;
-        pY = arc4random() % height;
+        pY = height > 0 ? arc4random() % height : 0;
         point = CGPointMake(pX, pY);
         unichar c = [text characterAtIndex:i];
         NSString *textC = [NSString stringWithFormat:@"%C", c];

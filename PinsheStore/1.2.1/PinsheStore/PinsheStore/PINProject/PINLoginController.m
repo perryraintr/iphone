@@ -124,9 +124,22 @@
     }];
 }
 
-- (void)registerAction {
+- (void)registerStoreAction {
+    [self registerAction:YES];
+}
+
+
+- (void)registerStoreMemberAction {
+    [self registerAction:NO];
+}
+
+- (void)registerAction:(BOOL)isStore {
     [[super findFirstResponder] resignFirstResponder];
-    [[ForwardContainer shareInstance] pushContainer:FORWARD_REGISTER_VC navigationController:self.navigationController params:nil animated:YES];
+    
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+    [paramDic setObject:[NSNumber numberWithBool:isStore] forKey:@"isStore"];
+    
+    [[ForwardContainer shareInstance] pushContainer:FORWARD_REGISTER_VC navigationController:self.navigationController params:paramDic animated:YES];
 }
 
 - (void)forgetAction {
@@ -154,7 +167,7 @@
     } else if (indexPath.section == 1) {
         return FITHEIGHT(56);
     } else {
-        return FITHEIGHT(100) + 44;
+        return FITHEIGHT(180) + 44;
     }
 }
 
@@ -180,28 +193,43 @@
             UIButton *loginButton = Building_UIButtonWithSuperView(buttonCell.contentView, self, @selector(loginAction), [UIColor clearColor]);
             [loginButton setTitle:@"登录" forState:UIControlStateNormal];
             loginButton.titleLabel.font = Font(fFont16);
-            [loginButton setTitleColor:HEXCOLOR(pinColorDarkBlack) forState:UIControlStateNormal];
+            [loginButton setTitleColor:HEXCOLOR(pinColorWhite) forState:UIControlStateNormal];
+            [loginButton setBackgroundColor:HEXCOLOR(pinColorGreen)];
             loginButton.layer.cornerRadius = 5;
             loginButton.layer.masksToBounds = YES;
-            loginButton.layer.borderColor = HEXCOLOR(pinColorDarkBlack).CGColor;
-            loginButton.layer.borderWidth = 1;
             [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(buttonCell.contentView).offset(20);
+                make.right.equalTo(buttonCell.contentView).offset(-20);
                 make.top.equalTo(buttonCell.contentView).offset(FITHEIGHT(50));
+                make.height.equalTo(@(FITHEIGHT(50)));
+            }];
+            
+            UIButton *registerButton = Building_UIButtonWithSuperView(buttonCell.contentView, self, @selector(registerStoreAction), [UIColor clearColor]);
+            [registerButton setTitle:@"店长注册" forState:UIControlStateNormal];
+            registerButton.titleLabel.font = Font(fFont16);
+            [registerButton setTitleColor:HEXCOLOR(pinColorDarkBlack) forState:UIControlStateNormal];
+            registerButton.layer.cornerRadius = 5;
+            registerButton.layer.masksToBounds = YES;
+            registerButton.layer.borderColor = HEXCOLOR(pinColorDarkBlack).CGColor;
+            registerButton.layer.borderWidth = 1;
+            [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(buttonCell.contentView).offset(20);
+                make.top.equalTo(loginButton.mas_bottom).offset(10);
                 make.width.equalTo(@((SCREEN_WITH - 60) / 2.0));
                 make.height.equalTo(@(FITHEIGHT(50)));
             }];
             
-            UIButton *registerButton = Building_UIButtonWithSuperView(buttonCell.contentView, self, @selector(registerAction), [UIColor clearColor]);
-            [registerButton setTitle:@"注册" forState:UIControlStateNormal];
-            registerButton.titleLabel.font = Font(fFont16);
-            [registerButton setTitleColor:HEXCOLOR(pinColorWhite) forState:UIControlStateNormal];
-            [registerButton setBackgroundColor:HEXCOLOR(pinColorGreen)];
-            registerButton.layer.cornerRadius = 5;
-            registerButton.layer.masksToBounds = YES;
-            [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(loginButton.mas_right).offset(20);
-                make.top.equalTo(buttonCell.contentView).offset(FITHEIGHT(50));
+            UIButton *registerMemberButton = Building_UIButtonWithSuperView(buttonCell.contentView, self, @selector(registerStoreMemberAction), [UIColor clearColor]);
+            [registerMemberButton setTitle:@"店员注册" forState:UIControlStateNormal];
+            registerMemberButton.titleLabel.font = Font(fFont16);
+            [registerMemberButton setTitleColor:HEXCOLOR(pinColorDarkBlack) forState:UIControlStateNormal];
+            registerMemberButton.layer.cornerRadius = 5;
+            registerMemberButton.layer.masksToBounds = YES;
+            registerMemberButton.layer.borderColor = HEXCOLOR(pinColorDarkBlack).CGColor;
+            registerMemberButton.layer.borderWidth = 1;
+            [registerMemberButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(registerButton.mas_right).offset(20);
+                make.top.equalTo(loginButton.mas_bottom).offset(10);
                 make.width.equalTo(@((SCREEN_WITH - 60) / 2.0));
                 make.height.equalTo(@(FITHEIGHT(50)));
             }];
