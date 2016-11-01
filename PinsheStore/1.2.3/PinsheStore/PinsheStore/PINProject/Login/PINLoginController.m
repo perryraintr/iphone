@@ -112,14 +112,17 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [PINUserDefaultManagement instance].hasStore = NO;
         [PINUserDefaultManagement instance].isSotreMember = NO;
+        
+        [[ForwardContainer shareInstance] pushContainer:FORWARD_STORELIST_VC navigationController:self.navigationController params:nil animated:YES];
+        
         // 变为未登录状态
-        [PINUserDefaultManagement instance].sid = 0;
-        [PINUserDefaultManagement instance].storeName = @"";
-        [PINUserDefaultManagement instance].storeCurrent = 0;
-        [PINUserDefaultManagement instance].pinUser = nil;
-        [UIAlertView alertViewWithTitle:@"友情提示" message:@"你还未加入品社咖啡馆！如果你是咖啡馆长，请联系品社客服；如果你是店员，请联系你的馆长。" cancel:@"确定" clickedBlock:^(NSInteger buttonIndex, NSString *buttonTitle, UIAlertView *alertview) {
-        } cancelBlock:^{
-        }];
+//        [PINUserDefaultManagement instance].sid = 0;
+//        [PINUserDefaultManagement instance].storeName = @"";
+//        [PINUserDefaultManagement instance].storeCurrent = 0;
+//        [PINUserDefaultManagement instance].pinUser = nil;
+//        [UIAlertView alertViewWithTitle:@"友情提示" message:@"你还未加入品社咖啡馆！如果你是咖啡馆长，请联系品社客服；如果你是店员，请联系你的馆长。" cancel:@"确定" clickedBlock:^(NSInteger buttonIndex, NSString *buttonTitle, UIAlertView *alertview) {
+//        } cancelBlock:^{
+//        }];
         
     }];
 }

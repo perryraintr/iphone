@@ -10,10 +10,17 @@
 #pragma mark ---- 常用宏 ----
 
 #ifdef DEBUG
-#define PLog(format, ...) NSLog(format, ## __VA_ARGS__); printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#define PLog(format, ...) printf("[%s] %s %s\n", __TIME__, __FUNCTION__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
 #define PLog(format, ...) //NSLog(format, ## __VA_ARGS__)
 #endif
+
+
+#define SUPPRESS_PERFORMSELECTOR_LEAK_WARNING(Stuff) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
 
 #define SCREEN_WITH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height

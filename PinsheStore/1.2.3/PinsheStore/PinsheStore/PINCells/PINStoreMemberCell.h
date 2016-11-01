@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^DeltelphoneBlock)(UIButton *button);
+
 @class PINStoreMemberModel;
 
 @interface PINStoreMemberCell : UITableViewCell
 
-//@property (nonatomic, strong) UIImageView *iconImageview;
-//
-//@property (nonatomic, strong) UILabel *nameLabel;
-
 @property (nonatomic, strong) UILabel *telphoneLabel;
+
+@property (nonatomic, strong) UIButton *delButton;
+
+@property (nonatomic, copy) DeltelphoneBlock delBlock;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)resetStoreMemberCell:(PINStoreMemberModel *)model;
+
+- (void)delBlockAction:(DeltelphoneBlock)block;
 
 @end

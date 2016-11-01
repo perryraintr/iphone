@@ -25,11 +25,20 @@
     [super viewDidLoad];
     self.title = @"选择店铺";
     [self initParams];
+    [self initUI];
     [self requestStoreList];
 }
 
 - (void)initParams {
     self.storeListArray = [NSMutableArray array];
+}
+
+- (void)initUI {
+    [super rightBarButton:@"添加" isRoot:NO color:HEXCOLOR(pinColorWhite) selector:@selector(addStore) delegate:self];
+}
+
+- (void)addStore {
+    [[ForwardContainer shareInstance] pushContainer:FORWARD_CREATSTORE_VC navigationController:self.navigationController params:nil animated:YES];
 }
 
 - (void)requestStoreList {

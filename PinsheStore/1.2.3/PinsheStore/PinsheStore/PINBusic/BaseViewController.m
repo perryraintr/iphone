@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "PINNetActivityIndicator.h"
 
 @interface BaseViewController ()
 
@@ -30,7 +29,6 @@
 }
 
 - (void)dealloc {
-    [PINNetActivityIndicator stopActivityIndicator:PINIndicatorStyle_DefaultIndicator];
     PLog(@"%s -- %@",__func__,self);
 }
 
@@ -213,11 +211,6 @@
 }
 
 - (PINNavigationController *)navigationController {
-//    if ([self isKindOfClass:CLASS(FORWARD_INDEXACTIVITY_VC)]
-//        || [self isKindOfClass:CLASS(FORWARD_INDEXRECOMMEND_VC)]
-//        || [self isKindOfClass:CLASS(FORWARD_MYCENTRAL_VC)]) {
-//        return pinSheAppDelegate().pinNavigationController;
-//    }
     return (PINNavigationController *)super.navigationController;
 }
 

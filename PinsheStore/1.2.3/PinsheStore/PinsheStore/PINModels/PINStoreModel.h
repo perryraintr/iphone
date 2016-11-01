@@ -14,44 +14,54 @@
 
 @property (nonatomic, assign) float current;
 
-@property (nonatomic, strong) NSString *image;
+@property (nonatomic, assign) double longitude;
 
-@property (nonatomic, strong) NSString *create_time;
+@property (nonatomic, assign) double latitude;
 
-@property (nonatomic, strong) NSString *feature1;
+@property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, assign) int star;
+
+@property (nonatomic, strong) NSString *address;
+
+@property (nonatomic, strong) NSString *phone;
+
+@property (nonatomic, strong) NSString *date;
+
+@property (nonatomic, strong) NSString *slogan;
 
 @property (nonatomic, strong) NSString *owner;
 
-@property (nonatomic, assign) CGFloat latitude;
+@property (nonatomic, strong) NSString *avatar;
+
+@property (nonatomic, strong) NSString *recommend;
+
+@property (nonatomic, strong) NSString *feature1;
+
+@property (nonatomic, strong) NSString *feature2;
+
+@property (nonatomic, strong) NSString *feature3;
+
+@property (nonatomic, strong) NSString *image;
 
 @property (nonatomic, strong) NSString *video;
 
 @property (nonatomic, strong) NSString *activity;
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) int comment;
 
-@property (nonatomic, strong) NSString *feature2;
+@property (nonatomic, strong) NSString *wifi;
 
-@property (nonatomic, strong) NSString *slogan;
+@property (nonatomic, strong) NSString *wifi_password;
 
-@property (nonatomic, strong) NSString *date;
+@property (nonatomic, assign) int invaild;
 
-@property (nonatomic, assign) CGFloat longitude;
+@property (nonatomic, strong) NSString *storeDescription;
 
-@property (nonatomic, strong) NSString *phone;
-
-@property (nonatomic, assign) int star;
-
-@property (nonatomic, strong) NSString *recommend;
-
-@property (nonatomic, strong) NSString *avatar;
-
-@property (nonatomic, strong) NSString *feature3;
+@property (nonatomic, strong) NSString *create_time;
 
 @property (nonatomic, strong) NSString *modify_time;
 
-@property (nonatomic, assign) int comment;
-
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSArray *images;
 
 @end

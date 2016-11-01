@@ -8,7 +8,6 @@
 
 #import "PINMainModuleService.h"
 #import "PINNetworking.h"
-#import "PINNetActivityIndicator.h"
 
 static NSString *const kLoginPath = @"merchant_login.a";
 static NSString *const kMemberPath = @"merchant.a";
@@ -246,7 +245,17 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
         } failure:^(NSDictionary *result, NSString *message) {
         }];
     }
+}
+
+/// 地址转换经纬度
+- (void)addressChangeLocation:(NSString *)address finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    NSString *paramString = [NSString stringWithFormat:@"key=%@&address=%@&batch=false", GeoKey, address];
     
+    [_manger GETGEO:@"geo" params:paramString finished:^(NSDictionary *result, NSString *message) {
+        finished(result, message);
+    } failure:^(NSDictionary *result, NSString *message) {
+        failure(result, message);
+    }];
 }
 
 @end

@@ -16,6 +16,10 @@
 #define FORWARD_STOREMEMBER_VC @"PINStoreMemberController"
 #define FORWARD_STORESETTING_VC @"PINStoreSettingController"
 
+#define FORWARD_CREATSTORE_VC @"PINCreatStoreController"
+#define FORWARD_STOREDESC_VC @"PINStoreDescController"
+#define FORWARD_STOREDETAIL_VC @"PINStoreDetailController"
+
 #define FORWARD_WEBVIEW_VC @"PINWebViewController"
 
 #define FORWARD_ROOT_VC @"PINRootController"

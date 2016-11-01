@@ -63,4 +63,7 @@
 /// 发送通知
 - (void)wechatSendWithMessage:(NSString *)m;
 
+/// 地址转换经纬度
+- (void)addressChangeLocation:(NSString *)address finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
+
 @end

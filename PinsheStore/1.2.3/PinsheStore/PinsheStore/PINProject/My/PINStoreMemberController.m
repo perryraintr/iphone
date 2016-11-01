@@ -74,14 +74,14 @@
     }];
 }
 
-- (void)requestRemoveMember:(int)guid indexPath:(NSIndexPath *)indexPath {
+- (void)requestRemoveMember:(int)guid indexRow:(NSUInteger)indexRow {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     weakSelf(self);
     [self.httpService removeStoreMemberWithGuid:guid finished:^(NSDictionary *result, NSString *message) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
 
         //删除数据模型
-        [self.memberArray removeObjectAtIndex:indexPath.row];
+        [self.memberArray removeObjectAtIndex:indexRow];
         //刷新界面
         [self.tableview reloadData];
         
@@ -110,12 +110,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.memberArray.count > 0) {
         return FITHEIGHT(55);
-//        PINStoreMemberModel *pinStoreMemberModel = [self.memberArray objectAtIndex:indexPath.row];
-//        if (pinStoreMemberModel.member_avatar.length == 0) {
-//            return FITHEIGHT(55);
-//        } else {
-//            return FITHEIGHT(70);
-//        }
     } else {
         return SCREEN_HEIGHT - 64;
     }
@@ -129,8 +123,14 @@
             storeMemberCell = [[PINStoreMemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:storeMemberCellId];
         }
         PINStoreMemberModel *pinStoreMemberModel = [self.memberArray objectAtIndex:indexPath.row];
+        storeMemberCell.delButton.tag = indexPath.row;
         [storeMemberCell resetStoreMemberCell:pinStoreMemberModel];
         storeMemberCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:indexPath.row == 0];
+        
+        [storeMemberCell delBlockAction:^(UIButton *button) {
+            PLog(@"%zd", button.tag);
+            [self removeMember:button.tag];
+        }];
         return storeMemberCell;
         
     } else {
@@ -139,19 +139,23 @@
 }
 
 #pragma mark 删除按钮中文
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"删除";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"删除";
+//}
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    [self removeMember:indexPath.row];
+//}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)removeMember:(NSUInteger)indexRow {
     NSArray *titles = [NSArray arrayWithObjects:@"确定", nil];
     weakSelf(self);
     [UIAlertView alertViewWithTitle:@"删除店员" message:@"你确定删除该店员？" cancel:@"取消" otherButtonTitles:titles clickedBlock:^(NSInteger buttonIndex, NSString *buttonTitle, UIAlertView *alertview) {
         
-        PINStoreMemberModel *pinStoreMemberModel = [self.memberArray objectAtIndex:indexPath.row];
+        PINStoreMemberModel *pinStoreMemberModel = [self.memberArray objectAtIndex:indexRow];
         
-        [weakSelf requestRemoveMember:pinStoreMemberModel.guid indexPath:indexPath];
+        [weakSelf requestRemoveMember:pinStoreMemberModel.guid indexRow:indexRow];
         
     } cancelBlock:^{
         
