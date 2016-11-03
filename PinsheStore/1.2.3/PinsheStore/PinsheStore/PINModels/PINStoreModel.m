@@ -10,8 +10,4 @@
 
 @implementation PINStoreModel
 
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"storeDescription" : @"description"};
-}
-
 @end

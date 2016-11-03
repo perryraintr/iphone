@@ -20,8 +20,6 @@
 #import "PINUserDefaultManagement.h"
 #import "PINUser.h"
 
-#import "PINGeoModel.h"
-
 // 扩展
 #import "UIKitCategoryConfig.h"
 

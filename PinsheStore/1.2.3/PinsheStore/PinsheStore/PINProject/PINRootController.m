@@ -10,6 +10,7 @@
 #import "PlainCellBgView.h"
 #import "PINCashModel.h"
 #import "PINCashCell.h"
+#import "PINNetActivityIndicator.h"
 #import "MJRefresh.h"
 #import "PINStoreModel.h"
 #import "PINStoreCell.h"
@@ -51,7 +52,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-#warning by shi 放置这里
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self checkStore:NO];
 }
@@ -145,7 +145,8 @@
                 if ([PINUserDefaultManagement instance].sid == storeModel.guid && [PINUserDefaultManagement instance].sid > 0) {
                     currentSidIsTure = YES;
                     [PINUserDefaultManagement instance].sid = storeModel.guid;
-                    [PINUserDefaultManagement instance].storeName = storeModel.name;
+                    [PINUserDefaultManagement instance].storeName = storeModel.name
+                    ;
                     [PINUserDefaultManagement instance].storeCurrent = storeModel.current;
                 }
                 [self.storeArray addObject:storeModel];
@@ -154,7 +155,8 @@
             if ([PINUserDefaultManagement instance].sid == 0 || !currentSidIsTure) {
                 if (self.storeArray.count > 0) {
                     [PINUserDefaultManagement instance].sid = ((PINStoreModel *)self.storeArray[0]).guid;
-                    [PINUserDefaultManagement instance].storeName = ((PINStoreModel *)self.storeArray[0]).name;
+                    [PINUserDefaultManagement instance].storeName = ((PINStoreModel *)self.storeArray[0]).name
+                    ;
                     [PINUserDefaultManagement instance].storeCurrent = ((PINStoreModel *)self.storeArray[0]).current;
                 }
             }

@@ -12,8 +12,6 @@
 #define WeChatAppleID     @"wx52c9a5f555ccc52b"//微信key
 #define WeChatSecret      @"f9ac8a2bac8793e714b88ba2570fe325"
 
-#define GeoKey            @"f3deedff4fa239df6844a0f292c24d1d"
-
 #ifdef DEBUG
 
 #define GeTuiAppID        @"0wTd3MASNy66yGiK0U3D66"

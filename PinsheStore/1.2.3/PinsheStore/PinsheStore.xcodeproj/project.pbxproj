@@ -12,8 +12,14 @@
 		3B0B53B61D8655E4001B9191 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53B51D8655E4001B9191 /* NSString+Category.m */; };
 		3B0B53BC1D8678EE001B9191 /* NSObject+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53BB1D8678EE001B9191 /* NSObject+HUD.m */; };
 		3B0B53C01D867E1A001B9191 /* PINUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53BF1D867E1A001B9191 /* PINUser.m */; };
+		3B0B53C41D8682A0001B9191 /* PINRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53C21D8682A0001B9191 /* PINRegisterController.m */; };
+		3B0B53C51D8682A0001B9191 /* PINRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B53C31D8682A0001B9191 /* PINRegisterController.xib */; };
 		3B0B53C81D86859F001B9191 /* navigationItemBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B53C61D86859F001B9191 /* navigationItemBack@2x.png */; };
 		3B0B53C91D86859F001B9191 /* navigationItemBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B53C71D86859F001B9191 /* navigationItemBack@3x.png */; };
+		3B0B53CD1D868927001B9191 /* PINForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53CB1D868927001B9191 /* PINForgetController.m */; };
+		3B0B53CE1D868927001B9191 /* PINForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B53CC1D868927001B9191 /* PINForgetController.xib */; };
+		3B0B53D21D869184001B9191 /* PINGetcashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53D01D869184001B9191 /* PINGetcashController.m */; };
+		3B0B53D31D869184001B9191 /* PINGetcashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B53D11D869184001B9191 /* PINGetcashController.xib */; };
 		3B0B53D61D8699F0001B9191 /* PINCashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53D51D8699F0001B9191 /* PINCashModel.m */; };
 		3B0B53D91D869C5C001B9191 /* PINCashCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53D81D869C5C001B9191 /* PINCashCell.m */; };
 		3B0B53DC1D86ADF7001B9191 /* PINStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B53DB1D86ADF7001B9191 /* PINStoreModel.m */; };
@@ -39,9 +45,14 @@
 		3B0B541F1D86B002001B9191 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B540B1D86B002001B9191 /* UIView+MJExtension.m */; };
 		3B0B54281D86B462001B9191 /* UIScrollView+PINRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B54271D86B462001B9191 /* UIScrollView+PINRefreshControl.m */; };
 		3B0B542C1D86BA8F001B9191 /* PINForgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B542A1D86BA8F001B9191 /* PINForgetCell.m */; };
-		3B0E5C8C1DC7469700138D05 /* del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E5C8B1DC7469700138D05 /* del@2x.png */; };
 		3B1365B11DB7136B007CCCEA /* PINTodayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1365B01DB7136B007CCCEA /* PINTodayCell.m */; };
+		3B1365B51DB7348E007CCCEA /* PINAllOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1365B31DB7348E007CCCEA /* PINAllOrderController.m */; };
+		3B1365B61DB7348E007CCCEA /* PINAllOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1365B41DB7348E007CCCEA /* PINAllOrderController.xib */; };
+		3B1365BA1DB734A4007CCCEA /* PINDateOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1365B81DB734A4007CCCEA /* PINDateOrderController.m */; };
+		3B1365BB1DB734A4007CCCEA /* PINDateOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1365B91DB734A4007CCCEA /* PINDateOrderController.xib */; };
 		3B1365BE1DB75FCC007CCCEA /* PINCaptchaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1365BD1DB75FCC007CCCEA /* PINCaptchaView.m */; };
+		3B9E46291D9B5D770088E33E /* PINMyCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46271D9B5D770088E33E /* PINMyCenterController.m */; };
+		3B9E462A1D9B5D770088E33E /* PINMyCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46281D9B5D770088E33E /* PINMyCenterController.xib */; };
 		3B9E46351D9B629E0088E33E /* tabBarSelection.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46331D9B629E0088E33E /* tabBarSelection.png */; };
 		3B9E46361D9B629E0088E33E /* tabBarSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46341D9B629E0088E33E /* tabBarSelection@2x.png */; };
 		3B9E463F1D9B6B230088E33E /* tabIcon0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46371D9B6B230088E33E /* tabIcon0@2x.png */; };
@@ -54,6 +65,8 @@
 		3B9E46461D9B6B230088E33E /* tabIconSel1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E463E1D9B6B230088E33E /* tabIconSel1@3x.png */; };
 		3B9E46491D9B6B810088E33E /* tabBarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46471D9B6B810088E33E /* tabBarBg.png */; };
 		3B9E464A1D9B6B810088E33E /* tabBarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46481D9B6B810088E33E /* tabBarBg@2x.png */; };
+		3B9E46511D9B75C80088E33E /* PINStoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E464F1D9B75C80088E33E /* PINStoreListController.m */; };
+		3B9E46521D9B75C80088E33E /* PINStoreListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46501D9B75C80088E33E /* PINStoreListController.xib */; };
 		3B9E46751D9BBFC90088E33E /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46551D9BBFC90088E33E /* MKAnnotationView+WebCache.m */; };
 		3B9E46761D9BBFC90088E33E /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46571D9BBFC90088E33E /* NSData+ImageContentType.m */; };
 		3B9E46771D9BBFC90088E33E /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46591D9BBFC90088E33E /* SDImageCache.m */; };
@@ -70,6 +83,8 @@
 		3B9E46821D9BBFC90088E33E /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46701D9BBFC90088E33E /* UIImageView+HighlightedWebCache.m */; };
 		3B9E46831D9BBFC90088E33E /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46721D9BBFC90088E33E /* UIImageView+WebCache.m */; };
 		3B9E46841D9BBFC90088E33E /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46741D9BBFC90088E33E /* UIView+WebCacheOperation.m */; };
+		3B9E46881D9BD1860088E33E /* PINStoreMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46861D9BD1860088E33E /* PINStoreMemberController.m */; };
+		3B9E46891D9BD1860088E33E /* PINStoreMemberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E46871D9BD1860088E33E /* PINStoreMemberController.xib */; };
 		3B9E468B1D9BD6CD0088E33E /* choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E468A1D9BD6CD0088E33E /* choose@2x.png */; };
 		3B9E69571DB626D100EA7818 /* libGeTuiSdk-1.5.0-noidfa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9E69561DB626D100EA7818 /* libGeTuiSdk-1.5.0-noidfa.a */; };
 		3B9E69591DB6277D00EA7818 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9E69581DB6277D00EA7818 /* libc++.tbd */; };
@@ -89,44 +104,19 @@
 		3BCC50441D82B2AD00B36840 /* UINavigationBar+SetColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50431D82B2AD00B36840 /* UINavigationBar+SetColor.m */; };
 		3BCC50491D82B8F000B36840 /* PINRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50471D82B8F000B36840 /* PINRootController.m */; };
 		3BCC504A1D82B8F000B36840 /* PINRootController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC50481D82B8F000B36840 /* PINRootController.xib */; };
-		3BCE47C51DC86A71000195EA /* PINTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47C41DC86A71000195EA /* PINTextView.m */; };
-		3BCE47C81DC8863F000195EA /* PINGeoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47C71DC8863F000195EA /* PINGeoModel.m */; };
-		3BCE47D21DC892EC000195EA /* xRCarouselBgImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47CF1DC892EC000195EA /* xRCarouselBgImage@3x.png */; };
-		3BCE47D31DC892EC000195EA /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47D11DC892EC000195EA /* XRCarouselView.m */; };
-		3BCE48031DC898BC000195EA /* PINForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47D71DC898BC000195EA /* PINForgetController.m */; };
-		3BCE48041DC898BC000195EA /* PINForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47D81DC898BC000195EA /* PINForgetController.xib */; };
-		3BCE48051DC898BC000195EA /* PINLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47DA1DC898BC000195EA /* PINLoginController.m */; };
-		3BCE48061DC898BC000195EA /* PINLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47DB1DC898BC000195EA /* PINLoginController.xib */; };
-		3BCE48071DC898BC000195EA /* PINRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47DD1DC898BC000195EA /* PINRegisterController.m */; };
-		3BCE48081DC898BC000195EA /* PINRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47DE1DC898BC000195EA /* PINRegisterController.xib */; };
-		3BCE48091DC898BC000195EA /* PINAllOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47E11DC898BC000195EA /* PINAllOrderController.m */; };
-		3BCE480A1DC898BC000195EA /* PINAllOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47E21DC898BC000195EA /* PINAllOrderController.xib */; };
-		3BCE480B1DC898BC000195EA /* PINDateOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47E41DC898BC000195EA /* PINDateOrderController.m */; };
-		3BCE480C1DC898BC000195EA /* PINDateOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47E51DC898BC000195EA /* PINDateOrderController.xib */; };
-		3BCE480D1DC898BC000195EA /* PINGetcashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47E71DC898BC000195EA /* PINGetcashController.m */; };
-		3BCE480E1DC898BC000195EA /* PINGetcashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47E81DC898BC000195EA /* PINGetcashController.xib */; };
-		3BCE480F1DC898BC000195EA /* PINMyCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47EA1DC898BC000195EA /* PINMyCenterController.m */; };
-		3BCE48101DC898BC000195EA /* PINMyCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47EB1DC898BC000195EA /* PINMyCenterController.xib */; };
-		3BCE48111DC898BC000195EA /* PINStoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47ED1DC898BC000195EA /* PINStoreListController.m */; };
-		3BCE48121DC898BC000195EA /* PINStoreListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47EE1DC898BC000195EA /* PINStoreListController.xib */; };
-		3BCE48131DC898BC000195EA /* PINStoreMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47F01DC898BC000195EA /* PINStoreMemberController.m */; };
-		3BCE48141DC898BC000195EA /* PINStoreMemberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47F11DC898BC000195EA /* PINStoreMemberController.xib */; };
-		3BCE48151DC898BC000195EA /* PINStoreDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47F41DC898BC000195EA /* PINStoreDetailController.m */; };
-		3BCE48161DC898BC000195EA /* PINStoreDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47F51DC898BC000195EA /* PINStoreDetailController.xib */; };
-		3BCE48171DC898BC000195EA /* PINCreatStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47F81DC898BC000195EA /* PINCreatStoreController.m */; };
-		3BCE48181DC898BC000195EA /* PINCreatStoreController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47F91DC898BC000195EA /* PINCreatStoreController.xib */; };
-		3BCE48191DC898BC000195EA /* PINStoreDescController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47FB1DC898BC000195EA /* PINStoreDescController.m */; };
-		3BCE481A1DC898BC000195EA /* PINStoreDescController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47FC1DC898BC000195EA /* PINStoreDescController.xib */; };
-		3BCE481B1DC898BC000195EA /* PINStoreSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE47FE1DC898BC000195EA /* PINStoreSettingController.m */; };
-		3BCE481C1DC898BC000195EA /* PINStoreSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE47FF1DC898BC000195EA /* PINStoreSettingController.xib */; };
-		3BCE481D1DC898BC000195EA /* PINWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE48021DC898BC000195EA /* PINWebViewController.m */; };
+		3BCC50791D82C02500B36840 /* PINLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC50771D82C02500B36840 /* PINLoginController.m */; };
+		3BCC507A1D82C02500B36840 /* PINLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC50781D82C02500B36840 /* PINLoginController.xib */; };
+		3BD58F061DBDBB4C0012E321 /* PINStoreSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD58F041DBDBB4C0012E321 /* PINStoreSettingController.m */; };
+		3BD58F071DBDBB4C0012E321 /* PINStoreSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BD58F051DBDBB4C0012E321 /* PINStoreSettingController.xib */; };
 		3BD58F0A1DBDCCD10012E321 /* PINStoreSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD58F091DBDCCD10012E321 /* PINStoreSettingCell.m */; };
+		3BD58F0E1DBDD6970012E321 /* PINWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD58F0D1DBDD6970012E321 /* PINWebViewController.m */; };
 		3BD58F101DBDD6BD0012E321 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD58F0F1DBDD6BD0012E321 /* WebKit.framework */; };
 		3BDC43B11D9CADEA009866E6 /* PINStoreMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC43B01D9CADEA009866E6 /* PINStoreMemberCell.m */; };
 		3BDC43B41D9CB140009866E6 /* PINStoreMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC43B31D9CB140009866E6 /* PINStoreMemberModel.m */; };
 		3BDC43B71D9D0956009866E6 /* PINStoreTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC43B61D9D0956009866E6 /* PINStoreTitleCell.m */; };
 		3BDFBE5B1DB78B64007961EF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDFBE5A1DB78B64007961EF /* icon.png */; };
 		3BDFBE5D1DB7ABB9007961EF /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFBE5C1DB7ABB9007961EF /* UserNotifications.framework */; };
+		3BDFD6A61D8296A900F3D2C0 /* PINNetActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFD6A11D8296A900F3D2C0 /* PINNetActivityIndicator.m */; };
 		3BDFD6A71D8296A900F3D2C0 /* PINNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFD6A51D8296A900F3D2C0 /* PINNetworkingManager.m */; };
 		3BDFD6AA1D82989100F3D2C0 /* PINBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFD6A91D82989100F3D2C0 /* PINBaseModel.m */; };
 		3BDFD6B31D82999700F3D2C0 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFD6B01D82999700F3D2C0 /* NSObject+YYModel.m */; };
@@ -149,7 +139,6 @@
 		3BE6985D1D8278FB00A66F7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6985C1D8278FB00A66F7A /* main.m */; };
 		3BE698601D8278FB00A66F7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6985F1D8278FB00A66F7A /* AppDelegate.m */; };
 		3BE698681D8278FB00A66F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE698671D8278FB00A66F7A /* Assets.xcassets */; };
-		3BEC88BA1DC8489600BBB382 /* PINCreatStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC88B91DC8489600BBB382 /* PINCreatStoreCell.m */; };
 		3BF062741D87A6C5000E66C5 /* PINStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF062731D87A6C5000E66C5 /* PINStoreCell.m */; };
 		3BF062811D87BD39000E66C5 /* btnWhiteGrayBorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF0627D1D87BD39000E66C5 /* btnWhiteGrayBorder@2x.png */; };
 		3BF062821D87BD39000E66C5 /* btnWhiteGrayBorder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF0627E1D87BD39000E66C5 /* btnWhiteGrayBorder@3x.png */; };
@@ -171,8 +160,17 @@
 		3B0B53BB1D8678EE001B9191 /* NSObject+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HUD.m"; sourceTree = "<group>"; };
 		3B0B53BE1D867E1A001B9191 /* PINUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINUser.h; sourceTree = "<group>"; };
 		3B0B53BF1D867E1A001B9191 /* PINUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINUser.m; sourceTree = "<group>"; };
+		3B0B53C11D8682A0001B9191 /* PINRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINRegisterController.h; sourceTree = "<group>"; };
+		3B0B53C21D8682A0001B9191 /* PINRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINRegisterController.m; sourceTree = "<group>"; };
+		3B0B53C31D8682A0001B9191 /* PINRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINRegisterController.xib; sourceTree = "<group>"; };
 		3B0B53C61D86859F001B9191 /* navigationItemBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationItemBack@2x.png"; sourceTree = "<group>"; };
 		3B0B53C71D86859F001B9191 /* navigationItemBack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigationItemBack@3x.png"; sourceTree = "<group>"; };
+		3B0B53CA1D868926001B9191 /* PINForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINForgetController.h; sourceTree = "<group>"; };
+		3B0B53CB1D868927001B9191 /* PINForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINForgetController.m; sourceTree = "<group>"; };
+		3B0B53CC1D868927001B9191 /* PINForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINForgetController.xib; sourceTree = "<group>"; };
+		3B0B53CF1D869183001B9191 /* PINGetcashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINGetcashController.h; sourceTree = "<group>"; };
+		3B0B53D01D869184001B9191 /* PINGetcashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINGetcashController.m; sourceTree = "<group>"; };
+		3B0B53D11D869184001B9191 /* PINGetcashController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINGetcashController.xib; sourceTree = "<group>"; };
 		3B0B53D41D8699F0001B9191 /* PINCashModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCashModel.h; sourceTree = "<group>"; };
 		3B0B53D51D8699F0001B9191 /* PINCashModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCashModel.m; sourceTree = "<group>"; };
 		3B0B53D71D869C5C001B9191 /* PINCashCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCashCell.h; sourceTree = "<group>"; };
@@ -223,12 +221,20 @@
 		3B0B54271D86B462001B9191 /* UIScrollView+PINRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PINRefreshControl.m"; sourceTree = "<group>"; };
 		3B0B54291D86BA8F001B9191 /* PINForgetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINForgetCell.h; sourceTree = "<group>"; };
 		3B0B542A1D86BA8F001B9191 /* PINForgetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINForgetCell.m; sourceTree = "<group>"; };
-		3B0E5C8B1DC7469700138D05 /* del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "del@2x.png"; sourceTree = "<group>"; };
 		3B1365AF1DB7136B007CCCEA /* PINTodayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINTodayCell.h; sourceTree = "<group>"; };
 		3B1365B01DB7136B007CCCEA /* PINTodayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINTodayCell.m; sourceTree = "<group>"; };
+		3B1365B21DB7348E007CCCEA /* PINAllOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINAllOrderController.h; sourceTree = "<group>"; };
+		3B1365B31DB7348E007CCCEA /* PINAllOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINAllOrderController.m; sourceTree = "<group>"; };
+		3B1365B41DB7348E007CCCEA /* PINAllOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINAllOrderController.xib; sourceTree = "<group>"; };
+		3B1365B71DB734A4007CCCEA /* PINDateOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINDateOrderController.h; sourceTree = "<group>"; };
+		3B1365B81DB734A4007CCCEA /* PINDateOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINDateOrderController.m; sourceTree = "<group>"; };
+		3B1365B91DB734A4007CCCEA /* PINDateOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINDateOrderController.xib; sourceTree = "<group>"; };
 		3B1365BC1DB75FCC007CCCEA /* PINCaptchaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCaptchaView.h; sourceTree = "<group>"; };
 		3B1365BD1DB75FCC007CCCEA /* PINCaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCaptchaView.m; sourceTree = "<group>"; };
 		3B14F6581DB6339F00CAFFAD /* PinsheStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinsheStore.entitlements; sourceTree = "<group>"; };
+		3B9E46261D9B5D770088E33E /* PINMyCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINMyCenterController.h; sourceTree = "<group>"; };
+		3B9E46271D9B5D770088E33E /* PINMyCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINMyCenterController.m; sourceTree = "<group>"; };
+		3B9E46281D9B5D770088E33E /* PINMyCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINMyCenterController.xib; sourceTree = "<group>"; };
 		3B9E46331D9B629E0088E33E /* tabBarSelection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarSelection.png; sourceTree = "<group>"; };
 		3B9E46341D9B629E0088E33E /* tabBarSelection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBarSelection@2x.png"; sourceTree = "<group>"; };
 		3B9E46371D9B6B230088E33E /* tabIcon0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabIcon0@2x.png"; sourceTree = "<group>"; };
@@ -241,6 +247,9 @@
 		3B9E463E1D9B6B230088E33E /* tabIconSel1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabIconSel1@3x.png"; sourceTree = "<group>"; };
 		3B9E46471D9B6B810088E33E /* tabBarBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarBg.png; sourceTree = "<group>"; };
 		3B9E46481D9B6B810088E33E /* tabBarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBarBg@2x.png"; sourceTree = "<group>"; };
+		3B9E464E1D9B75C80088E33E /* PINStoreListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreListController.h; sourceTree = "<group>"; };
+		3B9E464F1D9B75C80088E33E /* PINStoreListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreListController.m; sourceTree = "<group>"; };
+		3B9E46501D9B75C80088E33E /* PINStoreListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreListController.xib; sourceTree = "<group>"; };
 		3B9E46541D9BBFC90088E33E /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		3B9E46551D9BBFC90088E33E /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		3B9E46561D9BBFC90088E33E /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -274,6 +283,9 @@
 		3B9E46721D9BBFC90088E33E /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		3B9E46731D9BBFC90088E33E /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		3B9E46741D9BBFC90088E33E /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		3B9E46851D9BD1860088E33E /* PINStoreMemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreMemberController.h; sourceTree = "<group>"; };
+		3B9E46861D9BD1860088E33E /* PINStoreMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreMemberController.m; sourceTree = "<group>"; };
+		3B9E46871D9BD1860088E33E /* PINStoreMemberController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreMemberController.xib; sourceTree = "<group>"; };
 		3B9E468A1D9BD6CD0088E33E /* choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose@2x.png"; sourceTree = "<group>"; };
 		3B9E69551DB626D100EA7818 /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
 		3B9E69561DB626D100EA7818 /* libGeTuiSdk-1.5.0-noidfa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.5.0-noidfa.a"; sourceTree = "<group>"; };
@@ -302,56 +314,16 @@
 		3BCC50461D82B8F000B36840 /* PINRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINRootController.h; sourceTree = "<group>"; };
 		3BCC50471D82B8F000B36840 /* PINRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINRootController.m; sourceTree = "<group>"; };
 		3BCC50481D82B8F000B36840 /* PINRootController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINRootController.xib; sourceTree = "<group>"; };
-		3BCE47C31DC86A71000195EA /* PINTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINTextView.h; sourceTree = "<group>"; };
-		3BCE47C41DC86A71000195EA /* PINTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINTextView.m; sourceTree = "<group>"; };
-		3BCE47C61DC8863F000195EA /* PINGeoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINGeoModel.h; sourceTree = "<group>"; };
-		3BCE47C71DC8863F000195EA /* PINGeoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINGeoModel.m; sourceTree = "<group>"; };
-		3BCE47CF1DC892EC000195EA /* xRCarouselBgImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xRCarouselBgImage@3x.png"; sourceTree = "<group>"; };
-		3BCE47D01DC892EC000195EA /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
-		3BCE47D11DC892EC000195EA /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
-		3BCE47D61DC898BC000195EA /* PINForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINForgetController.h; sourceTree = "<group>"; };
-		3BCE47D71DC898BC000195EA /* PINForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINForgetController.m; sourceTree = "<group>"; };
-		3BCE47D81DC898BC000195EA /* PINForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINForgetController.xib; sourceTree = "<group>"; };
-		3BCE47D91DC898BC000195EA /* PINLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINLoginController.h; sourceTree = "<group>"; };
-		3BCE47DA1DC898BC000195EA /* PINLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINLoginController.m; sourceTree = "<group>"; };
-		3BCE47DB1DC898BC000195EA /* PINLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINLoginController.xib; sourceTree = "<group>"; };
-		3BCE47DC1DC898BC000195EA /* PINRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINRegisterController.h; sourceTree = "<group>"; };
-		3BCE47DD1DC898BC000195EA /* PINRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINRegisterController.m; sourceTree = "<group>"; };
-		3BCE47DE1DC898BC000195EA /* PINRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINRegisterController.xib; sourceTree = "<group>"; };
-		3BCE47E01DC898BC000195EA /* PINAllOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINAllOrderController.h; sourceTree = "<group>"; };
-		3BCE47E11DC898BC000195EA /* PINAllOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINAllOrderController.m; sourceTree = "<group>"; };
-		3BCE47E21DC898BC000195EA /* PINAllOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINAllOrderController.xib; sourceTree = "<group>"; };
-		3BCE47E31DC898BC000195EA /* PINDateOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINDateOrderController.h; sourceTree = "<group>"; };
-		3BCE47E41DC898BC000195EA /* PINDateOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINDateOrderController.m; sourceTree = "<group>"; };
-		3BCE47E51DC898BC000195EA /* PINDateOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINDateOrderController.xib; sourceTree = "<group>"; };
-		3BCE47E61DC898BC000195EA /* PINGetcashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINGetcashController.h; sourceTree = "<group>"; };
-		3BCE47E71DC898BC000195EA /* PINGetcashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINGetcashController.m; sourceTree = "<group>"; };
-		3BCE47E81DC898BC000195EA /* PINGetcashController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINGetcashController.xib; sourceTree = "<group>"; };
-		3BCE47E91DC898BC000195EA /* PINMyCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINMyCenterController.h; sourceTree = "<group>"; };
-		3BCE47EA1DC898BC000195EA /* PINMyCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINMyCenterController.m; sourceTree = "<group>"; };
-		3BCE47EB1DC898BC000195EA /* PINMyCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINMyCenterController.xib; sourceTree = "<group>"; };
-		3BCE47EC1DC898BC000195EA /* PINStoreListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreListController.h; sourceTree = "<group>"; };
-		3BCE47ED1DC898BC000195EA /* PINStoreListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreListController.m; sourceTree = "<group>"; };
-		3BCE47EE1DC898BC000195EA /* PINStoreListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreListController.xib; sourceTree = "<group>"; };
-		3BCE47EF1DC898BC000195EA /* PINStoreMemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreMemberController.h; sourceTree = "<group>"; };
-		3BCE47F01DC898BC000195EA /* PINStoreMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreMemberController.m; sourceTree = "<group>"; };
-		3BCE47F11DC898BC000195EA /* PINStoreMemberController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreMemberController.xib; sourceTree = "<group>"; };
-		3BCE47F31DC898BC000195EA /* PINStoreDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreDetailController.h; sourceTree = "<group>"; };
-		3BCE47F41DC898BC000195EA /* PINStoreDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreDetailController.m; sourceTree = "<group>"; };
-		3BCE47F51DC898BC000195EA /* PINStoreDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreDetailController.xib; sourceTree = "<group>"; };
-		3BCE47F71DC898BC000195EA /* PINCreatStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCreatStoreController.h; sourceTree = "<group>"; };
-		3BCE47F81DC898BC000195EA /* PINCreatStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCreatStoreController.m; sourceTree = "<group>"; };
-		3BCE47F91DC898BC000195EA /* PINCreatStoreController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINCreatStoreController.xib; sourceTree = "<group>"; };
-		3BCE47FA1DC898BC000195EA /* PINStoreDescController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreDescController.h; sourceTree = "<group>"; };
-		3BCE47FB1DC898BC000195EA /* PINStoreDescController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreDescController.m; sourceTree = "<group>"; };
-		3BCE47FC1DC898BC000195EA /* PINStoreDescController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreDescController.xib; sourceTree = "<group>"; };
-		3BCE47FD1DC898BC000195EA /* PINStoreSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreSettingController.h; sourceTree = "<group>"; };
-		3BCE47FE1DC898BC000195EA /* PINStoreSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreSettingController.m; sourceTree = "<group>"; };
-		3BCE47FF1DC898BC000195EA /* PINStoreSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreSettingController.xib; sourceTree = "<group>"; };
-		3BCE48011DC898BC000195EA /* PINWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINWebViewController.h; sourceTree = "<group>"; };
-		3BCE48021DC898BC000195EA /* PINWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINWebViewController.m; sourceTree = "<group>"; };
+		3BCC50761D82C02500B36840 /* PINLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINLoginController.h; sourceTree = "<group>"; };
+		3BCC50771D82C02500B36840 /* PINLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINLoginController.m; sourceTree = "<group>"; };
+		3BCC50781D82C02500B36840 /* PINLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINLoginController.xib; sourceTree = "<group>"; };
+		3BD58F031DBDBB4C0012E321 /* PINStoreSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreSettingController.h; sourceTree = "<group>"; };
+		3BD58F041DBDBB4C0012E321 /* PINStoreSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreSettingController.m; sourceTree = "<group>"; };
+		3BD58F051DBDBB4C0012E321 /* PINStoreSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStoreSettingController.xib; sourceTree = "<group>"; };
 		3BD58F081DBDCCD10012E321 /* PINStoreSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreSettingCell.h; sourceTree = "<group>"; };
 		3BD58F091DBDCCD10012E321 /* PINStoreSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreSettingCell.m; sourceTree = "<group>"; };
+		3BD58F0C1DBDD6970012E321 /* PINWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINWebViewController.h; sourceTree = "<group>"; };
+		3BD58F0D1DBDD6970012E321 /* PINWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINWebViewController.m; sourceTree = "<group>"; };
 		3BD58F0F1DBDD6BD0012E321 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3BDC43AF1D9CADEA009866E6 /* PINStoreMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreMemberCell.h; sourceTree = "<group>"; };
 		3BDC43B01D9CADEA009866E6 /* PINStoreMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreMemberCell.m; sourceTree = "<group>"; };
@@ -361,6 +333,8 @@
 		3BDC43B61D9D0956009866E6 /* PINStoreTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreTitleCell.m; sourceTree = "<group>"; };
 		3BDFBE5A1DB78B64007961EF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3BDFBE5C1DB7ABB9007961EF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		3BDFD6A01D8296A900F3D2C0 /* PINNetActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINNetActivityIndicator.h; sourceTree = "<group>"; };
+		3BDFD6A11D8296A900F3D2C0 /* PINNetActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINNetActivityIndicator.m; sourceTree = "<group>"; };
 		3BDFD6A21D8296A900F3D2C0 /* PINNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINNetworking.h; sourceTree = "<group>"; };
 		3BDFD6A31D8296A900F3D2C0 /* PINNetworkingConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINNetworkingConfig.h; sourceTree = "<group>"; };
 		3BDFD6A41D8296A900F3D2C0 /* PINNetworkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINNetworkingManager.h; sourceTree = "<group>"; };
@@ -412,8 +386,6 @@
 		3BE698671D8278FB00A66F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BE6986C1D8278FB00A66F7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE698751D82820700A66F7A /* PinsheStore_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinsheStore_Prefix.pch; sourceTree = "<group>"; };
-		3BEC88B81DC8489600BBB382 /* PINCreatStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCreatStoreCell.h; sourceTree = "<group>"; };
-		3BEC88B91DC8489600BBB382 /* PINCreatStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCreatStoreCell.m; sourceTree = "<group>"; };
 		3BF062721D87A6C5000E66C5 /* PINStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStoreCell.h; sourceTree = "<group>"; };
 		3BF062731D87A6C5000E66C5 /* PINStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStoreCell.m; sourceTree = "<group>"; };
 		3BF0627D1D87BD39000E66C5 /* btnWhiteGrayBorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnWhiteGrayBorder@2x.png"; sourceTree = "<group>"; };
@@ -488,8 +460,6 @@
 				3B1365B01DB7136B007CCCEA /* PINTodayCell.m */,
 				3BD58F081DBDCCD10012E321 /* PINStoreSettingCell.h */,
 				3BD58F091DBDCCD10012E321 /* PINStoreSettingCell.m */,
-				3BEC88B81DC8489600BBB382 /* PINCreatStoreCell.h */,
-				3BEC88B91DC8489600BBB382 /* PINCreatStoreCell.m */,
 			);
 			path = PINCells;
 			sourceTree = "<group>";
@@ -505,8 +475,6 @@
 				3B0B53DB1D86ADF7001B9191 /* PINStoreModel.m */,
 				3BDC43B21D9CB140009866E6 /* PINStoreMemberModel.h */,
 				3BDC43B31D9CB140009866E6 /* PINStoreMemberModel.m */,
-				3BCE47C61DC8863F000195EA /* PINGeoModel.h */,
-				3BCE47C71DC8863F000195EA /* PINGeoModel.m */,
 			);
 			path = PINModels;
 			sourceTree = "<group>";
@@ -606,6 +574,54 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		3B9E464B1D9B6E240088E33E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3BCC50761D82C02500B36840 /* PINLoginController.h */,
+				3BCC50771D82C02500B36840 /* PINLoginController.m */,
+				3BCC50781D82C02500B36840 /* PINLoginController.xib */,
+				3B0B53C11D8682A0001B9191 /* PINRegisterController.h */,
+				3B0B53C21D8682A0001B9191 /* PINRegisterController.m */,
+				3B0B53C31D8682A0001B9191 /* PINRegisterController.xib */,
+				3B0B53CA1D868926001B9191 /* PINForgetController.h */,
+				3B0B53CB1D868927001B9191 /* PINForgetController.m */,
+				3B0B53CC1D868927001B9191 /* PINForgetController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		3B9E464C1D9B6E360088E33E /* My */ = {
+			isa = PBXGroup;
+			children = (
+				3B9E46261D9B5D770088E33E /* PINMyCenterController.h */,
+				3B9E46271D9B5D770088E33E /* PINMyCenterController.m */,
+				3B9E46281D9B5D770088E33E /* PINMyCenterController.xib */,
+			);
+			name = My;
+			sourceTree = "<group>";
+		};
+		3B9E464D1D9B72140088E33E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				3B9E464E1D9B75C80088E33E /* PINStoreListController.h */,
+				3B9E464F1D9B75C80088E33E /* PINStoreListController.m */,
+				3B9E46501D9B75C80088E33E /* PINStoreListController.xib */,
+				3B9E46851D9BD1860088E33E /* PINStoreMemberController.h */,
+				3B9E46861D9BD1860088E33E /* PINStoreMemberController.m */,
+				3B9E46871D9BD1860088E33E /* PINStoreMemberController.xib */,
+				3B1365B21DB7348E007CCCEA /* PINAllOrderController.h */,
+				3B1365B31DB7348E007CCCEA /* PINAllOrderController.m */,
+				3B1365B41DB7348E007CCCEA /* PINAllOrderController.xib */,
+				3B1365B71DB734A4007CCCEA /* PINDateOrderController.h */,
+				3B1365B81DB734A4007CCCEA /* PINDateOrderController.m */,
+				3B1365B91DB734A4007CCCEA /* PINDateOrderController.xib */,
+				3BD58F031DBDBB4C0012E321 /* PINStoreSettingController.h */,
+				3BD58F041DBDBB4C0012E321 /* PINStoreSettingController.m */,
+				3BD58F051DBDBB4C0012E321 /* PINStoreSettingController.xib */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
 		3B9E46531D9BBFC90088E33E /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,8 +674,6 @@
 		3BCC50321D82B16C00B36840 /* PINCommon */ = {
 			isa = PBXGroup;
 			children = (
-				3BCE47C31DC86A71000195EA /* PINTextView.h */,
-				3BCE47C41DC86A71000195EA /* PINTextView.m */,
 				3B0B53B11D8653F4001B9191 /* PlainCellBgView.h */,
 				3B0B53B21D8653F4001B9191 /* PlainCellBgView.m */,
 				3BCC503F1D82B1B300B36840 /* ForwardContainer.h */,
@@ -699,90 +713,13 @@
 			name = TabIcon;
 			sourceTree = "<group>";
 		};
-		3BCE47CE1DC892EC000195EA /* XRCarouselView */ = {
+		3BD58F0B1DBDD64A0012E321 /* Webview */ = {
 			isa = PBXGroup;
 			children = (
-				3BCE47CF1DC892EC000195EA /* xRCarouselBgImage@3x.png */,
-				3BCE47D01DC892EC000195EA /* XRCarouselView.h */,
-				3BCE47D11DC892EC000195EA /* XRCarouselView.m */,
+				3BD58F0C1DBDD6970012E321 /* PINWebViewController.h */,
+				3BD58F0D1DBDD6970012E321 /* PINWebViewController.m */,
 			);
-			path = XRCarouselView;
-			sourceTree = "<group>";
-		};
-		3BCE47D51DC898BC000195EA /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				3BCE47D61DC898BC000195EA /* PINForgetController.h */,
-				3BCE47D71DC898BC000195EA /* PINForgetController.m */,
-				3BCE47D81DC898BC000195EA /* PINForgetController.xib */,
-				3BCE47D91DC898BC000195EA /* PINLoginController.h */,
-				3BCE47DA1DC898BC000195EA /* PINLoginController.m */,
-				3BCE47DB1DC898BC000195EA /* PINLoginController.xib */,
-				3BCE47DC1DC898BC000195EA /* PINRegisterController.h */,
-				3BCE47DD1DC898BC000195EA /* PINRegisterController.m */,
-				3BCE47DE1DC898BC000195EA /* PINRegisterController.xib */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		3BCE47DF1DC898BC000195EA /* My */ = {
-			isa = PBXGroup;
-			children = (
-				3BCE47E01DC898BC000195EA /* PINAllOrderController.h */,
-				3BCE47E11DC898BC000195EA /* PINAllOrderController.m */,
-				3BCE47E21DC898BC000195EA /* PINAllOrderController.xib */,
-				3BCE47E31DC898BC000195EA /* PINDateOrderController.h */,
-				3BCE47E41DC898BC000195EA /* PINDateOrderController.m */,
-				3BCE47E51DC898BC000195EA /* PINDateOrderController.xib */,
-				3BCE47E61DC898BC000195EA /* PINGetcashController.h */,
-				3BCE47E71DC898BC000195EA /* PINGetcashController.m */,
-				3BCE47E81DC898BC000195EA /* PINGetcashController.xib */,
-				3BCE47E91DC898BC000195EA /* PINMyCenterController.h */,
-				3BCE47EA1DC898BC000195EA /* PINMyCenterController.m */,
-				3BCE47EB1DC898BC000195EA /* PINMyCenterController.xib */,
-				3BCE47EC1DC898BC000195EA /* PINStoreListController.h */,
-				3BCE47ED1DC898BC000195EA /* PINStoreListController.m */,
-				3BCE47EE1DC898BC000195EA /* PINStoreListController.xib */,
-				3BCE47EF1DC898BC000195EA /* PINStoreMemberController.h */,
-				3BCE47F01DC898BC000195EA /* PINStoreMemberController.m */,
-				3BCE47F11DC898BC000195EA /* PINStoreMemberController.xib */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
-		3BCE47F21DC898BC000195EA /* StoreDetail */ = {
-			isa = PBXGroup;
-			children = (
-				3BCE47F31DC898BC000195EA /* PINStoreDetailController.h */,
-				3BCE47F41DC898BC000195EA /* PINStoreDetailController.m */,
-				3BCE47F51DC898BC000195EA /* PINStoreDetailController.xib */,
-			);
-			path = StoreDetail;
-			sourceTree = "<group>";
-		};
-		3BCE47F61DC898BC000195EA /* StoreSetting */ = {
-			isa = PBXGroup;
-			children = (
-				3BCE47F71DC898BC000195EA /* PINCreatStoreController.h */,
-				3BCE47F81DC898BC000195EA /* PINCreatStoreController.m */,
-				3BCE47F91DC898BC000195EA /* PINCreatStoreController.xib */,
-				3BCE47FA1DC898BC000195EA /* PINStoreDescController.h */,
-				3BCE47FB1DC898BC000195EA /* PINStoreDescController.m */,
-				3BCE47FC1DC898BC000195EA /* PINStoreDescController.xib */,
-				3BCE47FD1DC898BC000195EA /* PINStoreSettingController.h */,
-				3BCE47FE1DC898BC000195EA /* PINStoreSettingController.m */,
-				3BCE47FF1DC898BC000195EA /* PINStoreSettingController.xib */,
-			);
-			path = StoreSetting;
-			sourceTree = "<group>";
-		};
-		3BCE48001DC898BC000195EA /* Webview */ = {
-			isa = PBXGroup;
-			children = (
-				3BCE48011DC898BC000195EA /* PINWebViewController.h */,
-				3BCE48021DC898BC000195EA /* PINWebViewController.m */,
-			);
-			path = Webview;
+			name = Webview;
 			sourceTree = "<group>";
 		};
 		3BDFD6981D82957700F3D2C0 /* PINBusic */ = {
@@ -843,7 +780,6 @@
 		3BDFD69C1D82957700F3D2C0 /* PINImags */ = {
 			isa = PBXGroup;
 			children = (
-				3B0E5C8B1DC7469700138D05 /* del@2x.png */,
 				3BDFBE5A1DB78B64007961EF /* icon.png */,
 				3BF0627D1D87BD39000E66C5 /* btnWhiteGrayBorder@2x.png */,
 				3BF0627E1D87BD39000E66C5 /* btnWhiteGrayBorder@3x.png */,
@@ -858,14 +794,16 @@
 		3BDFD69D1D82957700F3D2C0 /* PINProject */ = {
 			isa = PBXGroup;
 			children = (
-				3BCE47D51DC898BC000195EA /* Login */,
-				3BCE47DF1DC898BC000195EA /* My */,
-				3BCE47F21DC898BC000195EA /* StoreDetail */,
-				3BCE47F61DC898BC000195EA /* StoreSetting */,
-				3BCE48001DC898BC000195EA /* Webview */,
+				3BD58F0B1DBDD64A0012E321 /* Webview */,
+				3B9E464D1D9B72140088E33E /* Store */,
+				3B9E464C1D9B6E360088E33E /* My */,
+				3B9E464B1D9B6E240088E33E /* Login */,
 				3BCC50461D82B8F000B36840 /* PINRootController.h */,
 				3BCC50471D82B8F000B36840 /* PINRootController.m */,
 				3BCC50481D82B8F000B36840 /* PINRootController.xib */,
+				3B0B53CF1D869183001B9191 /* PINGetcashController.h */,
+				3B0B53D01D869184001B9191 /* PINGetcashController.m */,
+				3B0B53D11D869184001B9191 /* PINGetcashController.xib */,
 			);
 			path = PINProject;
 			sourceTree = "<group>";
@@ -873,7 +811,6 @@
 		3BDFD69E1D82957700F3D2C0 /* PINVendor */ = {
 			isa = PBXGroup;
 			children = (
-				3BCE47CE1DC892EC000195EA /* XRCarouselView */,
 				3B9E69541DB626D100EA7818 /* GtSdkLib-noidfa */,
 				3B9E46531D9BBFC90088E33E /* SDWebImage */,
 				3BF062851D87CC1E000E66C5 /* KeyboardCategory */,
@@ -886,6 +823,8 @@
 		3BDFD69F1D8296A900F3D2C0 /* PINNetworkingManager */ = {
 			isa = PBXGroup;
 			children = (
+				3BDFD6A01D8296A900F3D2C0 /* PINNetActivityIndicator.h */,
+				3BDFD6A11D8296A900F3D2C0 /* PINNetActivityIndicator.m */,
 				3BDFD6A21D8296A900F3D2C0 /* PINNetworking.h */,
 				3BDFD6A31D8296A900F3D2C0 /* PINNetworkingConfig.h */,
 				3BDFD6A41D8296A900F3D2C0 /* PINNetworkingManager.h */,
@@ -1070,44 +1009,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B0E5C8C1DC7469700138D05 /* del@2x.png in Resources */,
+				3BCC507A1D82C02500B36840 /* PINLoginController.xib in Resources */,
 				3BF062831D87BD39000E66C5 /* btnWhiteGrayBorderSel@2x.png in Resources */,
-				3BCE480C1DC898BC000195EA /* PINDateOrderController.xib in Resources */,
 				3B0B53C81D86859F001B9191 /* navigationItemBack@2x.png in Resources */,
-				3BCE48121DC898BC000195EA /* PINStoreListController.xib in Resources */,
-				3BCE481A1DC898BC000195EA /* PINStoreDescController.xib in Resources */,
+				3BD58F071DBDBB4C0012E321 /* PINStoreSettingController.xib in Resources */,
 				3B9E46411D9B6B230088E33E /* tabIcon1@2x.png in Resources */,
 				3BDFBE5B1DB78B64007961EF /* icon.png in Resources */,
 				3BE698681D8278FB00A66F7A /* Assets.xcassets in Resources */,
+				3B0B53C51D8682A0001B9191 /* PINRegisterController.xib in Resources */,
+				3B0B53CE1D868927001B9191 /* PINForgetController.xib in Resources */,
 				3B0B53C91D86859F001B9191 /* navigationItemBack@3x.png in Resources */,
 				3B9E46401D9B6B230088E33E /* tabIcon0@3x.png in Resources */,
 				3B9E468B1D9BD6CD0088E33E /* choose@2x.png in Resources */,
-				3BCE48181DC898BC000195EA /* PINCreatStoreController.xib in Resources */,
 				3B0B541A1D86B002001B9191 /* MJRefresh.bundle in Resources */,
+				3B9E462A1D9B5D770088E33E /* PINMyCenterController.xib in Resources */,
 				3BF062821D87BD39000E66C5 /* btnWhiteGrayBorder@3x.png in Resources */,
 				3B9E46351D9B629E0088E33E /* tabBarSelection.png in Resources */,
 				3B9E46461D9B6B230088E33E /* tabIconSel1@3x.png in Resources */,
 				3B9E46451D9B6B230088E33E /* tabIconSel1@2x.png in Resources */,
-				3BCE480E1DC898BC000195EA /* PINGetcashController.xib in Resources */,
-				3BCE47D21DC892EC000195EA /* xRCarouselBgImage@3x.png in Resources */,
-				3BCE481C1DC898BC000195EA /* PINStoreSettingController.xib in Resources */,
+				3B0B53D31D869184001B9191 /* PINGetcashController.xib in Resources */,
 				3BCC504A1D82B8F000B36840 /* PINRootController.xib in Resources */,
 				3BF062811D87BD39000E66C5 /* btnWhiteGrayBorder@2x.png in Resources */,
 				3B9E46491D9B6B810088E33E /* tabBarBg.png in Resources */,
-				3BCE48081DC898BC000195EA /* PINRegisterController.xib in Resources */,
+				3B1365BB1DB734A4007CCCEA /* PINDateOrderController.xib in Resources */,
 				3B9E464A1D9B6B810088E33E /* tabBarBg@2x.png in Resources */,
 				3B9E46361D9B629E0088E33E /* tabBarSelection@2x.png in Resources */,
-				3BCE48041DC898BC000195EA /* PINForgetController.xib in Resources */,
-				3BCE48061DC898BC000195EA /* PINLoginController.xib in Resources */,
+				3B1365B61DB7348E007CCCEA /* PINAllOrderController.xib in Resources */,
 				3B9E46431D9B6B230088E33E /* tabIconSel0@2x.png in Resources */,
-				3BCE480A1DC898BC000195EA /* PINAllOrderController.xib in Resources */,
 				3B9E46441D9B6B230088E33E /* tabIconSel0@3x.png in Resources */,
-				3BCE48101DC898BC000195EA /* PINMyCenterController.xib in Resources */,
-				3BCE48161DC898BC000195EA /* PINStoreDetailController.xib in Resources */,
 				3BF062841D87BD39000E66C5 /* btnWhiteGrayBorderSel@3x.png in Resources */,
 				3B9E46421D9B6B230088E33E /* tabIcon1@3x.png in Resources */,
+				3B9E46891D9BD1860088E33E /* PINStoreMemberController.xib in Resources */,
+				3B9E46521D9B75C80088E33E /* PINStoreListController.xib in Resources */,
 				3B9E463F1D9B6B230088E33E /* tabIcon0@2x.png in Resources */,
-				3BCE48141DC898BC000195EA /* PINStoreMemberController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1167,10 +1101,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B0B54191D86B002001B9191 /* MJRefreshStateHeader.m in Sources */,
-				3BCE47D31DC892EC000195EA /* XRCarouselView.m in Sources */,
+				3B9E46881D9BD1860088E33E /* PINStoreMemberController.m in Sources */,
 				3BD58F0A1DBDCCD10012E321 /* PINStoreSettingCell.m in Sources */,
 				3B0B541C1D86B002001B9191 /* NSBundle+MJRefresh.m in Sources */,
-				3BCE48051DC898BC000195EA /* PINLoginController.m in Sources */,
 				3B0B54281D86B462001B9191 /* UIScrollView+PINRefreshControl.m in Sources */,
 				3B0B54181D86B002001B9191 /* MJRefreshNormalHeader.m in Sources */,
 				3BDFD6E31D829F9B00F3D2C0 /* PINMainModuleService.m in Sources */,
@@ -1181,43 +1114,43 @@
 				3BDFD6B71D829AE300F3D2C0 /* PINUserDefaultManagement.m in Sources */,
 				3B0B53B31D8653F4001B9191 /* PlainCellBgView.m in Sources */,
 				3B0B54151D86B002001B9191 /* MJRefreshBackNormalFooter.m in Sources */,
+				3BDFD6A61D8296A900F3D2C0 /* PINNetActivityIndicator.m in Sources */,
 				3B0B53D91D869C5C001B9191 /* PINCashCell.m in Sources */,
 				3BDFD6A71D8296A900F3D2C0 /* PINNetworkingManager.m in Sources */,
-				3BCE48151DC898BC000195EA /* PINStoreDetailController.m in Sources */,
 				3BDFD6DA1D829D6100F3D2C0 /* UIScrollView+Building.m in Sources */,
-				3BCE48071DC898BC000195EA /* PINRegisterController.m in Sources */,
 				3BDFD6BD1D829CD700F3D2C0 /* UIWindow+Category.m in Sources */,
+				3B9E46291D9B5D770088E33E /* PINMyCenterController.m in Sources */,
 				3B0B542C1D86BA8F001B9191 /* PINForgetCell.m in Sources */,
 				3B9E46821D9BBFC90088E33E /* UIImageView+HighlightedWebCache.m in Sources */,
 				3BCC503D1D82B1A800B36840 /* PINNavigationController.m in Sources */,
-				3BCE47C51DC86A71000195EA /* PINTextView.m in Sources */,
+				3B1365BA1DB734A4007CCCEA /* PINDateOrderController.m in Sources */,
 				3B0B54101D86B002001B9191 /* MJRefreshHeader.m in Sources */,
+				3B0B53C41D8682A0001B9191 /* PINRegisterController.m in Sources */,
 				3BDFD6D71D829D6100F3D2C0 /* UIButton+Building.m in Sources */,
-				3BCE48171DC898BC000195EA /* PINCreatStoreController.m in Sources */,
 				3BCC503E1D82B1A800B36840 /* PINTabBarController.m in Sources */,
 				3B0B540F1D86B002001B9191 /* MJRefreshFooter.m in Sources */,
 				3BDFD6B31D82999700F3D2C0 /* NSObject+YYModel.m in Sources */,
 				3BDC43B11D9CADEA009866E6 /* PINStoreMemberCell.m in Sources */,
+				3BD58F0E1DBDD6970012E321 /* PINWebViewController.m in Sources */,
 				3B9E46771D9BBFC90088E33E /* SDImageCache.m in Sources */,
-				3BEC88BA1DC8489600BBB382 /* PINCreatStoreCell.m in Sources */,
 				3BDFD6DC1D829D6100F3D2C0 /* UITextField+Building.m in Sources */,
 				3B9E46761D9BBFC90088E33E /* NSData+ImageContentType.m in Sources */,
 				3B0B53B01D8649D2001B9191 /* PINLoginCell.m in Sources */,
 				3B0B53C01D867E1A001B9191 /* PINUser.m in Sources */,
 				3B0B541B1D86B002001B9191 /* MJRefreshConst.m in Sources */,
 				3BDFD6AA1D82989100F3D2C0 /* PINBaseModel.m in Sources */,
-				3BCE481B1DC898BC000195EA /* PINStoreSettingController.m in Sources */,
+				3BCC50791D82C02500B36840 /* PINLoginController.m in Sources */,
 				3B9E467F1D9BBFC90088E33E /* UIImage+GIF.m in Sources */,
 				3B0B541D1D86B002001B9191 /* UIScrollView+MJExtension.m in Sources */,
 				3BCC503C1D82B1A800B36840 /* BaseViewController.m in Sources */,
 				3B0B540D1D86B002001B9191 /* MJRefreshBackFooter.m in Sources */,
 				3B0B541F1D86B002001B9191 /* UIView+MJExtension.m in Sources */,
+				3B9E46511D9B75C80088E33E /* PINStoreListController.m in Sources */,
 				3B9E46811D9BBFC90088E33E /* UIImage+WebP.m in Sources */,
 				3BDC43B71D9D0956009866E6 /* PINStoreTitleCell.m in Sources */,
 				3BDFD6D91D829D6100F3D2C0 /* UILabel+Building.m in Sources */,
 				3B9E46841D9BBFC90088E33E /* UIView+WebCacheOperation.m in Sources */,
 				3B9E467C1D9BBFC90088E33E /* SDWebImageManager.m in Sources */,
-				3BCE48091DC898BC000195EA /* PINAllOrderController.m in Sources */,
 				3BF062741D87A6C5000E66C5 /* PINStoreCell.m in Sources */,
 				3B0B540C1D86B002001B9191 /* MJRefreshAutoFooter.m in Sources */,
 				3B0B54161D86B002001B9191 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1229,26 +1162,21 @@
 				3B9E46831D9BBFC90088E33E /* UIImageView+WebCache.m in Sources */,
 				3BDFD6BA1D829BA300F3D2C0 /* PINConstant.m in Sources */,
 				3B9E46781D9BBFC90088E33E /* SDWebImageCompat.m in Sources */,
-				3BCE480B1DC898BC000195EA /* PINDateOrderController.m in Sources */,
 				3B0B540E1D86B002001B9191 /* MJRefreshComponent.m in Sources */,
-				3BCE48111DC898BC000195EA /* PINStoreListController.m in Sources */,
 				3B1365BE1DB75FCC007CCCEA /* PINCaptchaView.m in Sources */,
 				3B9E46791D9BBFC90088E33E /* SDWebImageDecoder.m in Sources */,
 				3B9E46801D9BBFC90088E33E /* UIImage+MultiFormat.m in Sources */,
 				3BCC50411D82B1B300B36840 /* ForwardContainer.m in Sources */,
 				3BF062881D87CC1E000E66C5 /* UIView+YSTextInputKeyboard.m in Sources */,
 				3BDFD6D61D829D6100F3D2C0 /* UIAlertView+PinInit.m in Sources */,
-				3BCE48131DC898BC000195EA /* PINStoreMemberController.m in Sources */,
-				3BCE480F1DC898BC000195EA /* PINMyCenterController.m in Sources */,
 				3B9E46751D9BBFC90088E33E /* MKAnnotationView+WebCache.m in Sources */,
+				3B1365B51DB7348E007CCCEA /* PINAllOrderController.m in Sources */,
 				3B0B54111D86B002001B9191 /* MJRefreshAutoGifFooter.m in Sources */,
 				3BDFD6B41D82999700F3D2C0 /* YYClassInfo.m in Sources */,
 				3B0B53DC1D86ADF7001B9191 /* PINStoreModel.m in Sources */,
-				3BCE48031DC898BC000195EA /* PINForgetController.m in Sources */,
+				3B0B53CD1D868927001B9191 /* PINForgetController.m in Sources */,
 				3B0B54171D86B002001B9191 /* MJRefreshGifHeader.m in Sources */,
-				3BCE480D1DC898BC000195EA /* PINGetcashController.m in Sources */,
 				3BDFD6E01D829D6100F3D2C0 /* UIViewAdditions.m in Sources */,
-				3BCE481D1DC898BC000195EA /* PINWebViewController.m in Sources */,
 				3B0B53D61D8699F0001B9191 /* PINCashModel.m in Sources */,
 				3BE698601D8278FB00A66F7A /* AppDelegate.m in Sources */,
 				3BDFD6D81D829D6100F3D2C0 /* UIImageView+Building.m in Sources */,
@@ -1256,13 +1184,13 @@
 				3BDFD6DF1D829D6100F3D2C0 /* UIView+ClickOn.m in Sources */,
 				3B9E467D1D9BBFC90088E33E /* SDWebImagePrefetcher.m in Sources */,
 				3B9E467A1D9BBFC90088E33E /* SDWebImageDownloader.m in Sources */,
+				3BD58F061DBDBB4C0012E321 /* PINStoreSettingController.m in Sources */,
 				3BDFD6DB1D829D6100F3D2C0 /* UITableView+Building.m in Sources */,
-				3BCE48191DC898BC000195EA /* PINStoreDescController.m in Sources */,
 				3B9E467E1D9BBFC90088E33E /* UIButton+WebCache.m in Sources */,
-				3BCE47C81DC8863F000195EA /* PINGeoModel.m in Sources */,
 				3B0B54131D86B002001B9191 /* MJRefreshAutoStateFooter.m in Sources */,
 				3B0B53BC1D8678EE001B9191 /* NSObject+HUD.m in Sources */,
 				3B0B541E1D86B002001B9191 /* UIScrollView+MJRefresh.m in Sources */,
+				3B0B53D21D869184001B9191 /* PINGetcashController.m in Sources */,
 				3BDFD6DD1D829D6100F3D2C0 /* UITextView+Building.m in Sources */,
 				3BE6985D1D8278FB00A66F7A /* main.m in Sources */,
 			);

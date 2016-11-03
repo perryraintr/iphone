@@ -21,9 +21,6 @@
 /// GET
 - (void)GET:(NSString *)methodName params:(id)params finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 
-/// GET
-- (void)GETGEO:(NSString *)methodName params:(id)params finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
-
 /// POST
 - (void)POST:(NSString *)methodName params:(NSDictionary *)params finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 

@@ -56,42 +56,6 @@ static NSString *kUploadImageName = @"file";
     }];
 }
 
-/// GET
-- (void)GETGEO:(NSString *)methodName params:(id)params finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain", nil];
-    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-    
-    NSString *requestUrl = @"http://restapi.amap.com/v3/geocode/";
-    NSString *urlString = @"";
-    urlString = [NSString stringWithFormat:@"%@%@?%@", requestUrl, methodName, params];
-    
-    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\n", methodName, urlString);
-    
-    [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        PINGeoModel *pinGeoModel = [PINGeoModel modelWithJSON:responseObject];
-        if (pinGeoModel.geocodes.count > 0) {
-            finished((NSDictionary *)[pinGeoModel.geocodes objectAtIndex:0], requestErrorWithCode(PINServiceTag_Success));
-        } else {
-            failure(nil, requestErrorWithCode(PINServiceTag_Error));
-        }
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            PLog(@"requestFinished： ==>%@\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n%@\n~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~\n\n", methodName,
-                 [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-        });
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        PLog(@"requestFailed:==>%@\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n%@\n~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~\n\n", methodName, @"失败");
-        failure(nil, requestErrorWithCode(PINServiceTag_Error));
-    }];
-}
-
 /// POST
 - (void)POST:(NSString *)methodName params:(NSDictionary *)params finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
