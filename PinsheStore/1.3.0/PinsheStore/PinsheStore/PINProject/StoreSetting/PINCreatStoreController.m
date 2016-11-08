@@ -71,7 +71,6 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-#warning by shi xiesi
 //    self.pinStoreModel.address = @"北京市朝阳区三元桥站";
     [self.httpService addressChangeLocation:self.pinStoreModel.address finished:^(NSDictionary *result, NSString *message) {
         PLog(@"location : %@", [result objectForKey:@"location"]);

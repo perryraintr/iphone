@@ -52,7 +52,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-#warning by shi 放置这里
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self checkStore:NO];
 }
