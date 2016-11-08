@@ -26,6 +26,10 @@
     self.title = @"选择店铺";
     [self initParams];
     [self initUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestStoreList];
 }
 
@@ -46,7 +50,8 @@
 
     [self.httpService storeRequestWithMid:[PINUserDefaultManagement instance].pinUser.guid finished:^(NSDictionary *result, NSString *message) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-
+        [self.storeListArray removeAllObjects];
+        
         for (NSDictionary *dic in [result objectForKey:@"array"]) {
             PINStoreModel *pinStoreModel = [PINStoreModel modelWithDictionary:dic];
             [self.storeListArray addObject:pinStoreModel];
@@ -98,14 +103,7 @@
             storeCell = [[PINStoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:storeCellId];
         }
         PINStoreModel *pinStoreModel = [self.storeListArray objectAtIndex:indexPath.row];
-        [storeCell.iconImageview sd_setImageWithURL:[NSURL URLWithString:pinStoreModel.image] placeholderImage:nil];
-        storeCell.nameLabel.text = pinStoreModel.name;
-        if ([PINUserDefaultManagement instance].sid == pinStoreModel.guid) {
-            PLog(@"sid = %zd", [PINUserDefaultManagement instance].sid);
-            storeCell.chooseImageview.hidden = NO;
-        } else {
-            storeCell.chooseImageview.hidden = YES;
-        }
+        [storeCell resetStoreListCell:pinStoreModel];
         storeCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:indexPath.row == 0];
         return storeCell;
     }
@@ -115,8 +113,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     PINStoreModel *pinStoreModel = [self.storeListArray objectAtIndex:indexPath.row];
     [PINUserDefaultManagement instance].sid = pinStoreModel.guid;
-    [PINUserDefaultManagement instance].storeName = pinStoreModel.name;
-    [PINUserDefaultManagement instance].storeCurrent = pinStoreModel.current;
     [PINAppDelegate() rootVC];
 }
 

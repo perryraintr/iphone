@@ -32,7 +32,12 @@
     
     self.lineView = Building_UIViewWithSuperView(self.contentView);
     self.lineView.backgroundColor = HEXCOLOR(pinColorMainBackground);
-    
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).offset(15);
+        make.right.equalTo(self.contentView).offset(-15);
+        make.bottom.equalTo(self.contentView);
+        make.height.equalTo(@(1));
+    }];
 }
 
 - (void)layoutUI:(int)starNum {
@@ -61,13 +66,6 @@
         make.left.equalTo(self.startView.mas_right).offset(10);
         make.right.equalTo(self.contentView).offset(-15);
     }];
-    
-    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(15);
-        make.right.equalTo(self.contentView).offset(-15);
-        make.top.equalTo(self.commentLabel.mas_bottom).offset(15);
-        make.height.equalTo(@(1));
-    }];
 }
 
 - (void)resetNameSloganCell:(PINStoreModel *)model {
@@ -83,7 +81,7 @@
     }
     self.nameLabel.text = model.name;
     self.sloganLabel.text = model.slogan;
-    self.commentLabel.text = [NSString stringWithFormat:@"%zd · %@", model.star, model.feature3];
+    self.commentLabel.text = [NSString stringWithFormat:@"%zd%@%@", model.star, model.feature3.length > 0 ? model.feature3 : @" · ", model.feature3];
     [self layoutUI:starNum];
 }
 

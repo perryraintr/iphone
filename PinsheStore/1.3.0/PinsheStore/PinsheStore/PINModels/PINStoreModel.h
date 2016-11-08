@@ -34,6 +34,10 @@
 
 @property (nonatomic, strong) NSString *avatar;
 
+@property (nonatomic, strong) UIImage *avatarImage;
+
+@property (nonatomic, strong) NSString *avatarImageName;
+
 @property (nonatomic, strong) NSString *recommend;
 
 @property (nonatomic, strong) NSString *feature1;
@@ -62,6 +66,18 @@
 
 @property (nonatomic, strong) NSString *modify_time;
 
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSMutableArray *images;
+
+@property (nonatomic, strong) NSMutableArray *imageNames;
+
+@property (nonatomic, strong) NSArray *feature1s;
+
+@property (nonatomic, strong) NSArray *feature2s;
+
+@property (nonatomic, assign) int is_delete;
+
+@property (nonatomic, strong) NSArray *resultFeature1;
+
+@property (nonatomic, strong) NSArray *resultFeature2;
 
 @end

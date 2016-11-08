@@ -29,6 +29,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[self findFirstResponder] resignFirstResponder];
+    self.delegate = nil;
 }
 
 - (void)initBaseParams {

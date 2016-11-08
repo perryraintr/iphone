@@ -69,39 +69,12 @@
     [defaults synchronize];
 }
 
-- (NSString *)storeName {
-    return [defaults objectForKey:@"storeName"];
-}
-
-- (void)setStoreName:(NSString *)storeName {
-    [defaults setObject:storeName forKey:@"storeName"];
-    [defaults synchronize];
-}
-
-- (float)storeCurrent {
-    return [[defaults objectForKey:@"storeCurrent"] floatValue];
-}
-
-- (void)setStoreCurrent:(float)storeCurrent {
-    [defaults setFloat:storeCurrent forKey:@"storeCurrent"];
-    [defaults synchronize];
-}
-
 - (BOOL)hasStore {
     return [[defaults objectForKey:@"hasStore"] boolValue];
 }
 
 - (void)setHasStore:(BOOL)hasStore {
     [defaults setBool:hasStore forKey:@"hasStore"];
-    [defaults synchronize];
-}
-
-- (BOOL)isSotreMember {
-    return [[defaults objectForKey:@"isSotreMember"] boolValue];
-}
-
-- (void)setIsSotreMember:(BOOL)isSotreMember {
-    [defaults setBool:isSotreMember forKey:@"isSotreMember"];
     [defaults synchronize];
 }
 

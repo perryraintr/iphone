@@ -10,10 +10,13 @@
 #import "PINForgetCell.h"
 #import "PINStoreTitleCell.h"
 #import "PlainCellBgView.h"
+#import "PINStoreModel.h"
 
 @interface PINGetcashController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
+
+@property (strong, nonatomic) PINStoreModel *pinStoreModel;
 
 @end
 
@@ -25,6 +28,22 @@
         [self chatShowHint:@"网络不给力"];
         return;
     }
+    [self requestStoreInfo];
+}
+
+- (void)requestStoreInfo {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    [self.httpService storeInfoRequestWithSid:[PINUserDefaultManagement instance].sid finished:^(NSDictionary *result, NSString *message) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        self.pinStoreModel = [PINStoreModel modelWithDictionary:result];
+        [self.tableview reloadData];
+        
+    } failure:^(NSDictionary *result, NSString *message) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self chatShowHint:@"请求错误"];
+    }];
 }
 
 - (void)requestCashAdd:(NSString *)price {
@@ -35,14 +54,14 @@
         return;
     }
     
-    if ([PINUserDefaultManagement instance].storeCurrent < [price floatValue]) {
+    if (self.pinStoreModel.current < [price floatValue]) {
         [self chatShowHint:@"余额不足"];
         return;
     }
     
     [self.httpService cashAddRequestWithSid:[PINUserDefaultManagement instance].sid mid:[PINUserDefaultManagement instance].pinUser.guid amount:price  finished:^(NSDictionary *result, NSString *message) {
         [self chatShowHint:@"提现审核中"];
-        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"&amount=%@&way=iOS&name=%@&title=%@&time=%@", price, [PINUserDefaultManagement instance].pinUser.phone, [PINUserDefaultManagement instance].storeName, [result objectForKey:@"create_time"]]];
+        [self.httpService wechatSendWithMessage:[NSString stringWithFormat:@"&amount=%@&way=iOS&name=%@&title=%@&time=%@", price, [PINUserDefaultManagement instance].pinUser.phone, self.pinStoreModel.name, [result objectForKey:@"create_time"]]];
         [super backAction];
     } failure:^(NSDictionary *result, NSString *message) {
         
@@ -73,8 +92,8 @@
         if (pinStoreTitleCell == nil) {
             pinStoreTitleCell = [[PINStoreTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:pinStoreTitleCellId];
         }
-        pinStoreTitleCell.nameLabel.text = [PINUserDefaultManagement instance].storeName;
-        pinStoreTitleCell.amountLabel.text = [NSString stringWithFormat:@"当前余额：%.2f元", [PINUserDefaultManagement instance].storeCurrent];
+        pinStoreTitleCell.nameLabel.text = self.pinStoreModel.name;
+        pinStoreTitleCell.amountLabel.text = [NSString stringWithFormat:@"当前余额：%.2f元", self.pinStoreModel.current];
         pinStoreTitleCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:YES];
         
         return pinStoreTitleCell;

@@ -32,8 +32,7 @@
  * imageNames ：图片名 @[@"image.png", ...] 需要带有后缀
  * images ：要上传的图片
  */
-- (void)UploadImagesWithMethodName:(NSString *)methodName params:(NSDictionary *)params imageNames:(NSArray <NSString *>*)imageNames images:(NSArray *)images finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
-
+- (void)UploadImagesWithMethodName:(NSString *)methodName params:(NSDictionary *)params avatarImageName:(NSString *)avatarImageName avatarImage:(id)avatarImage imageNames:(NSArray <NSString *>*)imageNames images:(NSArray *)images finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure;
 /// 请求返回message
 NSString *requestErrorWithCode(PINServiceTag code);
 

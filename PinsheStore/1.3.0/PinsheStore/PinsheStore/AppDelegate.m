@@ -26,7 +26,13 @@
     [self initReachability];
     
     if ([PINUserDefaultManagement instance].isLogined) {
-        [self rootVC];
+        if ([PINUserDefaultManagement instance].sid == 0) {
+            // 变为未登录状态
+            [PINConstant cleanUserDefault];
+            [self needLoginVC];
+        } else {
+            [self rootVC];
+        }
     } else {
         [self needLoginVC];
     }

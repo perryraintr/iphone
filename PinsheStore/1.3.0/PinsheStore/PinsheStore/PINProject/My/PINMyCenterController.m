@@ -36,7 +36,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if ([PINUserDefaultManagement instance].hasStore) {
-        self.titleArray = [NSMutableArray arrayWithObjects:@"提现", @"切换店铺", @"我的店员", @"设置店铺", nil];
+        self.titleArray = [NSMutableArray arrayWithObjects:@"提现", @"切换店铺", @"我的店员", @"设置店铺", @"提现账户", @"设置店铺WiFi", @"设置公众号推送内容", nil];
     } else {
         [self.titleArray removeAllObjects];
     }
@@ -70,6 +70,21 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WITH, 10)];
     if (section == 0) {
         view.height = self.titleArray.count > 0 ? 10 : 0;
+    }
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == tableView.numberOfSections - 1) {
+        return 10;
+    }
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *view = Building_UIViewWithFrame(CGRectMake(0, 0, SCREEN_WITH, 0));
+    if (section == tableView.numberOfSections - 1) {
+        view.height = 10;
     }
     return view;
 }
@@ -153,6 +168,12 @@
             [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREMEMBER_VC navigationController:self.navigationController params:nil animated:YES];
         } else if (indexPath.row == 3) {
             [[ForwardContainer shareInstance] pushContainer:FORWARD_STORESETTING_VC navigationController:self.navigationController params:nil animated:YES];
+        } else if (indexPath.row == 4) {
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_PAYMENTLIST_VC navigationController:self.navigationController params:nil animated:YES];
+        } else if (indexPath.row == 5) {
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREWIFI_VC navigationController:self.navigationController params:nil animated:YES];
+        } else if (indexPath.row == 6) {
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREPUSHLIST_VC navigationController:self.navigationController params:nil animated:YES];
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
@@ -196,10 +217,7 @@
 #pragma mark - Button Action
 // 退出
 - (void)loginOut {
-    [PINUserDefaultManagement instance].sid = 0;
-    [PINUserDefaultManagement instance].storeName = @"";
-    [PINUserDefaultManagement instance].storeCurrent = 0;
-    [PINUserDefaultManagement instance].pinUser = nil;
+    [PINConstant cleanUserDefault];
     [PINAppDelegate() needLoginVC];
 }
 

@@ -12,7 +12,6 @@
 #import "PINCashCell.h"
 #import "MJRefresh.h"
 #import "PINStoreModel.h"
-#import "PINStoreCell.h"
 #import "PINStoreTitleCell.h"
 #import "PINTodayCell.h"
 
@@ -33,6 +32,8 @@
 @property (assign, nonatomic) float storeAmount;
 
 @property (assign, nonatomic) int storeCount;
+
+@property (strong, nonatomic) PINStoreModel *pinStoreModel;
 
 @end
 
@@ -73,131 +74,19 @@
     }];
 }
 
-- (UIView *)addCheckView {
-    if (!_checkView) {
-        _checkView = Building_UIViewWithSuperView(self.view);
-        _checkView.backgroundColor = HEXCOLOR(pinColorWhite);
-        [_checkView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(self.view);
-            make.top.equalTo(self.view).offset(64);
-        }];
-        [_checkView bringSubviewToFront:self.view];
-        
-        UILabel *label = Building_UILabelWithSuperView(_checkView, Font(fFont16), HEXCOLOR(pinColorTextDarkGray), NSTextAlignmentCenter, 0);
-        label.text = @"你还未加入品社咖啡馆！如果你是咖啡馆长，请联系品社客服；如果你是店员，请联系你的馆长。";
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@(SCREEN_WITH - 20));
-            make.centerX.equalTo(self.view);
-            make.centerY.equalTo(self.view).offset(-40);
-        }];
-        
-        UIButton *checkButton = Building_UIButtonWithSuperView(_checkView, self, @selector(drawUp), [UIColor clearColor]);
-        [checkButton setTitle:@"点击查看进度" forState:UIControlStateNormal];
-        [checkButton setTitleColor:HEXCOLOR(pinColorWhite) forState:UIControlStateNormal];
-        [checkButton setBackgroundColor:HEXCOLOR(pinColorDarkBlack)];
-        checkButton.titleLabel.font = Font(fFont14);
-        checkButton.layer.masksToBounds = YES;
-        checkButton.layer.cornerRadius = 5;
-        
-        [checkButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view);
-            make.centerY.equalTo(self.view).offset(40);
-            make.width.equalTo(@(100));
-            make.height.equalTo(@(30));
-        }];
-    }
-    return _checkView;
-}
-
-- (void)removeCheckView {
-    self.checkView.hidden = YES;
-    self.checkView = nil;
-    [self.checkView removeFromSuperview];
-}
-
 #pragma mark -
 #pragma mark - request
-- (void)memberRequest {
-    [self.httpService memberRequestWithTelphone:[PINUserDefaultManagement instance].pinUser.phone finished:^(NSDictionary *result, NSString *message) {
-        [PINUserDefaultManagement instance].pinUser = [PINUser modelWithDictionary:result];
-        
-    } failure:^(NSDictionary *result, NSString *message) {
-        
-    }];
-}
-
 - (void)checkStore:(BOOL)isDragUp {
-    // 先请求用户id是否改变
-    [self.httpService memberRequestWithTelphone:[PINUserDefaultManagement instance].pinUser.phone finished:^(NSDictionary *result, NSString *message) {
-        [PINUserDefaultManagement instance].pinUser = [PINUser modelWithDictionary:result];
-        
-        // 是否是店长
-        [self.httpService storeRequestWithMid:[PINUserDefaultManagement instance].pinUser.guid finished:^(NSDictionary *result, NSString *message) {
-            [PINUserDefaultManagement instance].hasStore = YES;
-            [PINUserDefaultManagement instance].isSotreMember = NO;
-
-            [self removeCheckView];
-            [self.storeArray removeAllObjects];
-            
-            BOOL currentSidIsTure = NO;
-            for (NSDictionary *dic in [result objectForKey:@"array"]) {
-                PINStoreModel *storeModel = [PINStoreModel modelWithDictionary:dic];
-                if ([PINUserDefaultManagement instance].sid == storeModel.guid && [PINUserDefaultManagement instance].sid > 0) {
-                    currentSidIsTure = YES;
-                    [PINUserDefaultManagement instance].sid = storeModel.guid;
-                    [PINUserDefaultManagement instance].storeName = storeModel.name;
-                    [PINUserDefaultManagement instance].storeCurrent = storeModel.current;
-                }
-                [self.storeArray addObject:storeModel];
-            }
-            
-            if ([PINUserDefaultManagement instance].sid == 0 || !currentSidIsTure) {
-                if (self.storeArray.count > 0) {
-                    [PINUserDefaultManagement instance].sid = ((PINStoreModel *)self.storeArray[0]).guid;
-                    [PINUserDefaultManagement instance].storeName = ((PINStoreModel *)self.storeArray[0]).name;
-                    [PINUserDefaultManagement instance].storeCurrent = ((PINStoreModel *)self.storeArray[0]).current;
-                }
-            }
-            
-            [self requestCashListWithDragup:isDragUp];
-            
-        } failure:^(NSDictionary *result, NSString *message) {
-            [self checkStoreMember:isDragUp];
-
-        }];
-        
-    } failure:^(NSDictionary *result, NSString *message) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self chatShowHint:@"用户请求失败"];
-    }];
     
-}
-
-// 是否是店员
-- (void)checkStoreMember:(BOOL)isDragUp {
-    [self.httpService storeMemberRequestWithMid:[PINUserDefaultManagement instance].pinUser.guid finished:^(NSDictionary *result, NSString *message) {
-        // 是店员
-        [PINUserDefaultManagement instance].isSotreMember = YES;
-        [PINUserDefaultManagement instance].hasStore = NO;
-        [self removeCheckView];
-    
-        for (NSDictionary *dic in [result objectForKey:@"array"]) {
-            [PINUserDefaultManagement instance].sid = [[dic objectForKey:@"store_guid"] intValue];
-            [PINUserDefaultManagement instance].storeName = [dic objectForKey:@"store_name"];
-            [PINUserDefaultManagement instance].storeCurrent = [[dic objectForKey:@"store_current"] floatValue];
-            break;
-        }
-        
+    [self.httpService storeInfoRequestWithSid:[PINUserDefaultManagement instance].sid finished:^(NSDictionary *result, NSString *message) {
+        self.pinStoreModel = [PINStoreModel modelWithDictionary:result];
         [self requestCashListWithDragup:isDragUp];
-        
-    } failure:^(NSDictionary *result, NSString *message) {
-        [PINUserDefaultManagement instance].hasStore = NO;
-        [PINUserDefaultManagement instance].isSotreMember = NO;
 
-        [self addCheckView];
+    } failure:^(NSDictionary *result, NSString *message) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self chatShowHint:@"等待审核"];
+        [self chatShowHint:@"请求错误"];
     }];
+    
 }
 
 - (void)requestCashListWithDragup:(BOOL)isDragup {
@@ -256,7 +145,7 @@
 }
 
 - (void)drawDown {
-    [self checkStore:YES];
+    [self requestCashListWithDragup:YES];
 }
 
 #pragma mark -
@@ -320,8 +209,8 @@
        if (pinStoreTitleCell == nil) {
            pinStoreTitleCell = [[PINStoreTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:pinStoreTitleCellId];
        }
-       pinStoreTitleCell.nameLabel.text = [PINUserDefaultManagement instance].storeName;
-       pinStoreTitleCell.amountLabel.text = [NSString stringWithFormat:@"当前余额：%.2f元", [PINUserDefaultManagement instance].storeCurrent];
+       pinStoreTitleCell.nameLabel.text = self.pinStoreModel.name;
+       pinStoreTitleCell.amountLabel.text = [NSString stringWithFormat:@"当前余额：%.2f元", self.pinStoreModel.current];
        pinStoreTitleCell.backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:YES];
 
        return pinStoreTitleCell;

@@ -12,8 +12,10 @@
 
 @property (assign, nonatomic) int guid;
 
-@property (assign, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *name;
 
-@property (assign, nonatomic) NSString *url;
+@property (strong, nonatomic) NSString *url;
+
+@property (assign, nonatomic) BOOL isChoosed;
 
 @end

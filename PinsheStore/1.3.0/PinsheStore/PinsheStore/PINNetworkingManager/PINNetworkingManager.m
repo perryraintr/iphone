@@ -13,6 +13,7 @@ static float const kTimeoutInterval = 30.f;
 static NSString *const kServiceSuccessMessage = @"请求成功";
 static NSString *const kServiceErrorMessage = @"请求失败";
 static NSString *kUploadImageName = @"file";
+static NSString *kUploadAvatarImageName = @"avatar";
 
 @implementation PINNetworkingManager
 
@@ -137,7 +138,7 @@ static NSString *kUploadImageName = @"file";
  * imageNames ：图片名 @[@"image.png", ...] 需要带有后缀
  * images ：要上传的图片
  */
-- (void)UploadImagesWithMethodName:(NSString *)methodName params:(NSDictionary *)params imageNames:(NSArray <NSString *>*)imageNames images:(NSArray *)images finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+- (void)UploadImagesWithMethodName:(NSString *)methodName params:(NSDictionary *)params avatarImageName:(NSString *)avatarImageName avatarImage:(id)avatarImage imageNames:(NSArray <NSString *>*)imageNames images:(NSArray *)images finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -147,21 +148,39 @@ static NSString *kUploadImageName = @"file";
     NSString *urlString = @"";
     urlString = [NSString stringWithFormat:@"%@%@?", requestUrl, methodName];
     
-//    PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\npostString=====>\n%@\n", methodName, urlString, paramsFromDictionary(params));
+    PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\npostString=====>\n%@\n", methodName, urlString, paramsFromDictionary(params));
     
     [manager POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *fileName = imageNames[idx];
             
             if ([obj isKindOfClass:[UIImage class]]) {
-                NSData *imageData = UIImageJPEGRepresentation(obj, 0.3);
-                [formData appendPartWithFileData:imageData name:kUploadImageName fileName:fileName mimeType:([fileName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
+                NSData *imageData = [obj dataCompresWithLength:UPLOADIMAGELENGTH];
+                if (imageData != nil) {
+                    [formData appendPartWithFileData:imageData name:kUploadImageName fileName:fileName mimeType:([fileName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
+                }
             } else {
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:obj]];
-                [formData appendPartWithFileData:imageData name:kUploadImageName fileName:fileName mimeType:([fileName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
-            }
+                if (imageData != nil) {
+                    [formData appendPartWithFileData:imageData name:kUploadImageName fileName:fileName mimeType:([fileName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
+                }            }
         }];
-
+        
+        if (avatarImageName.length > 0) {
+            if ([avatarImage isKindOfClass:[UIImage class]]) {
+                NSData *imageData = [avatarImage dataCompresWithLength:UPLOADIMAGELENGTH];
+                if (imageData != nil) {
+                    [formData appendPartWithFileData:imageData name:kUploadAvatarImageName fileName:avatarImageName mimeType:([avatarImageName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
+                }
+                
+            } else {
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:avatarImage]];
+                if (imageData != nil) {
+                    [formData appendPartWithFileData:imageData name:kUploadAvatarImageName fileName:avatarImageName mimeType:([avatarImageName hasSuffix:@"png"] ? @"image/png" : @"image/jpg")];
+                }
+            }
+        }
+        
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

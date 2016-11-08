@@ -23,13 +23,7 @@
 
 @property (nonatomic, assign) int sid;
 
-@property (nonatomic, strong) NSString *storeName;
-
-@property (nonatomic, assign) float storeCurrent;
-
 @property (nonatomic, assign) BOOL hasStore;
-
-@property (nonatomic, assign) BOOL isSotreMember;
 
 @property (nonatomic, strong) NSString *getTuiCid;
 

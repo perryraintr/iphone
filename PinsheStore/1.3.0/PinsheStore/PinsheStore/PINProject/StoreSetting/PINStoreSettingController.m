@@ -11,6 +11,7 @@
 #import "PINStoreSettingCell.h"
 #import "PINStoreModel.h"
 #import "PINCreatStoreCell.h"
+#import "PINStoreFeatureModel.h"
 
 @interface PINStoreSettingController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
@@ -18,11 +19,11 @@
 
 @property (strong, nonatomic) PINStoreModel *pinStoreModel;
 
-@property (nonatomic, strong) UIImage *paramImage;
-
 @property (nonatomic, strong) NSArray *storeArray;
 
 @property (nonatomic, strong) NSArray *nameArray;
+
+@property (nonatomic, strong) NSString *storeAddress;
 
 @end
 
@@ -37,7 +38,12 @@
 
 - (void)initParams {
     self.nameArray = [NSArray arrayWithObjects:@"店长头像", @"店长昵称", @"联系方式", nil];
-    self.storeArray = [NSArray arrayWithObjects:@"店铺名称", @"店铺描述", @"门店故事", @"门店地址", @"运营时间", nil];
+    self.storeArray = [NSArray arrayWithObjects:@"店铺图片", @"店铺名称", @"店铺描述", @"门店故事", @"门店地址", @"运营时间", @"装修风格", @"特色1", @"特色2", nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self findFirstResponder] resignFirstResponder];
 }
 
 - (void)requestDetail {
@@ -48,6 +54,12 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         self.pinStoreModel = [PINStoreModel modelWithDictionary:result];
+        self.pinStoreModel.imageNames = [NSMutableArray array];
+        [self saveFeature1];
+        [self saveFeature2];
+        [self saveImageNams];
+        self.pinStoreModel.avatarImageName = @"avatarImageName.jpg";
+        self.storeAddress = [NSString stringWithFormat:@"%@", self.pinStoreModel.address];
         
         self.tableview.delegate = self;
         self.tableview.dataSource = self;
@@ -73,11 +85,6 @@
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
     [paramDic setObject:self.pinStoreModel forKey:@"storeModel"];
     
-//    http://www.pinshe.org/html/v1/coffee/store_previewdetail.html?id=88
-    
-//    NSString *loadUrl = [NSString stringWithFormat:@"%@coffee/store_previewdetail.html?id=%zd&slogan=%@&date=%@&phone=%@", REQUEST_HTML_URL, self.pinStoreModel.guid, self.storeSlogan, self.storeDate, self.storePhone];
-//    [paramDic setObject:loadUrl forKey:@"loadUrl"];
-    
     [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREDETAIL_VC navigationController:self.navigationController params:paramDic animated:YES];
 
 }
@@ -90,17 +97,95 @@
         return;
     }
     
-//    [self.httpService storeModifyInfoRequestWithSid:self.pinStoreModel.guid slogan:self.storeSlogan dateStr:self.storeDate phone:self.storePhone finished:^(NSDictionary *result, NSString *message) {
-//        [self chatShowHint:@"保存成功"];
-//    } failure:^(NSDictionary *result, NSString *message) {
-//        [self chatShowHint:@"保存失败"];
-//    }];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    if ([self.pinStoreModel.address isEqualToString:self.storeAddress]) {
+        
+        [self.httpService storeModifyInfoRequestWithStoreModel:self.pinStoreModel isChangeAddress:NO finished:^(NSDictionary *result, NSString *message) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+            [self chatShowHint:@"保存成功"];
+        } failure:^(NSDictionary *result, NSString *message) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+            [self chatShowHint:@"保存失败"];
+        }];
+        
+    } else {
+        self.pinStoreModel.address = self.storeAddress;
+        [self.httpService addressChangeLocation:self.pinStoreModel.address finished:^(NSDictionary *result, NSString *message) {
+            PLog(@"location : %@", [result objectForKey:@"location"]);
+            //        116.443108,39.921470
+            NSArray *locationsArr = [[result objectForKey:@"location"] componentsSeparatedByString:@","];
+            self.pinStoreModel.longitude = [locationsArr[0] doubleValue];
+            self.pinStoreModel.latitude = [locationsArr[1] doubleValue];
+            
+            [self.httpService storeModifyInfoRequestWithStoreModel:self.pinStoreModel isChangeAddress:YES finished:^(NSDictionary *result, NSString *message) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+                [self chatShowHint:@"保存成功"];
+            } failure:^(NSDictionary *result, NSString *message) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+                [self chatShowHint:@"保存失败"];
+            }];
+            
+        } failure:^(NSDictionary *result, NSString *message) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self chatShowHint:@"地址信息不正确"];
+        }];
+    }
 }
 
 - (void)resetDescText:(NSString *)text {
     PLog(@"resetDescText-- %@", text);
     self.pinStoreModel.storeDescription = text;
     [self.tableview reloadData];
+}
+
+- (void)resetFeature1:(NSArray *)feature1 {
+    self.pinStoreModel.feature1s = feature1;
+    [self.tableview reloadData];
+    [self saveFeature1];
+}
+
+- (void)saveFeature1 {
+    self.pinStoreModel.feature1 = @"";
+    for (PINStoreFeatureModel *model in self.pinStoreModel.feature1s) {
+        self.pinStoreModel.feature1 = [NSString stringWithFormat:@"%@,%zd", self.pinStoreModel.feature1, model.guid];
+    }
+    if (self.pinStoreModel.feature1.length > 0) {
+        self.pinStoreModel.feature1 = [self.pinStoreModel.feature1 substringFromIndex:1];
+    }
+}
+
+- (void)resetFeature2:(NSArray *)feature2 {
+    self.pinStoreModel.feature2s = feature2;
+    [self.tableview reloadData];
+    [self saveFeature2];
+}
+
+- (void)saveFeature2 {
+    self.pinStoreModel.feature2 = @"";
+    for (PINStoreFeatureModel *model in self.pinStoreModel.feature2s) {
+        self.pinStoreModel.feature2 = [NSString stringWithFormat:@"%@,%zd", self.pinStoreModel.feature2, model.guid];
+    }
+    if (self.pinStoreModel.feature2.length > 0) {
+        self.pinStoreModel.feature2 = [self.pinStoreModel.feature2 substringFromIndex:1];
+    }
+}
+
+- (void)resetPhotoArray:(NSArray *)images {
+    self.pinStoreModel.images = [NSMutableArray arrayWithArray:images];
+    [self.tableview reloadData];
+    [self saveImageNams];
+}
+
+- (void)saveImageNams {
+    [self.pinStoreModel.imageNames removeAllObjects];
+    for (int i = 0; i < self.pinStoreModel.images.count; i++) {
+        [self.pinStoreModel.imageNames addObject:[NSString stringWithFormat:@"imagename%zd.jpg", i]];
+    }
 }
 
 #pragma mark -
@@ -138,6 +223,24 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = Building_UIViewWithFrame(CGRectMake(0, 0, SCREEN_WITH, 0));
+    if (section == 4) {
+        view.height = 20;
+    } else {
+        view.height = 0;
+    }
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 4) {
+        return 20;
+    } else {
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view = Building_UIViewWithFrame(CGRectMake(0, 0, SCREEN_WITH, 0));
     if (section == 4) {
         view.height = 20;
@@ -247,8 +350,10 @@
         if (indexPath.row == 0) {
             cell.nameTextField.hidden = YES;
             cell.avatarImageview.hidden = NO;
-            if (self.paramImage) {
-                cell.avatarImageview.image = self.paramImage;
+            cell.avatarImageview.layer.masksToBounds = YES;
+            cell.avatarImageview.layer.cornerRadius = FITHEIGHT(40) / 2.0;
+            if (self.pinStoreModel.avatarImage) {
+                cell.avatarImageview.image = self.pinStoreModel.avatarImage;
             } else {
                 [cell.avatarImageview sd_setImageWithURL:[NSURL URLWithString:self.pinStoreModel.avatar] placeholderImage:IMG_Name(@"icon")];
             }
@@ -264,28 +369,58 @@
         }
     } else if (indexPath.section == 3) {
         cell.nameLabel.text = [self.storeArray objectAtIndex:indexPath.row];
-        
         if (indexPath.row == 0) {
+            cell.nameTextField.hidden = YES;
+            cell.avatarImageview.hidden = NO;
+            if ([self.pinStoreModel.images[0] isKindOfClass:[UIImage class]]) {
+                cell.avatarImageview.image = self.pinStoreModel.images[0];
+            } else {
+                [cell.avatarImageview sd_setImageWithURL:[NSURL URLWithString:self.pinStoreModel.images[0]] placeholderImage:IMG_Name(@"icon")];
+            }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.row == 1) {
             cell.nameTextField.placeholder = @"请填写店铺名称";
             cell.nameTextField.returnKeyType = UIReturnKeyNext;
             cell.nameTextField.text = self.pinStoreModel.name;
-        } else if (indexPath.row == 1) {
+        } else if (indexPath.row == 2) {
             cell.nameTextField.placeholder = @"请使用一句话描述您的店铺";
             cell.nameTextField.returnKeyType = UIReturnKeyNext;
             cell.nameTextField.text = self.pinStoreModel.slogan;
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 3) {
             cell.nameTextField.placeholder = @"请填写门店故事";
             cell.nameTextField.userInteractionEnabled = NO;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.nameTextField.text = self.pinStoreModel.storeDescription;
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 4) {
             cell.nameTextField.placeholder = @"请填写完整地址(XX省XX市XX区XX路XX号)";
             cell.nameTextField.returnKeyType = UIReturnKeyNext;
-            cell.nameTextField.text = self.pinStoreModel.address;
-        } else if (indexPath.row == 4) {
+            cell.nameTextField.text = self.storeAddress;
+        } else if (indexPath.row == 5) {
             cell.nameTextField.placeholder = @"请填写门店运营时间";
-            cell.nameTextField.returnKeyType = UIReturnKeyDone;
+            cell.nameTextField.returnKeyType = UIReturnKeyNext;
             cell.nameTextField.text = self.pinStoreModel.date;
+        } else if (indexPath.row == 6) {
+            cell.nameTextField.placeholder = @"例胡同院落,两层,宽敞,胡同房子(选填)";
+            cell.nameTextField.returnKeyType = UIReturnKeyDone;
+            cell.nameTextField.text = self.pinStoreModel.feature3;
+        }  else if (indexPath.row == 7) {
+            cell.nameTextField.userInteractionEnabled = NO;
+            if (self.pinStoreModel.feature1s.count > 0) {
+                cell.nameTextField.text = @"已选择";
+            } else {
+                cell.nameTextField.text = @"未选择";
+            }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+        } else if (indexPath.row == 8) {
+            cell.nameTextField.userInteractionEnabled = NO;
+            if (self.pinStoreModel.feature2s.count > 0) {
+                cell.nameTextField.text = @"已选择";
+            } else {
+                cell.nameTextField.text = @"未选择";
+            }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
         }
     }
     
@@ -293,20 +428,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             [self chooseRecommendImageAction];
         }
     } else if (indexPath.section == 3) {
-        
-        if (indexPath.row == 2) {
-            [[self findFirstResponder] resignFirstResponder];
+        if (indexPath.row == 0) {
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+            [paramDic setObject:self forKey:@"delegate"];
+            [paramDic setObject:self.pinStoreModel.images forKey:@"images"];
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_PHOTO_VC navigationController:self.navigationController params:paramDic animated:YES];
+            
+        } else if (indexPath.row == 3) {
             
             NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
             [paramDic setObject:self forKey:@"delegate"];
             [paramDic setObject:self.pinStoreModel.storeDescription?:@"" forKey:@"desc"];
             [[ForwardContainer shareInstance] pushContainer:FORWARD_STOREDESC_VC navigationController:self.navigationController params:paramDic animated:YES];
             
+        } else if (indexPath.row == 7) {
+            
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+            [paramDic setObject:self forKey:@"delegate"];
+            [paramDic setObject:self.pinStoreModel.feature1s.count > 0 ? self.pinStoreModel.feature1s : @[] forKey:@"feature1s"];
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_FEATURE1_VC navigationController:self.navigationController params:paramDic animated:YES];
+        } else if (indexPath.row == 8) {
+            
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+            [paramDic setObject:self forKey:@"delegate"];
+            [paramDic setObject:self.pinStoreModel.feature2s.count > 0 ? self.pinStoreModel.feature2s : @[] forKey:@"feature2s"];
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_FEATURE2_VC navigationController:self.navigationController params:paramDic animated:YES];
         }
     }
 }
@@ -322,14 +474,16 @@
         self.pinStoreModel.owner = textValue;
     } else if (textField.tag == 1002) {
         self.pinStoreModel.phone = textValue;
-    } else if (textField.tag == 3000) {
-        self.pinStoreModel.name = textValue;
     } else if (textField.tag == 3001) {
+        self.pinStoreModel.name = textValue;
+    } else if (textField.tag == 3002) {
         self.pinStoreModel.slogan = textValue;
-    } else if (textField.tag == 3003) {
-        self.pinStoreModel.address = textValue;
     } else if (textField.tag == 3004) {
+        self.storeAddress = textValue;
+    } else if (textField.tag == 3005) {
         self.pinStoreModel.date = textValue;
+    } else if (textField.tag == 3006) {
+        self.pinStoreModel.feature3 = textValue;
     }
     return YES;
 }
@@ -340,16 +494,19 @@
         [cell.nameTextField becomeFirstResponder];
     } else if (textField.tag == 1002) {
         [textField resignFirstResponder];
-    } else if (textField.tag == 3000) {
-        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
-        [cell.nameTextField becomeFirstResponder];
     } else if (textField.tag == 3001) {
         PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:3]];
         [cell.nameTextField becomeFirstResponder];
-    } else if (textField.tag == 3003) {
-        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:3]];
+    } else if (textField.tag == 3002) {
+        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:3]];
         [cell.nameTextField becomeFirstResponder];
     } else if (textField.tag == 3004) {
+        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:3]];
+        [cell.nameTextField becomeFirstResponder];
+    } else if (textField.tag == 3005) {
+        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:3]];
+        [cell.nameTextField becomeFirstResponder];
+    } else if (textField.tag == 3006) {
         [textField resignFirstResponder];
     }
     return YES;
@@ -360,14 +517,16 @@
         self.pinStoreModel.owner = textField.text;
     } else if (textField.tag == 1002) {
         self.pinStoreModel.phone = textField.text;
-    } else if (textField.tag == 3000) {
-        self.pinStoreModel.name = textField.text;
     } else if (textField.tag == 3001) {
+        self.pinStoreModel.name = textField.text;
+    } else if (textField.tag == 3002) {
         self.pinStoreModel.slogan = textField.text;
-    } else if (textField.tag == 3003) {
-        self.pinStoreModel.address = textField.text;
     } else if (textField.tag == 3004) {
+        self.storeAddress = textField.text;
+    } else if (textField.tag == 3005) {
         self.pinStoreModel.date = textField.text;
+    } else if (textField.tag == 3006) {
+        self.pinStoreModel.feature3 = textField.text;
     }
 }
 
@@ -376,14 +535,16 @@
         self.pinStoreModel.owner = @"";
     } else if (textField.tag == 1002) {
         self.pinStoreModel.phone = @"";
-    } else if (textField.tag == 3000) {
-        self.pinStoreModel.name = @"";
     } else if (textField.tag == 3001) {
+        self.pinStoreModel.name = @"";
+    } else if (textField.tag == 3002) {
         self.pinStoreModel.slogan = @"";
-    } else if (textField.tag == 3003) {
-        self.pinStoreModel.address = @"";
     } else if (textField.tag == 3004) {
+        self.storeAddress = @"";
+    } else if (textField.tag == 3005) {
         self.pinStoreModel.date = @"";
+    } else if (textField.tag == 3006) {
+        self.pinStoreModel.feature3 = @"";
     }
     return YES;
 }
@@ -391,6 +552,16 @@
 #pragma mark -
 #pragma mark - verifyStore Action
 - (BOOL)verifyStore {
+    if (self.pinStoreModel.owner.length == 0) {
+        [self chatShowHint:@"请填写店长昵称"];
+        return NO;
+    }
+    
+    if (self.pinStoreModel.phone.length == 0) {
+        [self chatShowHint:@"请填写门店联系方式"];
+        return NO;
+    }
+    
     if (self.pinStoreModel.name.length == 0) {
         [self chatShowHint:@"请填写店铺名称"];
         return NO;
@@ -406,28 +577,23 @@
         return NO;
     }
     
-    if (!self.paramImage && self.pinStoreModel.avatar.length == 0) {
-        [self chatShowHint:@"请添加您的头像"];
-        return NO;
-    }
-    
-    if (self.pinStoreModel.owner.length == 0) {
-        [self chatShowHint:@"请填写店长昵称"];
-        return NO;
-    }
-    
-    if (self.pinStoreModel.phone.length == 0) {
-        [self chatShowHint:@"请填写门店联系方式"];
-        return NO;
-    }
-    
-    if (self.pinStoreModel.address.length == 0) {
+    if (self.storeAddress.length == 0) {
         [self chatShowHint:@"请填写完整门店地址"];
         return NO;
     }
     
     if (self.pinStoreModel.date.length == 0) {
         [self chatShowHint:@"请填写门店运营时间"];
+        return NO;
+    }
+    
+    if (self.pinStoreModel.feature1s.count == 0) {
+        [self chatShowHint:@"特色1至少选择1个"];
+        return NO;
+    }
+    
+    if (self.pinStoreModel.feature2s.count == 0) {
+        [self chatShowHint:@"特色2至少选择1个"];
         return NO;
     }
     
@@ -453,13 +619,9 @@
         // 跳转到相机或相册页面
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
-        if (sourceType == UIImagePickerControllerSourceTypeCamera) {
-            imagePickerController.allowsEditing = NO;
-        } else {
-            imagePickerController.allowsEditing = YES;
-        }
         imagePickerController.sourceType = sourceType;
         imagePickerController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        
         [self presentViewController:imagePickerController animated:YES completion:nil];
     }
 }
@@ -471,15 +633,15 @@
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
     UIImage *image;
+    image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        image = [info objectForKey:UIImagePickerControllerOriginalImage];
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    } else {
-        image = [info objectForKey:UIImagePickerControllerEditedImage];
+    }
+    if (image.size.width > UPLOADIMAGEWIDTH) {
+        image = [image snapSmallImage:UPLOADIMAGEWIDTH];
     }
     PLog(@"image == %@", image);
-    //    [self updateCollectionReload:image];
-    self.paramImage = image;
+    self.pinStoreModel.avatarImage = image;
     [self.tableview reloadData];
 }
 
@@ -498,7 +660,7 @@
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [self.navigationController.navigationBar become_backgroundColor:HEXCOLOR(pinColorNativeBarColor)];
+    viewController.navigationController.navigationBar.barTintColor = HEXCOLOR(pinColorNativeBarColor);
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 

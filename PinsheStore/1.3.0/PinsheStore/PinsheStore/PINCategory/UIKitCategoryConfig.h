@@ -18,6 +18,8 @@
 #import "UIView+Building.h"
 #import "UIView+ClickOn.h"
 
+#import "UIImage+UIImageScale.h"
+
 #import "NSString+Category.h"
 #import "NSObject+HUD.h"
 

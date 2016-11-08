@@ -85,7 +85,6 @@
         // 是店长
         // 跳转选择店铺
         [PINUserDefaultManagement instance].hasStore = YES;
-        [PINUserDefaultManagement instance].isSotreMember = NO;
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -100,9 +99,9 @@
 - (void)checkStoreMember {
     [self.httpService storeMemberRequestWithMid:[PINUserDefaultManagement instance].pinUser.guid finished:^(NSDictionary *result, NSString *message) {
         // 是店员,不是店长
-        [PINUserDefaultManagement instance].isSotreMember = YES;
+        NSArray *storeListArray = [result objectForKey:@"array"];
         [PINUserDefaultManagement instance].hasStore = NO;
-        
+        [PINUserDefaultManagement instance].sid = [[storeListArray.firstObject objectForKey:@"store_guid"] intValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         [PINAppDelegate() rootVC];
@@ -110,20 +109,18 @@
     } failure:^(NSDictionary *result, NSString *message) {
         // 不是店员,不是店长
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [PINUserDefaultManagement instance].hasStore = NO;
-        [PINUserDefaultManagement instance].isSotreMember = NO;
         
-        [[ForwardContainer shareInstance] pushContainer:FORWARD_STORELIST_VC navigationController:self.navigationController params:nil animated:YES];
-        
-        // 变为未登录状态
-//        [PINUserDefaultManagement instance].sid = 0;
-//        [PINUserDefaultManagement instance].storeName = @"";
-//        [PINUserDefaultManagement instance].storeCurrent = 0;
-//        [PINUserDefaultManagement instance].pinUser = nil;
-//        [UIAlertView alertViewWithTitle:@"友情提示" message:@"你还未加入品社咖啡馆！如果你是咖啡馆长，请联系品社客服；如果你是店员，请联系你的馆长。" cancel:@"确定" clickedBlock:^(NSInteger buttonIndex, NSString *buttonTitle, UIAlertView *alertview) {
-//        } cancelBlock:^{
-//        }];
-        
+        NSArray *titles = [NSArray arrayWithObjects:@"确定", nil];
+
+        [UIAlertView alertViewWithTitle:@"热情提示" message:@"您还没有店铺,请点击确定立马创建店铺; 如果您是店员,请联系您的店长" cancel:@"取消" otherButtonTitles:titles clickedBlock:^(NSInteger buttonIndex, NSString *buttonTitle, UIAlertView *alertview) {
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
+            [paramDic setObject:[NSNumber numberWithBool:YES] forKey:@"isLogin"];
+            [[ForwardContainer shareInstance] pushContainer:FORWARD_CREATSTORE_VC navigationController:self.navigationController params:paramDic animated:YES];
+            
+        } cancelBlock:^{
+            // 变为未登录状态
+            [PINConstant cleanUserDefault];
+        }];
     }];
 }
 

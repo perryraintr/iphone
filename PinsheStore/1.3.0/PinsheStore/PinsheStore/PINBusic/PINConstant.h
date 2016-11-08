@@ -9,6 +9,9 @@
 extern NSString *const REQUEST_URL;
 extern NSString *const REQUEST_HTML_URL;
 
+extern int const UPLOADIMAGEWIDTH;
+extern int const UPLOADIMAGELENGTH;
+
 typedef NS_ENUM (NSUInteger, PINIndicatorStyle) {
     PINIndicatorStyle_DefaultIndicator = 0,
     PINIndicatorStyle_NoStartIndicator,
@@ -20,5 +23,7 @@ typedef NS_ENUM (NSUInteger, PINIndicatorStyle) {
 
 AppDelegate *PINAppDelegate();
 PINTabBarController *pinTabBarController();
+
++ (void)cleanUserDefault;
 
 @end

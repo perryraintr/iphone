@@ -15,10 +15,20 @@
 #define FORWARD_STORELIST_VC @"PINStoreListController"
 #define FORWARD_STOREMEMBER_VC @"PINStoreMemberController"
 #define FORWARD_STORESETTING_VC @"PINStoreSettingController"
+#define FORWARD_PAYMENTLIST_VC @"PINPaymentListController"
+#define FORWARD_STOREPUSHLIST_VC @"PINStorePushListController"
+
+#define FORWARD_PAYMENT_VC @"PINPaymentController"
+#define FORWARD_STOREPUSH_VC @"PINStorePushController"
+#define FORWARD_STOREWIFI_VC @"PINStoreWiFiController"
 
 #define FORWARD_CREATSTORE_VC @"PINCreatStoreController"
 #define FORWARD_STOREDESC_VC @"PINStoreDescController"
 #define FORWARD_STOREDETAIL_VC @"PINStoreDetailController"
+
+#define FORWARD_FEATURE1_VC @"PINFeature1Controller"
+#define FORWARD_FEATURE2_VC @"PINFeature2Controller"
+#define FORWARD_PHOTO_VC @"PINPhotoController"
 
 #define FORWARD_WEBVIEW_VC @"PINWebViewController"
 
@@ -51,3 +61,5 @@
 
 #define pinColorTextDarkGray        0x606060
 #define pinColorTextLightGray       0x909090
+
+
