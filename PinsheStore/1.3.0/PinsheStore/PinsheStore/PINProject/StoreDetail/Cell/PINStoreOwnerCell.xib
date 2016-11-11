@@ -16,7 +16,7 @@
                 <frame key="frameInset" width="320" height="61.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jS8-Nn-q5q">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jS8-Nn-q5q">
                         <constraints>
                             <constraint firstAttribute="width" constant="54" id="BCN-yM-jCU"/>
                             <constraint firstAttribute="height" constant="54" id="M6K-Ma-Uv9"/>

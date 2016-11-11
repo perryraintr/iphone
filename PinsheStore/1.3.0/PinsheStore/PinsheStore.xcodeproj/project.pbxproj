@@ -101,6 +101,7 @@
 		3B9E69651DB627B100EA7818 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9E69641DB627B100EA7818 /* libsqlite3.tbd */; };
 		3B9E69671DB627B600EA7818 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9E69661DB627B600EA7818 /* AVFoundation.framework */; };
 		3B9E69691DB627BD00EA7818 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9E69681DB627BD00EA7818 /* JavaScriptCore.framework */; };
+		3BACF99B1DD46558004E7C8C /* PINProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF99A1DD46558004E7C8C /* PINProgressHUD.m */; };
 		3BC44DF31DD0247700FEE0E3 /* PINStorePushController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC44DF11DD0247700FEE0E3 /* PINStorePushController.m */; };
 		3BC44DF41DD0247700FEE0E3 /* PINStorePushController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC44DF21DD0247700FEE0E3 /* PINStorePushController.xib */; };
 		3BC44DF71DD0297600FEE0E3 /* PINStorePushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC44DF61DD0297600FEE0E3 /* PINStorePushModel.m */; };
@@ -361,6 +362,8 @@
 		3B9E69641DB627B100EA7818 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3B9E69661DB627B600EA7818 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3B9E69681DB627BD00EA7818 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		3BACF9991DD46558004E7C8C /* PINProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINProgressHUD.h; sourceTree = "<group>"; };
+		3BACF99A1DD46558004E7C8C /* PINProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINProgressHUD.m; sourceTree = "<group>"; };
 		3BC44DF01DD0247700FEE0E3 /* PINStorePushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINStorePushController.h; sourceTree = "<group>"; };
 		3BC44DF11DD0247700FEE0E3 /* PINStorePushController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINStorePushController.m; sourceTree = "<group>"; };
 		3BC44DF21DD0247700FEE0E3 /* PINStorePushController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PINStorePushController.xib; sourceTree = "<group>"; };
@@ -1137,6 +1140,8 @@
 		3BDFD69F1D8296A900F3D2C0 /* PINNetworkingManager */ = {
 			isa = PBXGroup;
 			children = (
+				3BACF9991DD46558004E7C8C /* PINProgressHUD.h */,
+				3BACF99A1DD46558004E7C8C /* PINProgressHUD.m */,
 				3BDFD6A21D8296A900F3D2C0 /* PINNetworking.h */,
 				3BDFD6A31D8296A900F3D2C0 /* PINNetworkingConfig.h */,
 				3BDFD6A41D8296A900F3D2C0 /* PINNetworkingManager.h */,
@@ -1546,6 +1551,7 @@
 				3BC44DFB1DD02B6600FEE0E3 /* PINStorePushListCell.m in Sources */,
 				3B3799CD1DCC2BB4002046CB /* PINPhotoController.m in Sources */,
 				3BE1FD851DD169B9008883CC /* PINDescCell.m in Sources */,
+				3BACF99B1DD46558004E7C8C /* PINProgressHUD.m in Sources */,
 				3BF062741D87A6C5000E66C5 /* PINStoreCell.m in Sources */,
 				3B0B540C1D86B002001B9191 /* MJRefreshAutoFooter.m in Sources */,
 				3B0B54161D86B002001B9191 /* MJRefreshBackStateFooter.m in Sources */,

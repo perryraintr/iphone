@@ -29,6 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
     [self requestPayment];
 }
 
@@ -36,15 +37,13 @@
     self.paymentArray = [NSMutableArray array];
 }
 
-- (void)initUI {
-    
-}
-
 - (void)requestPayment {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [PINProgressHUD startAnimation];
     
     [self.httpService paymentListRequestWithSid:[PINUserDefaultManagement instance].sid finished:^(NSDictionary *result, NSString *message) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [PINProgressHUD stopAnimation];
         
         [self.paymentArray removeAllObjects];
         for (NSDictionary *dic in [result objectForKey:@"array"]) {
@@ -54,7 +53,7 @@
         
         [self.tableview reloadData];
     } failure:^(NSDictionary *result, NSString *message) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+         [PINProgressHUD stopAnimation];
         
     }];
 }
@@ -111,6 +110,7 @@
         UITableViewCell *paymentAddCell = [tableView dequeueReusableCellWithIdentifier:paymentAddCellId];
         if (paymentAddCell == nil) {
             paymentAddCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:paymentAddCellId];
+            paymentAddCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         paymentAddCell.textLabel.text = @"创建账户";
         paymentAddCell.textLabel.font = Font(fFont16);

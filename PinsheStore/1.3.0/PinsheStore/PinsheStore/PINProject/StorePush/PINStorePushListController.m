@@ -124,6 +124,7 @@
         UITableViewCell *paymentAddCell = [tableView dequeueReusableCellWithIdentifier:paymentAddCellId];
         if (paymentAddCell == nil) {
             paymentAddCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:paymentAddCellId];
+            paymentAddCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         paymentAddCell.textLabel.text = @"创建推送内容";
         paymentAddCell.textLabel.font = Font(fFont16);
@@ -135,6 +136,7 @@
         PINStorePushListCell *storePushListCell = [tableView dequeueReusableCellWithIdentifier:storePushListCellId];
         if (!storePushListCell) {
             storePushListCell = [[[NSBundle mainBundle] loadNibNamed:@"PINStorePushListCell" owner:self options:nil] objectAtIndex:0];
+            storePushListCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         PINStorePushModel *model = [self.storePushArray objectAtIndex:indexPath.row];
         storePushListCell.nameLabel.text = model.name;
@@ -162,6 +164,13 @@
 }
 
 #pragma mark 删除按钮中文
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return NO;
+    }
+    return YES;
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
 }

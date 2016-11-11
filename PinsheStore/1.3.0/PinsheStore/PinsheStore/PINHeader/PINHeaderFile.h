@@ -22,6 +22,8 @@
 
 #import "PINGeoModel.h"
 
+#import "PINProgressHUD.h"
+
 // 扩展
 #import "UIKitCategoryConfig.h"
 

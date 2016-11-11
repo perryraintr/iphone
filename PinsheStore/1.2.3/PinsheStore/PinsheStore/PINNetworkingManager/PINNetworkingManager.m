@@ -28,7 +28,7 @@ static NSString *kUploadImageName = @"file";
     urlString = [NSString stringWithFormat:@"%@%@?%@", requestUrl, methodName, params];
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
+    
     PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\n", methodName, urlString);
     
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {

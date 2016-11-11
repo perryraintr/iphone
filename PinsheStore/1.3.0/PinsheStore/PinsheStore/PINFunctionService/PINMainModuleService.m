@@ -370,9 +370,15 @@ static NSString *const kStorePushRemovePath = @"store_push_remove.a";
 
 /// 添加提现列表
 - (void)paymentAddRequestWithSid:(int)sid type:(int)type holder:(NSString *)holder account:(NSString *)account company:(NSString *)company finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
-    NSString *paramStr = [NSString stringWithFormat:@"sid=%zd&type=%zd&holder=%@&account=%@&company=%@", sid, type, holder, account, company];
     
-    [_manger GET:kStorePaymentAddPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSNumber numberWithInt:sid] forKey:@"sid"];
+    [dic setObject:[NSNumber numberWithInt:type] forKey:@"type"];
+    [dic setObject:holder forKey:@"holder"];
+    [dic setObject:account forKey:@"account"];
+    [dic setObject:company forKey:@"company"];
+
+    [_manger POST:kStorePaymentAddPath params:dic finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
     } failure:^(NSDictionary *result, NSString *message) {
         failure(result, message);
@@ -381,13 +387,20 @@ static NSString *const kStorePushRemovePath = @"store_push_remove.a";
 
 /// 修改提现列表
 - (void)paymentModifyRequestWithSid:(int)sid paymentid:(int)paymentid type:(int)type holder:(NSString *)holder account:(NSString *)account company:(NSString *)company finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
-    NSString *paramStr = [NSString stringWithFormat:@"sid=%zd&id=%zd&type=%zd&holder=%@&account=%@&company=%@", sid, paymentid, type, holder, account, company];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSNumber numberWithInt:sid] forKey:@"sid"];
+    [dic setObject:[NSNumber numberWithInt:paymentid] forKey:@"id"];
+    [dic setObject:[NSNumber numberWithInt:type] forKey:@"type"];
+    [dic setObject:holder forKey:@"holder"];
+    [dic setObject:account forKey:@"account"];
+    [dic setObject:company forKey:@"company"];
     
-    [_manger GET:kStorePaymentModifyPath params:paramStr finished:^(NSDictionary *result, NSString *message) {
+    [_manger POST:kStorePaymentModifyPath params:dic finished:^(NSDictionary *result, NSString *message) {
         finished(result, message);
     } failure:^(NSDictionary *result, NSString *message) {
         failure(result, message);
     }];
+    
 }
 
 /// 推送列表

@@ -104,7 +104,7 @@ static NSString *kUploadAvatarImageName = @"avatar";
     NSString *urlString = @"";
     urlString = [NSString stringWithFormat:@"%@%@?", requestUrl, methodName];
     
-//    PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\npostString=====>\n%@\n", methodName, urlString, paramsFromDictionary(params));
+    PLog(@"requestUrl==>%@\n-----------------------------------------------------%@\npostString=====>\n%@\n", methodName, urlString, paramsFromDictionary(params));
     
     [manager POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         

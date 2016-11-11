@@ -128,6 +128,11 @@ static NSString *const kWechatSendPath = @"wechat_send.a";
 
 /// 修改某个咖啡馆的信息
 - (void)storeModifyInfoRequestWithSid:(int)sid slogan:(NSString *)slogan dateStr:(NSString *)dateStr phone:(NSString *)phone finished:(PINServiceCallback)finished failure:(PINServiceFailure)failure {
+    
+//    slogan = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)slogan,NULL,(CFStringRef)@"!*'();@&+$,/?%#[]~=_-.:",kCFStringEncodingUTF8 ));
+
+//    slogan = [slogan stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
+    
     NSString *paramStr = [NSString stringWithFormat:@"id=%zd&slogan=%@&date=%@&phone=%@", sid, slogan, dateStr, phone];
     
     [_manger GET:kStoreModifyPath params:paramStr finished:^(NSDictionary *result, NSString *message) {

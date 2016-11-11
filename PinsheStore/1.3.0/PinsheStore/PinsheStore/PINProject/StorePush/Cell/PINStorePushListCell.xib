@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="61"/>
+                <frame key="frameInset" width="320" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xk1-z1-jZS">
@@ -33,7 +33,7 @@
                     <constraint firstItem="8gc-91-fpF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="Guc-7I-CRE"/>
                     <constraint firstItem="8gc-91-fpF" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="g0C-ik-oTQ"/>
                     <constraint firstItem="8gc-91-fpF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="him-iz-2ua"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Xk1-z1-jZS" secondAttribute="trailing" constant="7" id="nIB-8B-OB6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Xk1-z1-jZS" secondAttribute="trailing" id="nIB-8B-OB6"/>
                     <constraint firstItem="Xk1-z1-jZS" firstAttribute="leading" secondItem="8gc-91-fpF" secondAttribute="trailing" constant="7" id="ySI-Dw-OXb"/>
                 </constraints>
             </tableViewCellContentView>

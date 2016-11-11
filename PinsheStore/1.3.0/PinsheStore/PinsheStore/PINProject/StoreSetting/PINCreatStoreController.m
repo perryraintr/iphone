@@ -290,7 +290,7 @@
             cell.nameTextField.text = self.pinStoreModel.owner;
         } else if (indexPath.row == 2) {
             cell.nameTextField.placeholder = @"请填写门店联系方式(座机或手机号)";
-            cell.nameTextField.returnKeyType = UIReturnKeyNext;
+            cell.nameTextField.returnKeyType = UIReturnKeyDone;
             cell.nameTextField.text = self.pinStoreModel.phone;
         }
     } else if (indexPath.section == 3) {
@@ -417,7 +417,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField.tag == 1001) {
-        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        PINCreatStoreCell *cell = (PINCreatStoreCell *)[self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
         [cell.nameTextField becomeFirstResponder];
     } else if (textField.tag == 1002) {
         [textField resignFirstResponder];

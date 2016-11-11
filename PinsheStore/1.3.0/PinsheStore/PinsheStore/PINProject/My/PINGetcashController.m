@@ -38,6 +38,9 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         self.pinStoreModel = [PINStoreModel modelWithDictionary:result];
+        
+        self.tableview.delegate = self;
+        self.tableview.dataSource = self;
         [self.tableview reloadData];
         
     } failure:^(NSDictionary *result, NSString *message) {

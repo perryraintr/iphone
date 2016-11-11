@@ -82,8 +82,8 @@
     if (indexPath.section == 0) { // 轮播图
         return SCREEN_WITH * 900 / 1242.0;
     } else if (indexPath.section == 1) { //slogan star
-        CGFloat sloganHeight = [NSString getTextHeight:SCREEN_WITH - 20 text:self.pinStoreModel.slogan fontSize:fFont20 isSuo:YES];
-        return sloganHeight + 80;
+        CGFloat sloganHeight = [NSString getTextHeight:SCREEN_WITH - 30 text:self.pinStoreModel.slogan fontSize:fFont20 isSuo:YES];
+        return sloganHeight + FITHEIGHT(35) + 58;
     } else if (indexPath.section == 2) { // 特色2
         return ((SCREEN_WITH - 90) / 4.0) * self.feature2s.count + 15 * (self.feature2s.count - 1) + 30;
     } else if (indexPath.section == 3) { // 创始人
